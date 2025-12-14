@@ -6,6 +6,14 @@ _Check Your Premises_
 
 Premises is a concept visualization and study tool based on Aristotelian/Objectivist principles of concept formation and definition. It provides an interactive environment for exploring conceptual relationships, focusing on the hierarchical structure of knowledge through genus-differentia definitions.
 
+## Live Application
+
+**Experience the app in action: [https://lebbe.github.io/premises](https://lebbe.github.io/premises)**
+
+![Concept Graph Example](art.png)
+
+_Example: Exploring the concept of "Art" and its relationships. Try it yourself at [https://lebbe.github.io/premises#concept=art](https://lebbe.github.io/premises#concept=art)_
+
 ## StudyView Features
 
 The StudyView is the primary interface for focused conceptual study and exploration:
