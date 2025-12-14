@@ -1,0 +1,255 @@
+[
+  {
+    "id": "faculty",
+    "universeId": "LLM layer genus 1",
+    "type": "concept",
+    "label": "Faculty",
+    "definition": {
+      "text": "An inherent power or ability of an entity to perform a specific action.",
+      "genus": "attribute",
+      "differentia": ["potentiality", "power-of-action"],
+      "source": "Gemini 3 pro"
+    }
+  },
+  {
+    "id": "constituent-element",
+    "universeId": "LLM layer genus 1",
+    "type": "concept",
+    "label": "Constituent Element",
+    "definition": {
+      "text": "An existent that functions as a part of a greater whole.",
+      "genus": "existent",
+      "differentia": ["part-of-whole", "compositional"],
+      "source": "Gemini 3 pro"
+    }
+  },
+  {
+    "id": "process",
+    "universeId": "LLM layer genus 1",
+    "type": "concept",
+    "label": "Process",
+    "definition": {
+      "text": "A continuous series of actions or changes leading to a particular result.",
+      "genus": "action",
+      "differentia": ["continuity", "sequence", "goal-directedness"],
+      "source": "Gemini 3 pro"
+    }
+  },
+  {
+    "id": "choice",
+    "universeId": "LLM layer genus 1",
+    "type": "concept",
+    "label": "Choice",
+    "definition": {
+      "text": "The volitional selection of one option among alternatives.",
+      "genus": "mental-action",
+      "differentia": ["volition", "selection-among-alternatives"],
+      "source": "Gemini 3 pro"
+    }
+  },
+  {
+    "id": "art-method",
+    "universeId": "LLM layer genus 1",
+    "type": "concept",
+    "label": "Art (Method)",
+    "definition": {
+      "text": "A systematic practice or skill used to accomplish a result.",
+      "genus": "method",
+      "differentia": ["systematic-practice", "skill-based"],
+      "source": "Gemini 3 pro"
+    }
+  },
+  {
+    "id": "recognition",
+    "universeId": "LLM layer genus 1",
+    "type": "concept",
+    "label": "Recognition",
+    "definition": {
+      "text": "The identification of an existent as having been known previously or as belonging to a specific category.",
+      "genus": "identification",
+      "differentia": ["re-identification", "validation"],
+      "source": "Gemini 3 pro"
+    }
+  },
+  {
+    "id": "mental-integration",
+    "universeId": "LLM layer genus 1",
+    "type": "concept",
+    "label": "Mental Integration",
+    "definition": {
+      "text": "The act of uniting separate mental units into a single new unit.",
+      "genus": "mental-action",
+      "differentia": ["unifying", "synthesis", "unit-formation"],
+      "source": "Gemini 3 pro"
+    }
+  },
+  {
+    "id": "statement",
+    "universeId": "LLM layer genus 1",
+    "type": "concept",
+    "label": "Statement",
+    "definition": {
+      "text": "A linguistic expression that formulates a specific proposition.",
+      "genus": "linguistic-expression",
+      "differentia": ["propositional", "declarative"],
+      "source": "Gemini 3 pro"
+    }
+  },
+  {
+    "id": "code",
+    "universeId": "LLM layer genus 1",
+    "type": "concept",
+    "label": "Code",
+    "definition": {
+      "text": "A system of symbols used to represent information.",
+      "genus": "system",
+      "differentia": ["symbolic-representation", "mapping-rule"],
+      "source": "Gemini 3 pro"
+    }
+  },
+  {
+    "id": "automatic-response",
+    "universeId": "LLM layer genus 1",
+    "type": "concept",
+    "label": "Automatic Response",
+    "definition": {
+      "text": "A reaction performed without conscious volition.",
+      "genus": "reaction",
+      "differentia": ["non-volitional", "reflexive"],
+      "source": "Gemini 3 pro"
+    }
+  },
+  {
+    "id": "object-of-action",
+    "universeId": "LLM layer genus 1",
+    "type": "concept",
+    "label": "Object of Action",
+    "definition": {
+      "text": "The existent toward which an action is directed.",
+      "genus": "existent",
+      "differentia": ["target", "recipient"],
+      "source": "Gemini 3 pro"
+    }
+  },
+  {
+    "id": "action",
+    "universeId": "LLM layer genus 1",
+    "type": "concept",
+    "label": "Action",
+    "definition": {
+      "text": "The process of change or motion manifested by an entity.",
+      "genus": "attribute",
+      "differentia": ["motion", "change", "active-manifestation"],
+      "source": "Gemini 3 pro"
+    }
+  },
+  {
+    "id": "concern",
+    "universeId": "LLM layer genus 1",
+    "type": "concept",
+    "label": "Concern",
+    "definition": {
+      "text": "A state of interest or involvement regarding a value.",
+      "genus": "mental-state",
+      "differentia": ["interest", "value-orientation"],
+      "source": "Gemini 3 pro"
+    }
+  },
+  {
+    "id": "judgment",
+    "universeId": "LLM layer genus 1",
+    "type": "concept",
+    "label": "Judgment",
+    "definition": {
+      "text": "The mental act of forming an evaluation or conclusion.",
+      "genus": "mental-action",
+      "differentia": ["evaluation", "conclusion-formation"],
+      "source": "Gemini 3 pro"
+    }
+  },
+  {
+    "id": "moral-principle",
+    "universeId": "LLM layer genus 1",
+    "type": "concept",
+    "label": "Moral Principle",
+    "definition": {
+      "text": "A fundamental truth serving as a standard for ethical conduct.",
+      "genus": "principle",
+      "differentia": ["normative", "pertain", "right", "wrong"],
+      "source": "Gemini 3 pro"
+    }
+  },
+  {
+    "id": "social-condition",
+    "universeId": "LLM layer genus 1",
+    "type": "concept",
+    "label": "Social Condition",
+    "definition": {
+      "text": "A state of affairs resulting from the interaction of individuals in a society.",
+      "genus": "state-of-affairs",
+      "differentia": ["interpersonal", "societal"],
+      "source": "Gemini 3 pro"
+    }
+  },
+  {
+    "id": "interference",
+    "universeId": "LLM layer genus 1",
+    "type": "concept",
+    "label": "Interference",
+    "definition": {
+      "text": "Action that impedes, obstructs, or intrudes upon another action.",
+      "genus": "action",
+      "differentia": ["impeding", "obstruction"],
+      "source": "Gemini 3 pro"
+    }
+  },
+  {
+    "id": "social-system",
+    "universeId": "LLM layer genus 1",
+    "type": "concept",
+    "label": "Social System",
+    "definition": {
+      "text": "The organized structure of laws and institutions governing a society.",
+      "genus": "system",
+      "differentia": ["societal-organization", "governance"],
+      "source": "Gemini 3 pro"
+    }
+  },
+  {
+    "id": "re-creation-of-reality",
+    "universeId": "LLM layer genus 1",
+    "type": "concept",
+    "label": "Re-creation of Reality",
+    "definition": {
+      "text": "A representation of existence styled according to a specific perspective.",
+      "genus": "creation",
+      "differentia": ["mimetic", "stylized-projection"],
+      "source": "Gemini 3 pro"
+    }
+  },
+  {
+    "id": "furniture",
+    "universeId": "LLM layer genus 1",
+    "type": "concept",
+    "label": "Furniture",
+    "definition": {
+      "text": "Movable objects intended to support various human activities such as seating and sleeping.",
+      "genus": "artifact",
+      "differentia": ["movable", "habitation-utility"],
+      "source": "Gemini 3 pro"
+    }
+  },
+  {
+    "id": "animal",
+    "universeId": "LLM layer genus 1",
+    "type": "concept",
+    "label": "Animal",
+    "definition": {
+      "text": "A living organism characterized by the capacity for sensation and voluntary motion.",
+      "genus": "living-thing",
+      "differentia": ["sensation", "locomotion"],
+      "source": "Gemini 3 pro"
+    },
+    "perceptualRoots": ["faculty:sight"]
+  }
+]

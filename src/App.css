@@ -1,0 +1,109 @@
+/* Reset and base styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", sans-serif;
+  background-color: #f8f9fa;
+}
+
+/* ReactFlow styles */
+.react-flow {
+  background: #f8f9fa;
+}
+
+.react-flow__node {
+  cursor: pointer;
+}
+
+.react-flow__node:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15) !important;
+}
+
+.react-flow__node.selected {
+  transform: scale(1.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2) !important;
+}
+
+.react-flow__edge {
+  stroke-width: 2;
+}
+
+.react-flow__edge:hover {
+  stroke-width: 3;
+}
+
+.react-flow__edge-label {
+  background: white;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-size: 10px;
+  color: #666;
+}
+
+/* Control panel styles */
+.control-panel {
+  z-index: 10;
+}
+
+.control-panel h3 {
+  color: #333;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+.control-panel label {
+  cursor: pointer;
+  user-select: none;
+}
+
+.control-panel label:hover {
+  background-color: #f5f5f5;
+  padding: 2px;
+  border-radius: 3px;
+}
+
+/* Info panel styles */
+.info-panel {
+  z-index: 10;
+}
+
+.info-panel h3 {
+  color: #333;
+}
+
+/* Concept node specific styles */
+.concept-node:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Custom scrollbar for info panel */
+.info-panel div {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.info-panel div::-webkit-scrollbar {
+  width: 6px;
+}
+
+.info-panel div::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.info-panel div::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 3px;
+}
+
+.info-panel div::-webkit-scrollbar-thumb:hover {
+  background: #999;
+}

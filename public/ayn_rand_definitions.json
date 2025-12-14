@@ -1,0 +1,356 @@
+[
+  {
+    "id": "existence",
+    "universeId": "Ayn Rand",
+    "type": "axiomatic concept",
+    "label": "Existence",
+    "definition": {
+      "text": "Existence exists.",
+      "genus": null,
+      "differentia": [],
+      "source": "cite: 37, 38, 41"
+    }
+  },
+  {
+    "id": "identity",
+    "universeId": "Ayn Rand",
+    "type": "axiomatic concept",
+    "label": "Identity",
+    "definition": {
+      "text": "A is A. (Everything is what it is).",
+      "genus": null,
+      "differentia": [],
+      "source": "cite: 44, 45, 47"
+    }
+  },
+  {
+    "id": "consciousness",
+    "universeId": "Ayn Rand",
+    "type": "axiomatic concept",
+    "label": "Consciousness",
+    "definition": {
+      "text": "The faculty of perceiving that which exists.",
+      "genus": "faculty",
+      "differentia": ["perception", "existence"],
+      "source": "cite: 50, 51, 52, 53"
+    }
+  },
+  {
+    "id": "matter",
+    "universeId": "Ayn Rand",
+    "type": "concept",
+    "label": "Matter",
+    "definition": {
+      "text": "The metaphysically given constituent element of the universe which is indestructible and changes its forms.",
+      "genus": "constituent-element",
+      "differentia": ["indestructibility", "identity", "volition"],
+      "source": "cite: 60, 61, 63, 64"
+    }
+  },
+  {
+    "id": "life",
+    "universeId": "Ayn Rand",
+    "type": "concept",
+    "label": "Life",
+    "definition": {
+      "text": "A process of self-sustaining and self-generated action.",
+      "genus": "process",
+      "differentia": ["self-sustaining-action", "self-generated-action"],
+      "source": "cite: 68, 69, 70, 71"
+    }
+  },
+  {
+    "id": "soul",
+    "universeId": "Ayn Rand",
+    "type": "concept",
+    "label": "Soul (Spirit)",
+    "definition": {
+      "text": "That which you call your soul or spirit is your consciousness.",
+      "genus": "consciousness",
+      "differentia": ["self", "personality"],
+      "source": "cite: 78, 79, 80, 81"
+    }
+  },
+  {
+    "id": "free-will",
+    "universeId": "Ayn Rand",
+    "type": "concept",
+    "label": "Free Will",
+    "definition": {
+      "text": "The choice to think or not.",
+      "genus": "choice",
+      "differentia": ["thought", "focus"],
+      "source": "cite: 84, 85, 86, 87"
+    }
+  },
+  {
+    "id": "reason",
+    "universeId": "Ayn Rand",
+    "type": "concept",
+    "label": "Reason",
+    "definition": {
+      "text": "The faculty that identifies and integrates the material provided by man’s senses.",
+      "genus": "faculty",
+      "differentia": ["identification", "integration", "sensory-material"],
+      "source": "cite: 95, 96, 97, 98"
+    }
+  },
+  {
+    "id": "logic",
+    "universeId": "Ayn Rand",
+    "type": "concept",
+    "label": "Logic",
+    "definition": {
+      "text": "The art of non-contradictory identification.",
+      "genus": "art-method",
+      "differentia": ["non-contradiction", "identification"],
+      "source": "cite: 104, 105, 106, 107"
+    }
+  },
+  {
+    "id": "objectivity",
+    "universeId": "Ayn Rand",
+    "type": "concept",
+    "label": "Objectivity",
+    "definition": {
+      "text": "The recognition of the fact that consciousness must acquire knowledge of reality by certain means (reason) in accordance with certain rules (logic).",
+      "genus": "recognition",
+      "differentia": ["reason", "logic", "knowledge-acquisition"],
+      "source": "cite: 112, 113, 115, 116"
+    }
+  },
+  {
+    "id": "concept",
+    "universeId": "Ayn Rand",
+    "type": "concept",
+    "label": "Concept",
+    "definition": {
+      "text": "A mental integration of two or more units possessing the same distinguishing characteristic(s), with their particular measurements omitted.",
+      "genus": "mental-integration",
+      "differentia": [
+        "unit",
+        "distinguishing-characteristic",
+        "measurement-omission"
+      ],
+      "source": "cite: 120, 121, 123, 124"
+    }
+  },
+  {
+    "id": "definition",
+    "universeId": "Ayn Rand",
+    "type": "concept",
+    "label": "Definition",
+    "definition": {
+      "text": "A statement that identifies the nature of the units subsumed under a concept.",
+      "genus": "statement",
+      "differentia": ["nature", "unit", "concept"],
+      "source": "cite: 130, 131, 132"
+    }
+  },
+  {
+    "id": "language",
+    "universeId": "Ayn Rand",
+    "type": "concept",
+    "label": "Language",
+    "definition": {
+      "text": "A code of visual-auditory symbols that serves the psycho-epistemological function of converting concepts into the mental equivalent of concretes.",
+      "genus": "code",
+      "differentia": ["concept", "mental-concrete", "psycho-epistemology"],
+      "source": "cite: 136, 137, 139, 140"
+    }
+  },
+  {
+    "id": "emotion",
+    "universeId": "Ayn Rand",
+    "type": "concept",
+    "label": "Emotion",
+    "definition": {
+      "text": "An automatic response proceeding from an evaluation of an existent.",
+      "genus": "automatic-response",
+      "differentia": ["evaluation", "existent"],
+      "source": "cite: 151, 152, 153, 154"
+    }
+  },
+  {
+    "id": "ethics",
+    "universeId": "Ayn Rand",
+    "type": "concept",
+    "label": "Ethics",
+    "definition": {
+      "text": "A code of values to guide man’s choices and actions—the choices and actions that determine the purpose and the course of his life.",
+      "genus": "code",
+      "differentia": ["value", "choice", "purpose", "life"],
+      "source": "cite: 165, 166, 168, 169"
+    }
+  },
+  {
+    "id": "value",
+    "universeId": "Ayn Rand",
+    "type": "concept",
+    "label": "Value",
+    "definition": {
+      "text": "That which one acts to gain and/or keep.",
+      "genus": "object-of-action",
+      "differentia": ["action", "gain", "keep"],
+      "source": "cite: 172, 173, 174, 175"
+    }
+  },
+  {
+    "id": "virtue",
+    "universeId": "Ayn Rand",
+    "type": "concept",
+    "label": "Virtue",
+    "definition": {
+      "text": "The action by which one gains and keeps values.",
+      "genus": "action",
+      "differentia": ["value", "gain", "keep"],
+      "source": "cite: 179, 180, 181, 182"
+    }
+  },
+  {
+    "id": "selfishness",
+    "universeId": "Ayn Rand",
+    "type": "concept",
+    "label": "Selfishness",
+    "definition": {
+      "text": "Concern with one’s own interests.",
+      "genus": "concern",
+      "differentia": ["self-interest"],
+      "source": "cite: 184, 185, 186, 187"
+    }
+  },
+  {
+    "id": "rationality",
+    "universeId": "Ayn Rand",
+    "type": "concept",
+    "label": "Rationality",
+    "definition": {
+      "text": "Recognition and acceptance of reason as the only source of knowledge, judge of values, and guide to action.",
+      "genus": "recognition",
+      "differentia": ["reason", "knowledge", "value", "action"],
+      "source": "cite: 201"
+    }
+  },
+  {
+    "id": "justice",
+    "universeId": "Ayn Rand",
+    "type": "concept",
+    "label": "Justice",
+    "definition": {
+      "text": "The act of judging character and actions based exclusively on factual evidence and objective moral criteria.",
+      "genus": "judgment",
+      "differentia": ["evidence", "objective-moral-criteria"],
+      "source": "cite: 23, 201"
+    }
+  },
+  {
+    "id": "individual-rights",
+    "universeId": "Ayn Rand",
+    "type": "concept",
+    "label": "Individual Rights",
+    "definition": {
+      "text": "A moral principle defining and sanctioning a man’s freedom of action in a social context.",
+      "genus": "moral-principle",
+      "differentia": ["freedom", "action", "social-context"],
+      "source": "cite: 206, 207, 208, 209"
+    }
+  },
+  {
+    "id": "property-rights",
+    "universeId": "Ayn Rand",
+    "type": "concept",
+    "label": "Property Rights",
+    "definition": {
+      "text": "The right to gain, to keep, to use and to dispose of material values.",
+      "genus": "individual-rights",
+      "differentia": ["material-value", "gain", "disposal"],
+      "source": "cite: 217, 218, 219, 220"
+    }
+  },
+  {
+    "id": "freedom",
+    "universeId": "Ayn Rand",
+    "type": "concept",
+    "label": "Freedom (Political)",
+    "definition": {
+      "text": "The absence of physical coercion.",
+      "genus": "social-condition",
+      "differentia": ["physical-force"],
+      "source": "cite: 223, 224, 225, 226"
+    }
+  },
+  {
+    "id": "physical-force",
+    "universeId": "Ayn Rand",
+    "type": "concept",
+    "label": "Physical Force",
+    "definition": {
+      "text": "The act of interfering with a man's judgment or action by physical means.",
+      "genus": "interference",
+      "differentia": ["judgment", "action", "physical-means"],
+      "source": "cite: 229, 230"
+    }
+  },
+  {
+    "id": "capitalism",
+    "universeId": "Ayn Rand",
+    "type": "concept",
+    "label": "Capitalism",
+    "definition": {
+      "text": "A social system based on the recognition of individual rights, including property rights, in which all property is privately owned.",
+      "genus": "social-system",
+      "differentia": ["individual-rights", "private-property"],
+      "source": "cite: 235, 236, 238, 239"
+    }
+  },
+  {
+    "id": "statism",
+    "universeId": "Ayn Rand",
+    "type": "concept",
+    "label": "Statism",
+    "definition": {
+      "text": "A social system based on the principle that man’s life belongs to the state.",
+      "genus": "social-system",
+      "differentia": ["state-ownership-of-life"],
+      "source": "cite: 249, 250, 251, 252"
+    }
+  },
+  {
+    "id": "art",
+    "universeId": "Ayn Rand",
+    "type": "concept",
+    "label": "Art",
+    "definition": {
+      "text": "A selective re-creation of reality according to an artist’s metaphysical value-judgments.",
+      "genus": "re-creation-of-reality",
+      "differentia": ["selectivity", "metaphysical-value-judgment"],
+      "source": "cite: 269, 270, 271, 272"
+    }
+  },
+  {
+    "id": "table",
+    "universeId": "Ayn Rand",
+    "type": "concept",
+    "label": "Table",
+    "definition": {
+      "text": "An item of furniture, consisting of a flat, level surface and supports, intended to support other, smaller objects.",
+      "genus": "furniture",
+      "differentia": ["flat-surface", "support"],
+      "source": "cite: 292, 293, 295, 296"
+    },
+    "perceptualRoots": ["faculty:sight", "faculty:touch"]
+  },
+  {
+    "id": "man",
+    "universeId": "Ayn Rand",
+    "type": "concept",
+    "label": "Man",
+    "definition": {
+      "text": "A rational animal.",
+      "genus": "animal",
+      "differentia": ["reason"],
+      "source": "cite: 308, 309, 310, 311"
+    },
+    "perceptualRoots": ["faculty:sight", "faculty:hearing"]
+  }
+]

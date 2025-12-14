@@ -1,0 +1,123 @@
+/* ConceptInfoPanel Component Styles */
+
+.infoPanelContent {
+  background: white !important;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 300px;
+  color: #333 !important;
+}
+
+.infoPanelHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.infoPanelTitle {
+  margin: 0;
+  font-size: 16px;
+  color: #333 !important;
+}
+
+.infoPanelClose {
+  background: none !important;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: #666 !important;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.infoPanelClose:hover {
+  color: #333 !important;
+  background: #f0f0f0 !important;
+}
+
+.infoPanelUniverse {
+  font-size: 11px;
+  color: #0066cc !important;
+  margin-bottom: 8px;
+  font-weight: 500;
+  background: #e6f2ff !important;
+  padding: 2px 6px;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+.infoPanelField {
+  font-size: 12px;
+  color: #333 !important;
+  margin-bottom: 8px;
+}
+
+.infoPanelField strong {
+  color: #000 !important;
+  font-weight: 600;
+}
+
+.infoPanelDefinition {
+  font-size: 12px;
+  margin-top: 10px;
+  color: #333 !important;
+}
+
+.infoPanelDefinition strong {
+  color: #000 !important;
+  font-weight: 600;
+}
+
+.infoPanelDefinitionText {
+  margin-top: 5px;
+  padding: 8px;
+  background: #f8f9fa !important;
+  border-radius: 3px;
+  font-style: italic;
+  color: #333 !important;
+  border-left: 3px solid #007acc;
+  line-height: 1.4;
+}
+
+.infoPanelSource {
+  font-size: 11px;
+  color: #666 !important;
+  margin-top: 8px;
+  font-style: italic;
+}
+
+.infoPanelActions {
+  margin-top: 15px;
+  padding-top: 10px;
+  border-top: 1px solid #eee;
+}
+
+.focusButton {
+  background: #007acc !important;
+  color: white !important;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+  width: 100%;
+  text-decoration: none !important;
+  display: block;
+  text-align: center;
+}
+
+.focusButton:hover {
+  background: #005a9e !important;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 122, 204, 0.3);
+}

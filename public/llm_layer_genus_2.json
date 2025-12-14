@@ -1,0 +1,195 @@
+[
+  {
+    "id": "attribute",
+    "universeId": "LLM layer genus 2",
+    "type": "concept",
+    "label": "Attribute",
+    "definition": {
+      "text": "A characteristic or quality belonging to an entity.",
+      "genus": "existent",
+      "differentia": ["characteristic", "belonging-to-entity"],
+      "source": "Gemini 3 pro"
+    }
+  },
+  {
+    "id": "existent",
+    "universeId": "LLM layer genus 2",
+    "type": "concept",
+    "label": "Existent",
+    "definition": {
+      "text": "Something that exists; a unit of reality.",
+      "genus": "existence",
+      "differentia": ["unit", "particularity"],
+      "source": "Gemini 3 pro"
+    }
+  },
+  {
+    "id": "mental-action",
+    "universeId": "LLM layer genus 2",
+    "type": "concept",
+    "label": "Mental Action",
+    "definition": {
+      "text": "An action performed by the faculty of consciousness.",
+      "genus": "action",
+      "differentia": ["consciousness", "internal"],
+      "source": "Gemini 3 pro"
+    }
+  },
+  {
+    "id": "method",
+    "universeId": "LLM layer genus 2",
+    "type": "concept",
+    "label": "Method",
+    "definition": {
+      "text": "A systematic course of action designed to achieve a specific goal.",
+      "genus": "process",
+      "differentia": ["systematic", "goal-directed"],
+      "source": "Gemini 3 pro"
+    }
+  },
+  {
+    "id": "identification",
+    "universeId": "LLM layer genus 2",
+    "type": "concept",
+    "label": "Identification",
+    "definition": {
+      "text": "The mental action of grasping the identity of an existent.",
+      "genus": "mental-action",
+      "differentia": ["grasping-identity", "cognition"],
+      "source": "Gemini 3 pro"
+    }
+  },
+  {
+    "id": "linguistic-expression",
+    "universeId": "LLM layer genus 2",
+    "type": "concept",
+    "label": "Linguistic Expression",
+    "definition": {
+      "text": "A verbal or written symbol structure used to communicate a concept.",
+      "genus": "code",
+      "differentia": ["verbal", "communicative"],
+      "source": "Gemini 3 pro"
+    }
+  },
+  {
+    "id": "system",
+    "universeId": "LLM layer genus 2",
+    "type": "concept",
+    "label": "System",
+    "definition": {
+      "text": "An integrated set of distinct units functioning as a whole.",
+      "genus": "mental-integration",
+      "differentia": ["interconnected", "functioning-as-whole"],
+      "source": "Gemini 3 pro"
+    }
+  },
+  {
+    "id": "reaction",
+    "universeId": "LLM layer genus 2",
+    "type": "concept",
+    "label": "Reaction",
+    "definition": {
+      "text": "An action occurring in response to a stimulus.",
+      "genus": "action",
+      "differentia": ["responsive", "stimulus-caused"],
+      "source": "Gemini 3 pro"
+    }
+  },
+  {
+    "id": "mental-state",
+    "universeId": "LLM layer genus 2",
+    "type": "concept",
+    "label": "Mental State",
+    "definition": {
+      "text": "A specific condition or quality of the consciousness at a given time.",
+      "genus": "attribute",
+      "differentia": ["of-consciousness", "temporal"],
+      "source": "Gemini 3 pro"
+    }
+  },
+  {
+    "id": "principle",
+    "universeId": "LLM layer genus 2",
+    "type": "concept",
+    "label": "Principle",
+    "definition": {
+      "text": "A fundamental truth or proposition that serves as the foundation for a system of belief or behavior.",
+      "genus": "statement",
+      "differentia": ["fundamental", "foundational"],
+      "source": "Gemini 3 pro"
+    }
+  },
+  {
+    "id": "state-of-affairs",
+    "universeId": "LLM layer genus 2",
+    "type": "concept",
+    "label": "State of Affairs",
+    "definition": {
+      "text": "A particular arrangement or condition of existents in reality.",
+      "genus": "attribute",
+      "differentia": ["situational", "arrangement-of-existents"],
+      "source": "Gemini 3 pro"
+    }
+  },
+  {
+    "id": "creation",
+    "universeId": "LLM layer genus 2",
+    "type": "concept",
+    "label": "Creation",
+    "definition": {
+      "text": "The act of bringing an existent into being that did not exist before.",
+      "genus": "action",
+      "differentia": ["originating", "productive"],
+      "source": "Gemini 3 pro"
+    }
+  },
+  {
+    "id": "artifact",
+    "universeId": "LLM layer genus 2",
+    "type": "concept",
+    "label": "Artifact",
+    "definition": {
+      "text": "A material entity made or shaped by a human being.",
+      "genus": "material-entity",
+      "differentia": ["man-made"],
+      "source": "Gemini 3 pro"
+    }
+  },
+  {
+    "id": "living-thing",
+    "universeId": "LLM layer genus 2",
+    "type": "concept",
+    "label": "Living Thing",
+    "definition": {
+      "text": "A material entity capable of self-sustaining biological processes.",
+      "genus": "material-entity",
+      "differentia": ["biological-process", "self-sustaining"],
+      "source": "Gemini 3 pro"
+    }
+  },
+  {
+    "id": "entity",
+    "universeId": "LLM layer genus 2",
+    "type": "concept",
+    "label": "Entity",
+    "definition": {
+      "text": "Something that exists as a distinct, separate unit.",
+      "genus": "existent",
+      "differentia": ["distinct", "unitary", "separate"],
+      "source": "Gemini 3 pro"
+    }
+  },
+  {
+    "id": "material-entity",
+    "universeId": "LLM layer genus 2",
+    "type": "concept",
+    "label": "Material Entity",
+    "definition": {
+      "text": "An entity composed of matter.",
+      "genus": "entity",
+      "differentia": ["composition-of-matter", "physical-presence"],
+      "source": "Gemini 3 pro"
+    },
+    "dependencies": ["matter"]
+  }
+]
