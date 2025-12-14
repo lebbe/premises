@@ -47,7 +47,7 @@ const DEFAULTS = {
 
 // Helper function to encode state to URL hash
 const encodeStateToHash = (
-  selectedConceptId: string | null,
+  selectedConceptIds: string[],
   traversalDepth: number,
   direction: string,
   nodeSpacing: number,
@@ -59,8 +59,8 @@ const encodeStateToHash = (
 ) => {
   const params = new URLSearchParams();
 
-  if (selectedConceptId) {
-    params.set("concept", selectedConceptId);
+  if (selectedConceptIds.length > 0) {
+    params.set("concepts", selectedConceptIds.join(","));
   }
 
   if (traversalDepth !== DEFAULTS.traversalDepth) {
@@ -104,8 +104,21 @@ const encodeStateToHash = (
 const decodeStateFromHash = (hash: string, allUniverses: string[]) => {
   const params = new URLSearchParams(hash.replace("#", ""));
 
+  // Handle backward compatibility: convert old "concept" param to "concepts"
+  let selectedConceptIds: string[] = [];
+  if (params.has("concepts")) {
+    selectedConceptIds = params.get("concepts")!.split(",").filter(Boolean);
+  } else if (params.has("concept")) {
+    // Backward compatibility: single concept becomes array
+    const singleConcept = params.get("concept");
+    if (singleConcept) {
+      selectedConceptIds = [singleConcept];
+    }
+  }
+
   return {
-    selectedConceptId: params.get("concept"),
+    selectedConceptIds,
+    needsRedirect: params.has("concept"), // Flag to indicate we need to redirect to new URL format
     traversalDepth: params.has("depth")
       ? parseInt(params.get("depth")!)
       : DEFAULTS.traversalDepth,
@@ -137,8 +150,8 @@ const StudyView: React.FC = () => {
   const [allConcepts, setAllConcepts] = useState<ConceptData[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [isSearchFocused, setIsSearchFocused] = useState(false);
-  const [selectedConcept, setSelectedConcept] = useState<ConceptData | null>(
-    null
+  const [selectedConcepts, setSelectedConcepts] = useState<ConceptData[]>(
+    []
   );
   const [selectedGraphConcept, setSelectedGraphConcept] =
     useState<ConceptData | null>(null);
@@ -156,11 +169,11 @@ const StudyView: React.FC = () => {
   const [showGenusEdges, setShowGenusEdges] = useState(true);
   const [showDifferentiaEdges, setShowDifferentiaEdges] = useState(true);
 
-  // Helper function to generate URL for a specific concept
+  // Helper function to generate URL for specific concepts
   const generateConceptUrl = useCallback(
-    (conceptId: string) => {
+    (conceptIds: string[]) => {
       const hash = encodeStateToHash(
-        conceptId,
+        conceptIds,
         traversalDepth,
         layoutOptions.direction,
         layoutOptions.nodeSpacing,
@@ -300,7 +313,7 @@ const StudyView: React.FC = () => {
     startTransition(() => {
       // If no hash, clear selected concept and reset to defaults
       if (!hash || hash === "#") {
-        setSelectedConcept(null);
+        setSelectedConcepts([]);
         setSelectedGraphConcept(null);
         setTraversalDepth(DEFAULTS.traversalDepth);
         setLayoutOptions((prev) => ({
@@ -329,16 +342,32 @@ const StudyView: React.FC = () => {
       setShowDifferentiaEdges(decoded.showDifferentiaEdges);
       setSelectedUniverses(decoded.selectedUniverses);
 
-      // Set selected concept if specified in URL
-      if (decoded.selectedConceptId) {
-        const concept = allConcepts.find(
-          (c) => c.id === decoded.selectedConceptId
+      // Set selected concepts if specified in URL
+      if (decoded.selectedConceptIds.length > 0) {
+        const concepts = allConcepts.filter(
+          (c) => decoded.selectedConceptIds.includes(c.id)
         );
-        if (concept) {
-          setSelectedConcept(concept);
-        }
+        setSelectedConcepts(concepts);
       } else {
-        setSelectedConcept(null);
+        setSelectedConcepts([]);
+      }
+
+      // Handle backward compatibility redirect
+      if (decoded.needsRedirect) {
+        // Redirect from old #concept=id format to new #concepts=id format
+        const newHash = encodeStateToHash(
+          decoded.selectedConceptIds,
+          decoded.traversalDepth,
+          decoded.direction,
+          decoded.nodeSpacing,
+          decoded.rankSpacing,
+          decoded.showGenusEdges,
+          decoded.showDifferentiaEdges,
+          decoded.selectedUniverses,
+          availableUniverses
+        );
+        const newUrl = newHash ? `#${newHash}` : "#";
+        navigate(newUrl, { replace: true }); // Use replace to avoid adding to history
       }
     });
   }, [location.hash, availableUniverses, allConcepts]);
@@ -399,9 +428,9 @@ const StudyView: React.FC = () => {
     return sortedConcepts.slice(0, 15); // Show more results when focused
   }, [filteredConcepts, searchTerm, isSearchFocused]);
 
-  // Create focused graph when concept is selected
+  // Create focused graph when concepts are selected
   useEffect(() => {
-    if (!selectedConcept) {
+    if (selectedConcepts.length === 0) {
       setNodes([]);
       setEdges([]);
       return;
@@ -412,12 +441,16 @@ const StudyView: React.FC = () => {
       const resultNodes: Node[] = [];
       const resultEdges: Edge[] = [];
 
-      // BFS to find nodes within traversal depth
+      // Start with all selected concepts
       const queue: Array<{
         concept: ConceptData;
         depth: number;
         position?: { x: number; y: number };
-      }> = [{ concept: selectedConcept, depth: 0, position: { x: 0, y: 0 } }];
+      }> = selectedConcepts.map((concept, index) => ({
+        concept,
+        depth: 0,
+        position: { x: index * 300, y: 0 }, // Arrange selected concepts horizontally
+      }));
 
       while (queue.length > 0) {
         const { concept, depth, position } = queue.shift()!;
@@ -440,7 +473,7 @@ const StudyView: React.FC = () => {
             concept,
             isVirtual: false,
             isCentralNode: depth === 0,
-            url: generateConceptUrl(concept.id), // Add URL for right-click functionality
+            url: generateConceptUrl([concept.id]), // Add URL for right-click functionality
           },
         });
 
@@ -547,7 +580,7 @@ const StudyView: React.FC = () => {
               resultNodes,
               resultEdges,
               layoutOptions,
-              selectedConcept.id
+              selectedConcepts[0]?.id || ""
             )
           : applyDagreLayout(resultNodes, resultEdges, layoutOptions);
 
@@ -618,7 +651,7 @@ const StudyView: React.FC = () => {
 
     createFocusedGraph();
   }, [
-    selectedConcept,
+    selectedConcepts,
     traversalDepth,
     filteredConcepts,
     layoutOptions,
@@ -645,14 +678,17 @@ const StudyView: React.FC = () => {
     setEdges(filteredEdges);
   }, [showGenusEdges, showDifferentiaEdges, allEdges, setEdges]);
 
-  // Update document title when selected concept changes
+  // Update document title when selected concepts change
   useEffect(() => {
-    if (selectedConcept) {
-      document.title = `${selectedConcept.label} - Concept Study`;
+    if (selectedConcepts.length > 0) {
+      const title = selectedConcepts.length === 1
+        ? `${selectedConcepts[0].label} - Concept Study`
+        : `${selectedConcepts.length} Concepts - Concept Study`;
+      document.title = title;
     } else {
       document.title = "Concept Study View";
     }
-  }, [selectedConcept]);
+  }, [selectedConcepts]);
 
   const handleUniverseToggle = (universeId: string) => {
     setSelectedUniverses((prev) =>
@@ -663,11 +699,21 @@ const StudyView: React.FC = () => {
   };
 
   const handleConceptSelect = (concept: ConceptData) => {
-    setSelectedConcept(concept);
+    // Add to selected concepts if not already selected
+    setSelectedConcepts(prev => {
+      if (prev.some(c => c.id === concept.id)) {
+        return prev; // Already selected
+      }
+      return [...prev, concept];
+    });
     setSearchTerm("");
-    // Navigate directly to the new concept URL
-    const newUrl = generateConceptUrl(concept.id);
-    navigate(newUrl, { replace: false });
+    // Navigate to URL with updated concepts
+    setSelectedConcepts(prev => {
+      const newConcepts = prev.some(c => c.id === concept.id) ? prev : [...prev, concept];
+      const newUrl = generateConceptUrl(newConcepts.map(c => c.id));
+      navigate(newUrl, { replace: false });
+      return newConcepts;
+    });
   };
 
   const handleNodeClick = (_event: React.MouseEvent, node: Node) => {
@@ -729,32 +775,31 @@ const StudyView: React.FC = () => {
             )}
           </div>
 
-          {selectedConcept && (
-            <div className={styles.selectedConcept}>
-              <h3>Selected: {selectedConcept.label}</h3>
-              <p>{selectedConcept.definition?.text}</p>
-              <button
-                onClick={() => {
-                  setSelectedConcept(null);
-                  // Navigate to URL without selected concept
-                  const hash = encodeStateToHash(
-                    null,
-                    traversalDepth,
-                    layoutOptions.direction,
-                    layoutOptions.nodeSpacing,
-                    layoutOptions.rankSpacing,
-                    showGenusEdges,
-                    showDifferentiaEdges,
-                    selectedUniverses,
-                    availableUniverses
-                  );
-                  const newUrl = hash ? `#${hash}` : "#";
-                  navigate(newUrl, { replace: false });
-                }}
-                className={styles.clearButton}
-              >
-                Clear Selection
-              </button>
+          {selectedConcepts.length > 0 && (
+            <div className={styles.selectedConceptsContainer}>
+              <div className={styles.selectedConceptsScroll}>
+                {selectedConcepts.map((concept) => (
+                  <div key={concept.id} className={styles.selectedConceptCard}>
+                    <button
+                      onClick={() => {
+                        // Remove this concept from selection
+                        setSelectedConcepts(prev => {
+                          const newConcepts = prev.filter(c => c.id !== concept.id);
+                          const newUrl = generateConceptUrl(newConcepts.map(c => c.id));
+                          navigate(newUrl, { replace: false });
+                          return newConcepts;
+                        });
+                      }}
+                      className={styles.removeConceptButton}
+                      aria-label={`Remove ${concept.label}`}
+                    >
+                      ×
+                    </button>
+                    <h4>{concept.label}</h4>
+                    <p>{concept.definition?.text}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           )}
         </div>
@@ -799,8 +844,8 @@ const StudyView: React.FC = () => {
                 concept={selectedGraphConcept}
                 onClose={() => setSelectedGraphConcept(null)}
                 onFocus={() => {}} // Empty function since we use href navigation
-                isSelected={selectedConcept?.id === selectedGraphConcept.id}
-                conceptUrl={generateConceptUrl(selectedGraphConcept.id)}
+                isSelected={selectedConcepts.some(c => c.id === selectedGraphConcept.id)}
+                conceptUrl={generateConceptUrl([selectedGraphConcept.id])}
               />
             </Panel>
           )}
