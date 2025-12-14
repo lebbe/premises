@@ -187,11 +187,11 @@ const importConceptsData = async (
 ): Promise<ConceptData[]> => {
   // Load all available data sources
   const dataSources = [
-    { id: "Ayn Rand", file: "/ayn_rand_definitions.json" },
-    { id: "LLM layer genus 1", file: "/llm_layer_genus_1.json" },
-    { id: "LLM layer genus 2", file: "/llm_layer_genus_2.json" },
-    { id: "LLM layer differentia 1", file: "/llm_layer_differentia_1.json" },
-    { id: "LLM layer differentia 2", file: "/llm_layer_differentia_2.json" },
+    { id: "Ayn Rand", file: "ayn_rand_definitions.json" },
+    { id: "LLM layer genus 1", file: "llm_layer_genus_1.json" },
+    { id: "LLM layer genus 2", file: "llm_layer_genus_2.json" },
+    { id: "LLM layer differentia 1", file: "llm_layer_differentia_1.json" },
+    { id: "LLM layer differentia 2", file: "llm_layer_differentia_2.json" },
   ];
 
   if (universeIds && universeIds.length > 0) {
