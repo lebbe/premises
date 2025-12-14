@@ -5,7 +5,7 @@ import "./App.css";
 
 function App() {
   return (
-    <Router>
+    <Router basename="/premises">
       <div style={{ width: "100vw", height: "100vh" }}>
         <Routes>
           <Route path="/everything" element={<ConceptGraph />} />
