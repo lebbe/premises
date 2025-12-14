@@ -220,7 +220,7 @@ const ConceptGraph: React.FC = () => {
                   text: selectedNode.data.definition,
                   genus: selectedNode.data.genus,
                   differentia: selectedNode.data.differentia,
-                  source: selectedNode.data.source,
+                  source: selectedNode.data.source || "",
                 },
                 perceptualRoots: selectedNode.data.perceptualRoots,
               }}
