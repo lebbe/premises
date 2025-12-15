@@ -22,13 +22,18 @@ import { useLocation, useNavigate } from 'react-router-dom'
 
 import ConceptNode from '../../components/ConceptNode'
 import ConceptInfoPanel from '../../components/ConceptInfoPanel'
+import AddConceptDialog from '../../components/AddConceptDialog'
+import ExportDialog from '../../components/ExportDialog'
+import ImportDialog from '../../components/ImportDialog'
 import ControlPanel from './ControlPanel'
+import { useEditMode } from '../../contexts/EditModeContext'
 import {
   importConceptsData,
   applyDagreLayout,
   applyConceptualHierarchyLayout,
 } from '../../utils/graphData'
 import type { ConceptData, LayoutOptions } from '../../utils/graphData'
+import type { ImportResult } from '../../utils/export'
 import styles from './StudyView.module.css'
 
 const nodeTypes = {
@@ -166,6 +171,12 @@ const StudyView: React.FC = () => {
   const [useConceptualHierarchy, setUseConceptualHierarchy] = useState(false)
   const [showGenusEdges, setShowGenusEdges] = useState(true)
   const [showDifferentiaEdges, setShowDifferentiaEdges] = useState(true)
+  const [showAddDialog, setShowAddDialog] = useState(false)
+  const [showExportDialog, setShowExportDialog] = useState(false)
+  const [showImportDialog, setShowImportDialog] = useState(false)
+  const [showClearConfirmDialog, setShowClearConfirmDialog] = useState(false)
+  const [editingConcept, setEditingConcept] = useState<ConceptData | null>(null)
+  const { isEditMode, setIsEditMode } = useEditMode()
 
   // Helper function to generate URL for specific concepts
   const generateConceptUrl = useCallback(
@@ -697,6 +708,124 @@ const StudyView: React.FC = () => {
     )
   }
 
+  const handleAddConcept = (newConcept: ConceptData) => {
+    // Add to allConcepts array
+    setAllConcepts((prev) => [...prev, newConcept])
+
+    // Add universe to available list if it's new
+    if (!availableUniverses.includes(newConcept.universeId)) {
+      setAvailableUniverses((prev) => [...prev, newConcept.universeId])
+      setSelectedUniverses((prev) => [...prev, newConcept.universeId])
+    }
+
+    // Close dialog
+    setShowAddDialog(false)
+
+    // Auto-select the new concept
+    setSelectedConcepts((prev) => {
+      const newConcepts = [...prev, newConcept]
+      const newUrl = generateConceptUrl(newConcepts.map((c) => c.id))
+      navigate(newUrl, { replace: false })
+      return newConcepts
+    })
+  }
+
+  const handleUpdateConcept = (updatedConcept: ConceptData) => {
+    // Find the original concept to check if ID changed
+    const originalConcept = allConcepts.find((c) => c.id === editingConcept?.id)
+    const originalId = originalConcept?.id
+    const newId = updatedConcept.id
+
+    // Update all concepts - handle ID changes by updating references
+    setAllConcepts((prev) => {
+      const updatedConcepts = prev.map((concept) => {
+        if (concept.id === originalId) {
+          // This is the concept being edited - replace it entirely
+          return updatedConcept
+        } else if (originalId && originalId !== newId) {
+          // Check if this concept references the old ID and update references
+          const needsUpdate =
+            concept.definition.genus === originalId ||
+            concept.definition.differentia.includes(originalId)
+
+          if (needsUpdate) {
+            return {
+              ...concept,
+              definition: {
+                ...concept.definition,
+                genus:
+                  concept.definition.genus === originalId
+                    ? newId
+                    : concept.definition.genus,
+                differentia: concept.definition.differentia.map((diff) =>
+                  diff === originalId ? newId : diff,
+                ),
+              },
+            }
+          }
+        }
+        // Always return the concept (unchanged if no updates needed)
+        return concept
+      })
+      return updatedConcepts
+    })
+
+    // Update selected concepts if the edited concept was selected
+    setSelectedConcepts((prev) =>
+      prev.map((c) => (c.id === originalId ? updatedConcept : c)),
+    )
+
+    // Close dialog and clear selected graph concept
+    setEditingConcept(null)
+    setSelectedGraphConcept(null)
+  }
+
+  const handleImportConcepts = (
+    updatedConcepts: ConceptData[],
+    importResult: ImportResult,
+  ) => {
+    // Update concepts
+    setAllConcepts(updatedConcepts)
+
+    // Update universes if new ones were added
+    if (importResult.newUniverses.length > 0) {
+      setAvailableUniverses((prev) => {
+        const newUniverses = [...prev, ...importResult.newUniverses]
+        return Array.from(new Set(newUniverses)).sort()
+      })
+
+      // Auto-select new universes
+      setSelectedUniverses((prev) => {
+        const updated = [...prev, ...importResult.newUniverses]
+        return Array.from(new Set(updated))
+      })
+    }
+
+    // Show success message
+    const overwriteMsg =
+      importResult.overwrittenConcepts > 0
+        ? ` (${importResult.overwrittenConcepts} concepts were overwritten)`
+        : ''
+
+    alert(
+      `Successfully imported ${importResult.totalConcepts} concepts${overwriteMsg}`,
+    )
+
+    // Close dialog
+    setShowImportDialog(false)
+  }
+
+  const handleClearAll = () => {
+    // Reset all state to empty - this will immediately update the UI
+    setAllConcepts([])
+    setAvailableUniverses([])
+    setSelectedUniverses([])
+    setSelectedConcepts([])
+
+    // Clear the URL hash to reset to default state
+    window.location.hash = ''
+  }
+
   const handleConceptSelect = (concept: ConceptData) => {
     // Add to selected concepts if not already selected
     setSelectedConcepts((prev) => {
@@ -721,8 +850,14 @@ const StudyView: React.FC = () => {
     // Find the full concept data from our loaded concepts
     const fullConcept = filteredConcepts.find((c) => c.id === node.id)
     if (fullConcept) {
-      setSelectedGraphConcept(fullConcept)
-      // Don't set as selected concept - that should be done via the info panel button
+      if (isEditMode) {
+        // In edit mode, open the edit dialog
+        setEditingConcept(fullConcept)
+      } else {
+        // In normal mode, show the info panel
+        setSelectedGraphConcept(fullConcept)
+        // Don't set as selected concept - that should be done via the info panel button
+      }
     }
   }
 
@@ -730,6 +865,40 @@ const StudyView: React.FC = () => {
     <div className={styles.container}>
       <div className={styles.header}>
         <h1 className={styles.title}>Concept Study View</h1>
+        <div className={styles.headerToolbar}>
+          <label className={styles.editModeToggle}>
+            <input
+              type="checkbox"
+              checked={isEditMode}
+              onChange={(e) => setIsEditMode(e.target.checked)}
+            />
+            Enable Edit Mode
+          </label>
+          <button
+            onClick={() => setShowImportDialog(true)}
+            className={styles.importButton}
+          >
+            📁 Import
+          </button>
+          <button
+            onClick={() => setShowExportDialog(true)}
+            className={styles.exportButton}
+          >
+            📤 Export
+          </button>
+          <button
+            onClick={() => setShowAddDialog(true)}
+            className={styles.addConceptButton}
+          >
+            ➕ Add Concept
+          </button>
+          <button
+            onClick={() => setShowClearConfirmDialog(true)}
+            className={styles.clearAllButton}
+          >
+            🗑️ Clear All
+          </button>
+        </div>
       </div>
       <div className={styles.controls}>
         <div className={styles.searchSection}>
@@ -858,6 +1027,60 @@ const StudyView: React.FC = () => {
           )}
         </ReactFlow>
       </div>
+      <AddConceptDialog
+        isOpen={showAddDialog || editingConcept !== null}
+        onClose={() => {
+          setShowAddDialog(false)
+          setEditingConcept(null)
+        }}
+        onSave={editingConcept ? handleUpdateConcept : handleAddConcept}
+        existingConcepts={allConcepts}
+        existingUniverses={availableUniverses}
+        editingConcept={editingConcept}
+      />
+      <ExportDialog
+        isOpen={showExportDialog}
+        onClose={() => setShowExportDialog(false)}
+        allConcepts={allConcepts}
+      />
+      <ImportDialog
+        isOpen={showImportDialog}
+        onClose={() => setShowImportDialog(false)}
+        allConcepts={allConcepts}
+        onImport={handleImportConcepts}
+      />
+      {/* Clear All Confirmation Dialog */}
+      {showClearConfirmDialog && (
+        <div className={styles.modal}>
+          <div className={styles.modalContent}>
+            <h3>Clear All Concepts</h3>
+            <p>
+              This will remove all concepts and reset the application to a blank
+              state. Are you sure?
+            </p>
+            <p className={styles.warningText}>
+              ⚠️ This action cannot be undone.
+            </p>
+            <div className={styles.modalActions}>
+              <button
+                onClick={() => setShowClearConfirmDialog(false)}
+                className={styles.cancelButton}
+              >
+                Cancel
+              </button>
+              <button
+                onClick={() => {
+                  handleClearAll()
+                  setShowClearConfirmDialog(false)
+                }}
+                className={styles.confirmClearButton}
+              >
+                🗑️ Clear All
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

@@ -54,6 +54,229 @@ The StudyView is the primary interface for focused conceptual study and explorat
 
 The tool embodies the Objectivist approach to concepts as "units of thought" that integrate similarities while omitting measurements, providing a visual framework for understanding the hierarchical structure of knowledge.
 
+## Add Concept Dialog
+
+The application now features a comprehensive Add Concept dialog that allows users to create and define their own concepts within the system.
+
+![Add Concept Dialog](doc/imgs/add_concept.png)
+
+### Features
+
+- **Complete Definition Framework**: Create concepts with full Aristotelian structure including genus, differentia, and perceptual roots
+- **Form Validation**: Ensures all required fields are completed before saving
+- **Dynamic Input Lists**: Add/remove multiple differentia and perceptual roots with intuitive + and × buttons
+- **Auto-focus**: Newly added input fields automatically receive focus for seamless data entry
+- **Auto-complete**:
+  - Genre field provides dropdown suggestions from existing concepts
+  - Perceptual roots field offers common sense suggestions (vision, hearing, touch, smell, taste)
+- **Universe Management**: Create concepts within custom universes (must start with "custom-")
+- **Type Selection**: Choose between "concept" and "axiomatic concept" classifications
+
+### Form Fields
+
+- **ID**: Unique identifier for the concept
+- **Label**: Display name for the concept
+- **Universe**: Custom universe classification (e.g., "custom-philosophy", "custom-science")
+- **Type**: Concept classification type
+- **Definition Text**: The complete definition of the concept
+- **Genus**: Parent concept or broader category
+- **Differentia**: Distinguishing characteristics that separate this concept from others in its genus
+- **Source**: Attribution or source reference
+- **Perceptual Roots**: The sensory or perceptual foundations of the concept
+
+The dialog integrates seamlessly with the existing concept visualization system, and newly created concepts immediately become available for study and exploration within the graph interface.
+
+### Notes on defining Aristotelian concepts
+
+There is always only one genus. Sometimes the genus might be a phrase, and not a word. Its a pure technical debate wether this is "correct" or not. If you think it is wrong, then just consider the phrase genus as a "helper" concept, and not a true concept (and look for the concepts that helper-concept is pointing to for a list of "genus" concepts).
+
+Remember that a concept is not the same as a word!
+
+The differentia should be a list of the concepts a person needs to grasp, in order to grasp the concept (together with grasping the genus, of course). It should _not_ only be all the words used in the definition, it should only summarize the differentia-part of the definition by listing all invovled concepts.
+
+Please remember that a word is not the same as a concept (even though Wittgenstein seemed to disagree)!
+
+## Edit Concept Functionality
+
+The application now includes comprehensive edit functionality that allows users to modify existing concepts directly within the visualization interface.
+
+### Edit Mode Toggle
+
+- **Global Edit Mode**: Toggle edit mode on/off using the "Enable Edit Mode" checkbox in the header toolbar
+- **Visual Indicator**: When edit mode is active, clicking on concept nodes opens the edit dialog instead of the info panel
+- **Safe Editing**: Edit mode prevents accidental modifications while still allowing normal graph navigation when disabled
+
+### Editing Concepts
+
+When edit mode is enabled:
+
+1. **Click any concept node** in the graph to open the edit dialog
+2. **Modify any field** including definition text, genus, differentia, perceptual roots, etc.
+3. **Save changes** to update the concept across the entire application
+4. **Cancel editing** to discard changes and return to the graph
+
+### Edit Dialog Features
+
+- **Pre-populated Fields**: All existing concept data is automatically loaded into the form
+- **ID Validation**: Prevents conflicts with other concepts while allowing the current concept to keep its ID
+- **Real-time Updates**: Changes are immediately reflected in the graph and available for exploration
+- **Comprehensive Editing**: Full access to all concept properties including dynamic lists of differentia and perceptual roots
+
+### Integration with Visualization
+
+- **Live Updates**: Edited concepts immediately update in the graph visualization
+- **Relationship Preservation**: All conceptual relationships (genus, differentia) are maintained and updated
+- **State Management**: Edited concepts are stored in application memory and included in any export functionality
+
+The edit functionality provides a complete CRUD (Create, Read, Update) interface for concept management within the philosophical framework of the application.
+
+## Export Functionality
+
+The application includes a comprehensive export system that allows users to save their concepts to JSON files for backup, sharing, or migration purposes.
+
+### Export Features
+
+- **Universe Selection**: Choose which universes to include in the export
+- **Custom Universe Priority**: Custom universes (user-created concepts) are pre-selected by default
+- **Complete State Export**: Exports all concepts currently in memory, including any user-created or edited concepts
+- **Timestamped Files**: Automatic filename generation with date and time stamps
+- **Structured Data**: Exports include metadata such as export date, concept counts, and universe lists
+
+### How to Export
+
+1. **Click Export Button**: Use the "📤 Export" button in the header toolbar
+2. **Select Universes**: Choose which conceptual universes to include in your export
+   - **Select All**: Include all universes (original + custom)
+   - **Custom Only**: Include only user-created universes (default)
+   - **Select None**: Clear all selections
+3. **Review Summary**: See how many concepts will be exported from how many universes
+4. **Download**: Click "💾 Export to JSON" to download your concepts
+
+### Export Format
+
+The exported JSON file includes:
+
+```json
+{
+  "exportDate": "2025-12-15T10:30:00.000Z",
+  "totalConcepts": 150,
+  "universes": ["ayn-rand", "custom-philosophy"],
+  "concepts": [
+    {
+      "id": "concept-id",
+      "universeId": "custom-philosophy",
+      "type": "concept",
+      "label": "Concept Label",
+      "definition": {
+        "text": "Definition text...",
+        "genus": "parent-concept-id",
+        "differentia": ["differentiating-concept"],
+        "source": "Source attribution"
+      },
+      "perceptualRoots": ["vision", "touch"]
+    }
+  ]
+}
+```
+
+### Use Cases
+
+- **Backup**: Save your custom concepts and edits
+- **Sharing**: Share conceptual frameworks with others
+- **Migration**: Move concepts between different instances
+- **Analysis**: Export data for external analysis tools
+- **Version Control**: Track changes to your conceptual definitions over time
+
+The export functionality ensures that all your conceptual work is preserved and portable, supporting the long-term development of your philosophical framework.
+
+## Import Functionality
+
+The application provides a comprehensive import system that allows users to load concepts from JSON files, enabling data restoration, sharing, and collaborative concept development.
+
+### Import Features
+
+- **File Analysis**: Preview import contents before applying changes
+- **Conflict Detection**: Identifies concepts that will be overwritten
+- **Universe Management**: Automatically adds new universes from imported concepts
+- **Validation**: Ensures imported data has the correct structure and required fields
+- **Round-trip Compatibility**: Works seamlessly with files exported by the export feature
+
+### How to Import
+
+1. **Click Import Button**: Use the "📁 Import" button in the header toolbar
+2. **Select File**: Choose a JSON file from your computer
+3. **Analyze Import**: Click "🔍 Analyze File" to preview what will be imported
+4. **Review Changes**: See detailed analysis including:
+   - Total concepts to import
+   - New concepts vs. concepts that will be overwritten
+   - New universes that will be added
+   - List of specific concepts that will be overwritten
+5. **Confirm Import**: Click "✅ Import X Concepts" to apply the changes
+
+### Import Analysis
+
+The import system provides comprehensive analysis before making any changes:
+
+- **📊 Summary Statistics**: Total concepts, new concepts, overwrite count
+- **🌍 New Universes**: Lists any new conceptual universes being added
+- **⚠️ Overwrite Warnings**: Shows exactly which existing concepts will be replaced
+- **✅ Validation**: Confirms data structure integrity before import
+
+### File Format Support
+
+Imports support multiple JSON formats:
+
+**Direct Concept Array**:
+
+```json
+[
+  {
+    "id": "concept-id",
+    "universeId": "custom-philosophy"
+    // ... rest of concept data
+  }
+]
+```
+
+**Export Format with Metadata**:
+
+```json
+{
+  "exportDate": "2025-12-15T10:30:00.000Z",
+  "totalConcepts": 150,
+  "universes": ["ayn-rand", "custom-philosophy"],
+  "concepts": [
+    /* concept array */
+  ]
+}
+```
+
+### Conflict Resolution
+
+When imported concepts have the same ID as existing concepts:
+
+- **Automatic Overwrite**: New concept data replaces existing concept entirely
+- **Relationship Preservation**: All references to the concept ID are maintained
+- **Clear Notification**: User sees exactly which concepts will be overwritten before confirming
+- **Complete Replacement**: All fields (definition, genus, differentia, etc.) are updated
+
+### Use Cases
+
+- **Data Restoration**: Restore concepts from backup files
+- **Collaboration**: Share conceptual frameworks between team members
+- **Migration**: Move concepts between different application instances
+- **Bulk Updates**: Import corrected or refined concept definitions
+- **Knowledge Integration**: Combine concepts from multiple sources
+
+### Integration with Other Features
+
+- **Universe Auto-selection**: New universes are automatically selected for display
+- **Real-time Updates**: Imported concepts immediately appear in the graph visualization
+- **Edit Compatibility**: Imported concepts can be immediately edited using edit mode
+- **Export Round-trip**: Imported concepts can be re-exported with full fidelity
+
+The import functionality completes the full concept management workflow, enabling robust data handling and collaborative development of conceptual knowledge systems.
+
 ## Important Disclaimers
 
 ### Work in Progress

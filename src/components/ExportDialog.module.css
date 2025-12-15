@@ -1,0 +1,212 @@
+/* Export Dialog Styles */
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.dialog {
+  background: white;
+  border-radius: 12px;
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  width: 90%;
+  max-width: 500px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 20px 0 20px;
+  border-bottom: 1px solid #e5e7eb;
+  margin-bottom: 20px;
+}
+
+.header h2 {
+  margin: 0;
+  color: #374151;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #9ca3af;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.closeButton:hover {
+  color: #374151;
+}
+
+.content {
+  padding: 0 20px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.summary {
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+.summary p {
+  margin: 0;
+  color: #374151;
+  font-size: 14px;
+}
+
+.universeSelection h3 {
+  margin: 0 0 12px 0;
+  color: #374151;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.selectionButtons {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.selectionButton {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 12px;
+  color: #374151;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.selectionButton:hover {
+  background: #f3f4f6;
+  border-color: #d1d5db;
+}
+
+.universeList {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.universeItem {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid #f3f4f6;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.universeItem:last-child {
+  border-bottom: none;
+}
+
+.universeItem:hover {
+  background: #f9fafb;
+}
+
+.universeItem input[type='checkbox'] {
+  margin: 0 12px 0 0;
+  flex-shrink: 0;
+}
+
+.universeName {
+  flex: 1;
+  color: #374151;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.customBadge {
+  background: #10b981;
+  color: white;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 2px 6px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+.conceptCount {
+  color: #6b7280;
+  font-size: 12px;
+  flex-shrink: 0;
+}
+
+.footer {
+  display: flex;
+  gap: 12px;
+  padding: 20px;
+  justify-content: flex-end;
+  border-top: 1px solid #e5e7eb;
+}
+
+.cancelButton {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  color: #374151;
+  border-radius: 6px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cancelButton:hover {
+  background: #f3f4f6;
+  border-color: #d1d5db;
+}
+
+.exportButton {
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.exportButton:hover:not(:disabled) {
+  background: #1d4ed8;
+}
+
+.exportButton:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+}

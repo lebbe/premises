@@ -1,0 +1,320 @@
+/* Import Dialog Styles */
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.dialog {
+  background: white;
+  border-radius: 12px;
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  width: 90%;
+  max-width: 600px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 20px 0 20px;
+  border-bottom: 1px solid #e5e7eb;
+  margin-bottom: 20px;
+}
+
+.header h2 {
+  margin: 0;
+  color: #374151;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #9ca3af;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.closeButton:hover {
+  color: #374151;
+}
+
+.content {
+  padding: 0 20px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.fileSelection {
+  margin-bottom: 24px;
+}
+
+.fileInputArea {
+  border: 2px dashed #d1d5db;
+  border-radius: 8px;
+  padding: 32px 20px;
+  text-align: center;
+  margin-bottom: 16px;
+  transition: border-color 0.2s ease;
+}
+
+.fileInputArea:hover {
+  border-color: #9ca3af;
+}
+
+.selectFileButton {
+  background: #f9fafb;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 12px 24px;
+  font-size: 14px;
+  color: #374151;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.selectFileButton:hover {
+  background: #f3f4f6;
+  border-color: #9ca3af;
+}
+
+.selectedFile {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #374151;
+  font-size: 14px;
+}
+
+.fileSize {
+  color: #6b7280;
+  font-size: 12px;
+}
+
+.analyzeButton {
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 auto;
+}
+
+.analyzeButton:hover:not(:disabled) {
+  background: #1d4ed8;
+}
+
+.analyzeButton:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+}
+
+.processingStatus {
+  text-align: center;
+  padding: 32px;
+  color: #6b7280;
+}
+
+.spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid #e5e7eb;
+  border-top: 3px solid #2563eb;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 16px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.results {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.successResults h3 {
+  margin: 0 0 16px 0;
+  color: #059669;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.errorResults h3 {
+  margin: 0 0 16px 0;
+  color: #dc2626;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.errorMessage {
+  color: #dc2626;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 6px;
+  padding: 12px;
+  margin: 0;
+  font-size: 14px;
+}
+
+.summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.stat {
+  text-align: center;
+  padding: 16px;
+  background: #f9fafb;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+.stat strong {
+  display: block;
+  font-size: 24px;
+  color: #374151;
+  margin-bottom: 4px;
+}
+
+.stat span {
+  color: #6b7280;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.newUniverses,
+.overwrittenConcepts {
+  margin-bottom: 16px;
+}
+
+.newUniverses h4,
+.overwrittenConcepts h4 {
+  margin: 0 0 8px 0;
+  color: #374151;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.universeList,
+.overwrittenList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.universeBadge {
+  background: #10b981;
+  color: white;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+.conceptId {
+  background: #fef3c7;
+  color: #92400e;
+  font-size: 11px;
+  font-family: monospace;
+  padding: 3px 6px;
+  border-radius: 4px;
+  border: 1px solid #fcd34d;
+}
+
+.moreIndicator {
+  background: #e5e7eb;
+  color: #6b7280;
+  font-size: 11px;
+  padding: 3px 6px;
+  border-radius: 4px;
+  font-style: italic;
+}
+
+.footer {
+  display: flex;
+  gap: 12px;
+  padding: 20px;
+  justify-content: flex-end;
+  border-top: 1px solid #e5e7eb;
+}
+
+.cancelButton {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  color: #374151;
+  border-radius: 6px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cancelButton:hover {
+  background: #f3f4f6;
+  border-color: #d1d5db;
+}
+
+.importButton {
+  background: #059669;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.importButton:hover {
+  background: #047857;
+}
