@@ -14,22 +14,8 @@
   border-bottom: 1px solid #e0e0e0;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 20px;
-}
-
-.backLink {
-  color: #2563eb !important;
-  text-decoration: none;
-  font-size: 14px;
-  padding: 8px 12px;
-  border: 1px solid #2563eb;
-  border-radius: 4px;
-  transition: all 0.2s ease;
-}
-
-.backLink:hover {
-  background: #2563eb !important;
-  color: white !important;
 }
 
 .title {
@@ -37,6 +23,30 @@
   color: #333 !important;
   font-size: 24px;
   font-weight: 600;
+}
+
+.headerToolbar {
+  display: flex;
+  gap: 12px;
+}
+
+.addConceptButton {
+  background: #10b981 !important;
+  color: white !important;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.addConceptButton:hover {
+  background: #059669 !important;
 }
 
 .controls {

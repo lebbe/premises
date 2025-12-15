@@ -22,6 +22,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 
 import ConceptNode from '../../components/ConceptNode'
 import ConceptInfoPanel from '../../components/ConceptInfoPanel'
+import AddConceptDialog from '../../components/AddConceptDialog'
 import ControlPanel from './ControlPanel'
 import {
   importConceptsData,
@@ -166,6 +167,7 @@ const StudyView: React.FC = () => {
   const [useConceptualHierarchy, setUseConceptualHierarchy] = useState(false)
   const [showGenusEdges, setShowGenusEdges] = useState(true)
   const [showDifferentiaEdges, setShowDifferentiaEdges] = useState(true)
+  const [showAddDialog, setShowAddDialog] = useState(false)
 
   // Helper function to generate URL for specific concepts
   const generateConceptUrl = useCallback(
@@ -697,6 +699,28 @@ const StudyView: React.FC = () => {
     )
   }
 
+  const handleAddConcept = (newConcept: ConceptData) => {
+    // Add to allConcepts array
+    setAllConcepts((prev) => [...prev, newConcept])
+
+    // Add universe to available list if it's new
+    if (!availableUniverses.includes(newConcept.universeId)) {
+      setAvailableUniverses((prev) => [...prev, newConcept.universeId])
+      setSelectedUniverses((prev) => [...prev, newConcept.universeId])
+    }
+
+    // Close dialog
+    setShowAddDialog(false)
+
+    // Auto-select the new concept
+    setSelectedConcepts((prev) => {
+      const newConcepts = [...prev, newConcept]
+      const newUrl = generateConceptUrl(newConcepts.map((c) => c.id))
+      navigate(newUrl, { replace: false })
+      return newConcepts
+    })
+  }
+
   const handleConceptSelect = (concept: ConceptData) => {
     // Add to selected concepts if not already selected
     setSelectedConcepts((prev) => {
@@ -730,6 +754,14 @@ const StudyView: React.FC = () => {
     <div className={styles.container}>
       <div className={styles.header}>
         <h1 className={styles.title}>Concept Study View</h1>
+        <div className={styles.headerToolbar}>
+          <button
+            onClick={() => setShowAddDialog(true)}
+            className={styles.addConceptButton}
+          >
+            ➕ Add Concept
+          </button>
+        </div>
       </div>
       <div className={styles.controls}>
         <div className={styles.searchSection}>
@@ -858,6 +890,13 @@ const StudyView: React.FC = () => {
           )}
         </ReactFlow>
       </div>
+      <AddConceptDialog
+        isOpen={showAddDialog}
+        onClose={() => setShowAddDialog(false)}
+        onSave={handleAddConcept}
+        existingConcepts={allConcepts}
+        existingUniverses={availableUniverses}
+      />
     </div>
   )
 }

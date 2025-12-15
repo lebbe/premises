@@ -54,6 +54,48 @@ The StudyView is the primary interface for focused conceptual study and explorat
 
 The tool embodies the Objectivist approach to concepts as "units of thought" that integrate similarities while omitting measurements, providing a visual framework for understanding the hierarchical structure of knowledge.
 
+## Add Concept Dialog
+
+The application now features a comprehensive Add Concept dialog that allows users to create and define their own concepts within the system.
+
+![Add Concept Dialog](doc/imgs/add_concept.png)
+
+### Features
+
+- **Complete Definition Framework**: Create concepts with full Aristotelian structure including genus, differentia, and perceptual roots
+- **Form Validation**: Ensures all required fields are completed before saving
+- **Dynamic Input Lists**: Add/remove multiple differentia and perceptual roots with intuitive + and × buttons
+- **Auto-focus**: Newly added input fields automatically receive focus for seamless data entry
+- **Auto-complete**:
+  - Genre field provides dropdown suggestions from existing concepts
+  - Perceptual roots field offers common sense suggestions (vision, hearing, touch, smell, taste)
+- **Universe Management**: Create concepts within custom universes (must start with "custom-")
+- **Type Selection**: Choose between "concept" and "axiomatic concept" classifications
+
+### Form Fields
+
+- **ID**: Unique identifier for the concept
+- **Label**: Display name for the concept
+- **Universe**: Custom universe classification (e.g., "custom-philosophy", "custom-science")
+- **Type**: Concept classification type
+- **Definition Text**: The complete definition of the concept
+- **Genus**: Parent concept or broader category
+- **Differentia**: Distinguishing characteristics that separate this concept from others in its genus
+- **Source**: Attribution or source reference
+- **Perceptual Roots**: The sensory or perceptual foundations of the concept
+
+The dialog integrates seamlessly with the existing concept visualization system, and newly created concepts immediately become available for study and exploration within the graph interface.
+
+### Notes on defining Aristotelian concepts
+
+There is always only one genus. Sometimes the genus might be a phrase, and not a word. Its a pure technical debate wether this is "correct" or not. If you think it is wrong, then just consider the phrase genus as a "helper" concept, and not a true concept (and look for the concepts that helper-concept is pointing to for a list of "genus" concepts).
+
+Remember that a concept is not the same as a word!
+
+The differentia should be a list of the concepts a person needs to grasp, in order to grasp the concept (together with grasping the genus, of course). It should _not_ only be all the words used in the definition, it should only summarize the differentia-part of the definition by listing all invovled concepts.
+
+Please remember that a word is not the same as a concept (even though Wittgenstein seemed to disagree)!
+
 ## Important Disclaimers
 
 ### Work in Progress
