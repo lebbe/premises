@@ -174,6 +174,7 @@ const StudyView: React.FC = () => {
   const [showAddDialog, setShowAddDialog] = useState(false)
   const [showExportDialog, setShowExportDialog] = useState(false)
   const [showImportDialog, setShowImportDialog] = useState(false)
+  const [showClearConfirmDialog, setShowClearConfirmDialog] = useState(false)
   const [editingConcept, setEditingConcept] = useState<ConceptData | null>(null)
   const { isEditMode, setIsEditMode } = useEditMode()
 
@@ -814,6 +815,17 @@ const StudyView: React.FC = () => {
     setShowImportDialog(false)
   }
 
+  const handleClearAll = () => {
+    // Reset all state to empty - this will immediately update the UI
+    setAllConcepts([])
+    setAvailableUniverses([])
+    setSelectedUniverses([])
+    setSelectedConcepts([])
+    
+    // Clear the URL hash to reset to default state
+    window.location.hash = ''
+  }
+
   const handleConceptSelect = (concept: ConceptData) => {
     // Add to selected concepts if not already selected
     setSelectedConcepts((prev) => {
@@ -879,6 +891,12 @@ const StudyView: React.FC = () => {
             className={styles.addConceptButton}
           >
             ➕ Add Concept
+          </button>
+          <button
+            onClick={() => setShowClearConfirmDialog(true)}
+            className={styles.clearAllButton}
+          >
+            🗑️ Clear All
           </button>
         </div>
       </div>
@@ -1031,6 +1049,34 @@ const StudyView: React.FC = () => {
         allConcepts={allConcepts}
         onImport={handleImportConcepts}
       />
+
+      {/* Clear All Confirmation Dialog */}
+      {showClearConfirmDialog && (
+        <div className={styles.modal}>
+          <div className={styles.modalContent}>
+            <h3>Clear All Concepts</h3>
+            <p>This will remove all concepts and reset the application to a blank state. Are you sure?</p>
+            <p className={styles.warningText}>⚠️ This action cannot be undone.</p>
+            <div className={styles.modalActions}>
+              <button
+                onClick={() => setShowClearConfirmDialog(false)}
+                className={styles.cancelButton}
+              >
+                Cancel
+              </button>
+              <button
+                onClick={() => {
+                  handleClearAll()
+                  setShowClearConfirmDialog(false)
+                }}
+                className={styles.confirmClearButton}
+              >
+                🗑️ Clear All
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
