@@ -8,6 +8,7 @@ interface AddConceptDialogProps {
   onSave: (concept: ConceptData) => void
   existingConcepts: ConceptData[]
   existingUniverses: string[]
+  editingConcept?: ConceptData | null // New prop for editing mode
 }
 
 const commonTypes = ['concept', 'axiomatic concept']
@@ -19,6 +20,7 @@ const AddConceptDialog: React.FC<AddConceptDialogProps> = ({
   onSave,
   existingConcepts,
   existingUniverses,
+  editingConcept = null,
 }) => {
   const [formData, setFormData] = useState({
     id: '',
@@ -45,6 +47,51 @@ const AddConceptDialog: React.FC<AddConceptDialogProps> = ({
   const customUniverses = [
     ...new Set(existingUniverses.filter((u) => u.startsWith('custom-'))),
   ]
+
+  // Helper to get initial form data
+  const getInitialFormData = () => ({
+    id: '',
+    label: '',
+    universeId: '',
+    type: '',
+    definitionText: '',
+    genus: '',
+    differentia: [''],
+    source: '',
+    perceptualRoots: [''],
+  })
+
+  // Helper to populate form from concept
+  const populateFormFromConcept = (concept: ConceptData) => {
+    setFormData({
+      id: concept.id,
+      label: concept.label,
+      universeId: concept.universeId,
+      type: concept.type,
+      definitionText: concept.definition.text,
+      genus: concept.definition.genus || '',
+      differentia:
+        concept.definition.differentia.length > 0
+          ? concept.definition.differentia
+          : [''],
+      source: concept.definition.source || '',
+      perceptualRoots: concept.perceptualRoots?.length
+        ? concept.perceptualRoots
+        : [''],
+    })
+  }
+
+  // Initialize form when dialog opens or editingConcept changes
+  useEffect(() => {
+    if (isOpen) {
+      if (editingConcept) {
+        populateFormFromConcept(editingConcept)
+      } else {
+        setFormData(getInitialFormData())
+      }
+      setErrors({})
+    }
+  }, [isOpen, editingConcept])
 
   // Effect to focus the newly added differentia input
   useEffect(() => {
@@ -172,8 +219,19 @@ const AddConceptDialog: React.FC<AddConceptDialogProps> = ({
 
     if (!formData.id.trim()) {
       newErrors.id = 'ID is required'
-    } else if (existingConcepts.some((c) => c.id === formData.id.trim())) {
-      newErrors.id = 'ID already exists'
+    } else if (editingConcept) {
+      // In edit mode, allow keeping the same ID but check for conflicts with others
+      const conflictingConcept = existingConcepts.find(
+        (c) => c.id === formData.id.trim() && c.id !== editingConcept.id,
+      )
+      if (conflictingConcept) {
+        newErrors.id = 'ID already exists'
+      }
+    } else {
+      // In add mode, check against all existing concepts
+      if (existingConcepts.some((c) => c.id === formData.id.trim())) {
+        newErrors.id = 'ID already exists'
+      }
     }
 
     if (!formData.label.trim()) {
@@ -222,32 +280,12 @@ const AddConceptDialog: React.FC<AddConceptDialogProps> = ({
     onSave(newConcept)
 
     // Reset form
-    setFormData({
-      id: '',
-      label: '',
-      universeId: '',
-      type: '',
-      definitionText: '',
-      genus: '',
-      differentia: [''],
-      source: '',
-      perceptualRoots: [''],
-    })
+    setFormData(getInitialFormData())
     setErrors({})
   }
 
   const handleCancel = () => {
-    setFormData({
-      id: '',
-      label: '',
-      universeId: '',
-      type: '',
-      definitionText: '',
-      genus: '',
-      differentia: [''],
-      source: '',
-      perceptualRoots: [''],
-    })
+    setFormData(getInitialFormData())
     setErrors({})
     onClose()
   }
@@ -310,7 +348,7 @@ const AddConceptDialog: React.FC<AddConceptDialogProps> = ({
     <div className={styles.overlay}>
       <div className={styles.dialog}>
         <div className={styles.header}>
-          <h2>Add New Concept</h2>
+          <h2>{editingConcept ? 'Edit Concept' : 'Add New Concept'}</h2>
           <button onClick={handleCancel} className={styles.closeButton}>
             ×
           </button>
@@ -535,7 +573,7 @@ const AddConceptDialog: React.FC<AddConceptDialogProps> = ({
             Cancel
           </button>
           <button onClick={handleSave} className={styles.saveButton}>
-            Save Concept
+            {editingConcept ? 'Update Concept' : 'Save Concept'}
           </button>
         </div>
       </div>

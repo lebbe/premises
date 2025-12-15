@@ -96,6 +96,40 @@ The differentia should be a list of the concepts a person needs to grasp, in ord
 
 Please remember that a word is not the same as a concept (even though Wittgenstein seemed to disagree)!
 
+## Edit Concept Functionality
+
+The application now includes comprehensive edit functionality that allows users to modify existing concepts directly within the visualization interface.
+
+### Edit Mode Toggle
+
+- **Global Edit Mode**: Toggle edit mode on/off using the "Enable Edit Mode" checkbox in the header toolbar
+- **Visual Indicator**: When edit mode is active, clicking on concept nodes opens the edit dialog instead of the info panel
+- **Safe Editing**: Edit mode prevents accidental modifications while still allowing normal graph navigation when disabled
+
+### Editing Concepts
+
+When edit mode is enabled:
+
+1. **Click any concept node** in the graph to open the edit dialog
+2. **Modify any field** including definition text, genus, differentia, perceptual roots, etc.
+3. **Save changes** to update the concept across the entire application
+4. **Cancel editing** to discard changes and return to the graph
+
+### Edit Dialog Features
+
+- **Pre-populated Fields**: All existing concept data is automatically loaded into the form
+- **ID Validation**: Prevents conflicts with other concepts while allowing the current concept to keep its ID
+- **Real-time Updates**: Changes are immediately reflected in the graph and available for exploration
+- **Comprehensive Editing**: Full access to all concept properties including dynamic lists of differentia and perceptual roots
+
+### Integration with Visualization
+
+- **Live Updates**: Edited concepts immediately update in the graph visualization
+- **Relationship Preservation**: All conceptual relationships (genus, differentia) are maintained and updated
+- **State Management**: Edited concepts are stored in application memory and included in any export functionality
+
+The edit functionality provides a complete CRUD (Create, Read, Update) interface for concept management within the philosophical framework of the application.
+
 ## Important Disclaimers
 
 ### Work in Progress

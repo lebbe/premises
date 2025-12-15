@@ -49,6 +49,19 @@
   background: #059669 !important;
 }
 
+.editModeToggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: #333 !important;
+  cursor: pointer;
+}
+
+.editModeToggle input[type='checkbox'] {
+  margin: 0;
+}
+
 .controls {
   padding: 20px;
   background: white !important;

@@ -24,6 +24,7 @@ import ConceptNode from '../../components/ConceptNode'
 import ConceptInfoPanel from '../../components/ConceptInfoPanel'
 import AddConceptDialog from '../../components/AddConceptDialog'
 import ControlPanel from './ControlPanel'
+import { useEditMode } from '../../contexts/EditModeContext'
 import {
   importConceptsData,
   applyDagreLayout,
@@ -168,6 +169,8 @@ const StudyView: React.FC = () => {
   const [showGenusEdges, setShowGenusEdges] = useState(true)
   const [showDifferentiaEdges, setShowDifferentiaEdges] = useState(true)
   const [showAddDialog, setShowAddDialog] = useState(false)
+  const [editingConcept, setEditingConcept] = useState<ConceptData | null>(null)
+  const { isEditMode, setIsEditMode } = useEditMode()
 
   // Helper function to generate URL for specific concepts
   const generateConceptUrl = useCallback(
@@ -721,6 +724,56 @@ const StudyView: React.FC = () => {
     })
   }
 
+  const handleUpdateConcept = (updatedConcept: ConceptData) => {
+    // Find the original concept to check if ID changed
+    const originalConcept = allConcepts.find((c) => c.id === editingConcept?.id)
+    const originalId = originalConcept?.id
+    const newId = updatedConcept.id
+
+    // Update all concepts - handle ID changes by updating references
+    setAllConcepts((prev) => {
+      const updatedConcepts = prev.map((concept) => {
+        if (concept.id === originalId) {
+          // This is the concept being edited - replace it entirely
+          return updatedConcept
+        } else if (originalId && originalId !== newId) {
+          // Check if this concept references the old ID and update references
+          const needsUpdate =
+            concept.definition.genus === originalId ||
+            concept.definition.differentia.includes(originalId)
+
+          if (needsUpdate) {
+            return {
+              ...concept,
+              definition: {
+                ...concept.definition,
+                genus:
+                  concept.definition.genus === originalId
+                    ? newId
+                    : concept.definition.genus,
+                differentia: concept.definition.differentia.map((diff) =>
+                  diff === originalId ? newId : diff,
+                ),
+              },
+            }
+          }
+        }
+        // Always return the concept (unchanged if no updates needed)
+        return concept
+      })
+      return updatedConcepts
+    })
+
+    // Update selected concepts if the edited concept was selected
+    setSelectedConcepts((prev) =>
+      prev.map((c) => (c.id === originalId ? updatedConcept : c)),
+    )
+
+    // Close dialog and clear selected graph concept
+    setEditingConcept(null)
+    setSelectedGraphConcept(null)
+  }
+
   const handleConceptSelect = (concept: ConceptData) => {
     // Add to selected concepts if not already selected
     setSelectedConcepts((prev) => {
@@ -745,8 +798,14 @@ const StudyView: React.FC = () => {
     // Find the full concept data from our loaded concepts
     const fullConcept = filteredConcepts.find((c) => c.id === node.id)
     if (fullConcept) {
-      setSelectedGraphConcept(fullConcept)
-      // Don't set as selected concept - that should be done via the info panel button
+      if (isEditMode) {
+        // In edit mode, open the edit dialog
+        setEditingConcept(fullConcept)
+      } else {
+        // In normal mode, show the info panel
+        setSelectedGraphConcept(fullConcept)
+        // Don't set as selected concept - that should be done via the info panel button
+      }
     }
   }
 
@@ -755,6 +814,14 @@ const StudyView: React.FC = () => {
       <div className={styles.header}>
         <h1 className={styles.title}>Concept Study View</h1>
         <div className={styles.headerToolbar}>
+          <label className={styles.editModeToggle}>
+            <input
+              type="checkbox"
+              checked={isEditMode}
+              onChange={(e) => setIsEditMode(e.target.checked)}
+            />
+            Enable Edit Mode
+          </label>
           <button
             onClick={() => setShowAddDialog(true)}
             className={styles.addConceptButton}
@@ -891,11 +958,15 @@ const StudyView: React.FC = () => {
         </ReactFlow>
       </div>
       <AddConceptDialog
-        isOpen={showAddDialog}
-        onClose={() => setShowAddDialog(false)}
-        onSave={handleAddConcept}
+        isOpen={showAddDialog || editingConcept !== null}
+        onClose={() => {
+          setShowAddDialog(false)
+          setEditingConcept(null)
+        }}
+        onSave={editingConcept ? handleUpdateConcept : handleAddConcept}
         existingConcepts={allConcepts}
         existingUniverses={availableUniverses}
+        editingConcept={editingConcept}
       />
     </div>
   )
