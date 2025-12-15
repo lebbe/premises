@@ -1,5 +1,5 @@
-import React, { useState, useCallback, useMemo, useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useCallback, useMemo, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import {
   ReactFlow,
   Controls,
@@ -9,100 +9,100 @@ import {
   addEdge,
   BackgroundVariant,
   Panel,
-} from "@xyflow/react";
-import type { Node, Edge, Connection, NodeTypes } from "@xyflow/react";
-import "@xyflow/react/dist/style.css";
+} from '@xyflow/react'
+import type { Node, Edge, Connection, NodeTypes } from '@xyflow/react'
+import '@xyflow/react/dist/style.css'
 import {
   getGraphData,
   getAvailableUniverses,
   type LayoutOptions,
-} from "../../utils/graphData";
-import ConceptNode from "../../components/ConceptNode";
-import ControlPanel from "./ControlPanel";
-import ConceptInfoPanel from "../../components/ConceptInfoPanel";
-import styles from "./ConceptGraph.module.css";
+} from '../../utils/graphData'
+import ConceptNode from '../../components/ConceptNode'
+import ControlPanel from './ControlPanel'
+import ConceptInfoPanel from '../../components/ConceptInfoPanel'
+import styles from './ConceptGraph.module.css'
 
 // Define the structure of concept node data
 interface ConceptNodeData extends Record<string, unknown> {
-  id: string;
-  universeId: string;
-  label: string;
-  definition: string;
-  type: string;
-  genus: string | null;
-  differentia: string[];
-  source?: string;
-  perceptualRoots?: string[];
+  id: string
+  universeId: string
+  label: string
+  definition: string
+  type: string
+  genus: string | null
+  differentia: string[]
+  source?: string
+  perceptualRoots?: string[]
 }
 
 // Define custom node types
 const nodeTypes: NodeTypes = {
   concept: ConceptNode,
-};
+}
 
 const ConceptGraph: React.FC = () => {
-  const [nodes, setNodes, onNodesChange] = useNodesState<Node>([]);
-  const [edges, setEdges, onEdgesChange] = useEdgesState<Edge>([]);
+  const [nodes, setNodes, onNodesChange] = useNodesState<Node>([])
+  const [edges, setEdges, onEdgesChange] = useEdgesState<Edge>([])
   const [selectedNode, setSelectedNode] =
-    useState<Node<ConceptNodeData> | null>(null);
-  const [loading, setLoading] = useState(true);
+    useState<Node<ConceptNodeData> | null>(null)
+  const [loading, setLoading] = useState(true)
 
   // Universe selection
-  const [availableUniverses, setAvailableUniverses] = useState<string[]>([]);
-  const [selectedUniverses, setSelectedUniverses] = useState<string[]>([]);
+  const [availableUniverses, setAvailableUniverses] = useState<string[]>([])
+  const [selectedUniverses, setSelectedUniverses] = useState<string[]>([])
 
   // Edge type controls
-  const [showGenusEdges, setShowGenusEdges] = useState(true);
-  const [showDifferentiaEdges, setShowDifferentiaEdges] = useState(true);
+  const [showGenusEdges, setShowGenusEdges] = useState(true)
+  const [showDifferentiaEdges, setShowDifferentiaEdges] = useState(true)
 
   // Layout controls
   const [layoutOptions, setLayoutOptions] = useState<LayoutOptions>({
-    direction: "TB",
+    direction: 'TB',
     nodeSpacing: 50,
     rankSpacing: 100,
     edgeSpacing: 10,
     enableDagre: false,
-  });
+  })
 
   // Load available universes on component mount
   useEffect(() => {
     const loadUniverses = async () => {
       try {
-        const universes = await getAvailableUniverses();
-        setAvailableUniverses(universes);
+        const universes = await getAvailableUniverses()
+        setAvailableUniverses(universes)
         if (universes.length > 0 && selectedUniverses.length === 0) {
-          setSelectedUniverses([universes[0]]); // Default to first universe
+          setSelectedUniverses([universes[0]]) // Default to first universe
         }
       } catch (error) {
-        console.error("Error loading universes:", error);
+        console.error('Error loading universes:', error)
       }
-    };
-    loadUniverses();
-  }, []);
+    }
+    loadUniverses()
+  }, [])
 
   // Load data when universe, edge filters, or layout options change
   useEffect(() => {
-    if (selectedUniverses.length === 0) return; // Wait for universe selection
+    if (selectedUniverses.length === 0) return // Wait for universe selection
 
     const loadData = async () => {
       try {
-        setLoading(true);
+        setLoading(true)
         const { nodes: initialNodes, edges: initialEdges } = await getGraphData(
           showGenusEdges,
           showDifferentiaEdges,
           layoutOptions,
-          selectedUniverses
-        );
-        setNodes(initialNodes);
-        setEdges(initialEdges);
+          selectedUniverses,
+        )
+        setNodes(initialNodes)
+        setEdges(initialEdges)
       } catch (error) {
-        console.error("Error loading graph data:", error);
+        console.error('Error loading graph data:', error)
       } finally {
-        setLoading(false);
+        setLoading(false)
       }
-    };
+    }
 
-    loadData();
+    loadData()
   }, [
     setNodes,
     setEdges,
@@ -110,35 +110,35 @@ const ConceptGraph: React.FC = () => {
     showDifferentiaEdges,
     layoutOptions,
     selectedUniverses,
-  ]);
+  ])
 
   // Handle new connections between nodes
   const onConnect = useCallback(
     (params: Connection) => setEdges((eds) => addEdge(params, eds)),
-    [setEdges]
-  );
+    [setEdges],
+  )
 
   // Handle node selection
   const onNodeClick = useCallback((_event: React.MouseEvent, node: Node) => {
-    setSelectedNode(node as Node<ConceptNodeData>);
-  }, []);
+    setSelectedNode(node as Node<ConceptNodeData>)
+  }, [])
 
   // Filter functions for different views
-  const [showAxiomatic, setShowAxiomatic] = useState(true);
-  const [showConcepts, setShowConcepts] = useState(true);
-  const [showVirtual, setShowVirtual] = useState(true);
+  const [showAxiomatic, setShowAxiomatic] = useState(true)
+  const [showConcepts, setShowConcepts] = useState(true)
+  const [showVirtual, setShowVirtual] = useState(true)
 
   const filteredNodes = useMemo(() => {
     return nodes.filter((node) => {
-      const nodeType = node.data.type;
-      if (nodeType === "axiomatic concept" && !showAxiomatic) return false;
-      if (nodeType === "concept" && !showConcepts) return false;
-      if (nodeType === "virtual genus" && (!showVirtual || !showGenusEdges))
-        return false;
-      if (nodeType === "virtual differentia" && !showDifferentiaEdges)
-        return false;
-      return true;
-    });
+      const nodeType = node.data.type
+      if (nodeType === 'axiomatic concept' && !showAxiomatic) return false
+      if (nodeType === 'concept' && !showConcepts) return false
+      if (nodeType === 'virtual genus' && (!showVirtual || !showGenusEdges))
+        return false
+      if (nodeType === 'virtual differentia' && !showDifferentiaEdges)
+        return false
+      return true
+    })
   }, [
     nodes,
     showAxiomatic,
@@ -146,21 +146,21 @@ const ConceptGraph: React.FC = () => {
     showVirtual,
     showGenusEdges,
     showDifferentiaEdges,
-  ]);
+  ])
 
   const filteredEdges = useMemo(() => {
-    const visibleNodeIds = new Set(filteredNodes.map((node) => node.id));
+    const visibleNodeIds = new Set(filteredNodes.map((node) => node.id))
     return edges.filter(
       (edge) =>
-        visibleNodeIds.has(edge.source) && visibleNodeIds.has(edge.target)
-    );
-  }, [edges, filteredNodes]);
+        visibleNodeIds.has(edge.source) && visibleNodeIds.has(edge.target),
+    )
+  }, [edges, filteredNodes])
 
   // Show loading state
   if (loading) {
     return (
       <div className={styles.loadingContainer}>Loading concept graph...</div>
-    );
+    )
   }
 
   return (
@@ -220,7 +220,7 @@ const ConceptGraph: React.FC = () => {
                   text: selectedNode.data.definition,
                   genus: selectedNode.data.genus,
                   differentia: selectedNode.data.differentia,
-                  source: selectedNode.data.source || "",
+                  source: selectedNode.data.source || '',
                 },
                 perceptualRoots: selectedNode.data.perceptualRoots,
               }}
@@ -230,7 +230,7 @@ const ConceptGraph: React.FC = () => {
         )}
       </ReactFlow>
     </div>
-  );
-};
+  )
+}
 
-export default ConceptGraph;
+export default ConceptGraph

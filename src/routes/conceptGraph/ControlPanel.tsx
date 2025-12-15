@@ -1,29 +1,29 @@
-import React from "react";
-import { Panel } from "@xyflow/react";
-import type { Node, Edge } from "@xyflow/react";
-import { type LayoutOptions } from "../../utils/graphData";
-import VirtualConceptsList from "./VirtualConceptsList";
-import styles from "./ControlPanel.module.css";
+import React from 'react'
+import { Panel } from '@xyflow/react'
+import type { Node, Edge } from '@xyflow/react'
+import { type LayoutOptions } from '../../utils/graphData'
+import VirtualConceptsList from './VirtualConceptsList'
+import styles from './ControlPanel.module.css'
 
 interface ControlPanelProps {
-  nodes: Node[];
-  filteredNodes: Node[];
-  filteredEdges: Edge[];
-  showAxiomatic: boolean;
-  setShowAxiomatic: (value: boolean) => void;
-  showConcepts: boolean;
-  setShowConcepts: (value: boolean) => void;
-  showVirtual: boolean;
-  setShowVirtual: (value: boolean) => void;
-  showGenusEdges: boolean;
-  setShowGenusEdges: (value: boolean) => void;
-  showDifferentiaEdges: boolean;
-  setShowDifferentiaEdges: (value: boolean) => void;
-  layoutOptions: LayoutOptions;
-  setLayoutOptions: (options: LayoutOptions) => void;
-  availableUniverses: string[];
-  selectedUniverses: string[];
-  setSelectedUniverses: (universes: string[]) => void;
+  nodes: Node[]
+  filteredNodes: Node[]
+  filteredEdges: Edge[]
+  showAxiomatic: boolean
+  setShowAxiomatic: (value: boolean) => void
+  showConcepts: boolean
+  setShowConcepts: (value: boolean) => void
+  showVirtual: boolean
+  setShowVirtual: (value: boolean) => void
+  showGenusEdges: boolean
+  setShowGenusEdges: (value: boolean) => void
+  showDifferentiaEdges: boolean
+  setShowDifferentiaEdges: (value: boolean) => void
+  layoutOptions: LayoutOptions
+  setLayoutOptions: (options: LayoutOptions) => void
+  availableUniverses: string[]
+  selectedUniverses: string[]
+  setSelectedUniverses: (universes: string[]) => void
 }
 
 const ControlPanel: React.FC<ControlPanelProps> = ({
@@ -57,11 +57,11 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
               checked={selectedUniverses.includes(universe)}
               onChange={(e) => {
                 if (e.target.checked) {
-                  setSelectedUniverses([...selectedUniverses, universe]);
+                  setSelectedUniverses([...selectedUniverses, universe])
                 } else {
                   setSelectedUniverses(
-                    selectedUniverses.filter((u) => u !== universe)
-                  );
+                    selectedUniverses.filter((u) => u !== universe),
+                  )
                 }
               }}
               className={styles.controlPanelCheckbox}
@@ -79,7 +79,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
             className={styles.controlPanelCheckbox}
           />
           Axiomatic Concepts (
-          {nodes.filter((n) => n.data.type === "axiomatic concept").length})
+          {nodes.filter((n) => n.data.type === 'axiomatic concept').length})
         </label>
         <label className={styles.controlPanelLabel}>
           <input
@@ -89,7 +89,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
             className={styles.controlPanelCheckbox}
           />
           Regular Concepts (
-          {nodes.filter((n) => n.data.type === "concept").length})
+          {nodes.filter((n) => n.data.type === 'concept').length})
         </label>
         <label className={styles.controlPanelLabel}>
           <input
@@ -99,8 +99,8 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
             className={styles.controlPanelCheckbox}
           />
           Undefined Nodes (
-          {nodes.filter((n) => n.data.type === "virtual genus").length} genus,{" "}
-          {nodes.filter((n) => n.data.type === "virtual differentia").length}{" "}
+          {nodes.filter((n) => n.data.type === 'virtual genus').length} genus,{' '}
+          {nodes.filter((n) => n.data.type === 'virtual differentia').length}{' '}
           differentia)
         </label>
 
@@ -149,7 +149,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                 onChange={(e) =>
                   setLayoutOptions({
                     ...layoutOptions,
-                    direction: e.target.value as "TB" | "BT" | "LR" | "RL",
+                    direction: e.target.value as 'TB' | 'BT' | 'LR' | 'RL',
                   })
                 }
                 className={styles.controlPanelSelect}
@@ -230,7 +230,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
         <VirtualConceptsList nodes={nodes} />
       </div>
     </Panel>
-  );
-};
+  )
+}
 
-export default ControlPanel;
+export default ControlPanel

@@ -1,22 +1,22 @@
-import React from "react";
-import { Panel } from "@xyflow/react";
-import type { LayoutOptions } from "../../utils/graphData";
-import styles from "./ControlPanel.module.css";
+import React from 'react'
+import { Panel } from '@xyflow/react'
+import type { LayoutOptions } from '../../utils/graphData'
+import styles from './ControlPanel.module.css'
 
 interface ControlPanelProps {
-  traversalDepth: number;
-  setTraversalDepth: (depth: number) => void;
-  layoutOptions: LayoutOptions;
-  setLayoutOptions: (options: LayoutOptions) => void;
-  useConceptualHierarchy: boolean;
-  setUseConceptualHierarchy: (use: boolean) => void;
-  showGenusEdges: boolean;
-  setShowGenusEdges: (show: boolean) => void;
-  showDifferentiaEdges: boolean;
-  setShowDifferentiaEdges: (show: boolean) => void;
-  availableUniverses: string[];
-  selectedUniverses: string[];
-  handleUniverseToggle: (universeId: string) => void;
+  traversalDepth: number
+  setTraversalDepth: (depth: number) => void
+  layoutOptions: LayoutOptions
+  setLayoutOptions: (options: LayoutOptions) => void
+  useConceptualHierarchy: boolean
+  setUseConceptualHierarchy: (use: boolean) => void
+  showGenusEdges: boolean
+  setShowGenusEdges: (show: boolean) => void
+  showDifferentiaEdges: boolean
+  setShowDifferentiaEdges: (show: boolean) => void
+  availableUniverses: string[]
+  selectedUniverses: string[]
+  handleUniverseToggle: (universeId: string) => void
 }
 
 const ControlPanel: React.FC<ControlPanelProps> = ({
@@ -80,12 +80,12 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                 Direction:
                 <select
                   value={
-                    useConceptualHierarchy ? "TB" : layoutOptions.direction
+                    useConceptualHierarchy ? 'TB' : layoutOptions.direction
                   }
                   onChange={(e) =>
                     setLayoutOptions({
                       ...layoutOptions,
-                      direction: e.target.value as "TB" | "BT" | "LR" | "RL",
+                      direction: e.target.value as 'TB' | 'BT' | 'LR' | 'RL',
                     })
                   }
                   className={styles.layoutSelect}
@@ -97,7 +97,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                   <option value="RL">Right → Left</option>
                 </select>
                 {useConceptualHierarchy && (
-                  <small style={{ display: "block", color: "#888" }}>
+                  <small style={{ display: 'block', color: '#888' }}>
                     Direction locked to Top → Bottom for conceptual hierarchy
                   </small>
                 )}
@@ -187,8 +187,8 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
               <div
                 className={styles.legendArrow}
                 style={{
-                  borderColor: "transparent transparent transparent #2563eb",
-                  borderWidth: "6px 0 6px 12px",
+                  borderColor: 'transparent transparent transparent #2563eb',
+                  borderWidth: '6px 0 6px 12px',
                 }}
               ></div>
               <span>Genus</span>
@@ -197,8 +197,8 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
               <div
                 className={styles.legendArrow}
                 style={{
-                  borderColor: "transparent transparent transparent #dc2626",
-                  borderWidth: "6px 0 6px 12px",
+                  borderColor: 'transparent transparent transparent #dc2626',
+                  borderWidth: '6px 0 6px 12px',
                 }}
               ></div>
               <span>Differentia</span>
@@ -207,7 +207,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
         </div>
       </div>
     </Panel>
-  );
-};
+  )
+}
 
-export default ControlPanel;
+export default ControlPanel

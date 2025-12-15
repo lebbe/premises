@@ -77,7 +77,7 @@
   color: #333 !important;
 }
 
-.layoutLabel input[type="checkbox"] {
+.layoutLabel input[type='checkbox'] {
   margin-right: 4px;
   align-self: flex-start;
 }
@@ -100,7 +100,7 @@
 .rangeValue {
   font-size: 9px;
   color: #666 !important;
-  font-family: "Courier New", monospace;
+  font-family: 'Courier New', monospace;
 }
 
 .universeControls {
@@ -123,7 +123,7 @@
   color: #333 !important;
 }
 
-.universeLabel input[type="checkbox"] {
+.universeLabel input[type='checkbox'] {
   margin: 0;
 }
 

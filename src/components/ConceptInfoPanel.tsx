@@ -1,14 +1,14 @@
-import React from "react";
-import type { ConceptData } from "../utils/graphData";
-import styles from "./ConceptInfoPanel.module.css";
+import React from 'react'
+import type { ConceptData } from '../utils/graphData'
+import styles from './ConceptInfoPanel.module.css'
 
 interface ConceptInfoPanelProps {
-  concept: ConceptData;
-  onClose: () => void;
-  onFocus?: (concept: ConceptData) => void; // Optional focus handler
-  isSelected?: boolean; // Whether this concept is currently selected
-  conceptUrl?: string; // URL for this specific concept
-  className?: string;
+  concept: ConceptData
+  onClose: () => void
+  onFocus?: (concept: ConceptData) => void // Optional focus handler
+  isSelected?: boolean // Whether this concept is currently selected
+  conceptUrl?: string // URL for this specific concept
+  className?: string
 }
 
 const ConceptInfoPanel: React.FC<ConceptInfoPanelProps> = ({
@@ -17,7 +17,7 @@ const ConceptInfoPanel: React.FC<ConceptInfoPanelProps> = ({
   onFocus,
   isSelected = false,
   conceptUrl,
-  className = "",
+  className = '',
 }) => {
   return (
     <div className={`${styles.infoPanelContent} ${className}`}>
@@ -47,22 +47,22 @@ const ConceptInfoPanel: React.FC<ConceptInfoPanelProps> = ({
       {concept.definition?.differentia &&
         concept.definition.differentia.length > 0 && (
           <div className={styles.infoPanelField}>
-            <strong>Differentia:</strong>{" "}
-            {concept.definition.differentia.join(", ")}
+            <strong>Differentia:</strong>{' '}
+            {concept.definition.differentia.join(', ')}
           </div>
         )}
 
       {concept.perceptualRoots && concept.perceptualRoots.length > 0 && (
         <div className={styles.infoPanelField}>
-          <strong>Perceptual Roots:</strong>{" "}
-          {concept.perceptualRoots.join(", ")}
+          <strong>Perceptual Roots:</strong>{' '}
+          {concept.perceptualRoots.join(', ')}
         </div>
       )}
 
       <div className={styles.infoPanelDefinition}>
         <strong>Definition:</strong>
         <div className={styles.infoPanelDefinitionText}>
-          {concept.definition?.text || "No definition available"}
+          {concept.definition?.text || 'No definition available'}
         </div>
       </div>
 
@@ -84,7 +84,7 @@ const ConceptInfoPanel: React.FC<ConceptInfoPanelProps> = ({
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default ConceptInfoPanel;
+export default ConceptInfoPanel

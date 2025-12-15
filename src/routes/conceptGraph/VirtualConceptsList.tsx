@@ -1,28 +1,28 @@
-import React, { useState } from "react";
-import type { Node } from "@xyflow/react";
-import styles from "./VirtualConceptsList.module.css";
+import React, { useState } from 'react'
+import type { Node } from '@xyflow/react'
+import styles from './VirtualConceptsList.module.css'
 
 interface VirtualConceptsListProps {
-  nodes: Node[];
+  nodes: Node[]
 }
 
 const VirtualConceptsList: React.FC<VirtualConceptsListProps> = ({ nodes }) => {
-  const [showGenusDialog, setShowGenusDialog] = useState(false);
-  const [showDifferentiaDialog, setShowDifferentiaDialog] = useState(false);
+  const [showGenusDialog, setShowGenusDialog] = useState(false)
+  const [showDifferentiaDialog, setShowDifferentiaDialog] = useState(false)
 
   const virtualGenusNodes = nodes.filter(
-    (node) => node.data.type === "virtual genus"
-  );
+    (node) => node.data.type === 'virtual genus',
+  )
   const virtualDifferentiaNodes = nodes.filter(
-    (node) => node.data.type === "virtual differentia"
-  );
+    (node) => node.data.type === 'virtual differentia',
+  )
 
   const handleOverlayClick = (e: React.MouseEvent) => {
     if (e.target === e.currentTarget) {
-      setShowGenusDialog(false);
-      setShowDifferentiaDialog(false);
+      setShowGenusDialog(false)
+      setShowDifferentiaDialog(false)
     }
-  };
+  }
 
   return (
     <>
@@ -112,7 +112,7 @@ const VirtualConceptsList: React.FC<VirtualConceptsListProps> = ({ nodes }) => {
         </div>
       )}
     </>
-  );
-};
+  )
+}
 
-export default VirtualConceptsList;
+export default VirtualConceptsList
