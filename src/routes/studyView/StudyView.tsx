@@ -821,7 +821,7 @@ const StudyView: React.FC = () => {
     setAvailableUniverses([])
     setSelectedUniverses([])
     setSelectedConcepts([])
-    
+
     // Clear the URL hash to reset to default state
     window.location.hash = ''
   }
@@ -1049,14 +1049,18 @@ const StudyView: React.FC = () => {
         allConcepts={allConcepts}
         onImport={handleImportConcepts}
       />
-
       {/* Clear All Confirmation Dialog */}
       {showClearConfirmDialog && (
         <div className={styles.modal}>
           <div className={styles.modalContent}>
             <h3>Clear All Concepts</h3>
-            <p>This will remove all concepts and reset the application to a blank state. Are you sure?</p>
-            <p className={styles.warningText}>⚠️ This action cannot be undone.</p>
+            <p>
+              This will remove all concepts and reset the application to a blank
+              state. Are you sure?
+            </p>
+            <p className={styles.warningText}>
+              ⚠️ This action cannot be undone.
+            </p>
             <div className={styles.modalActions}>
               <button
                 onClick={() => setShowClearConfirmDialog(false)}

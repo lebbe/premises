@@ -217,7 +217,11 @@ export const readImportFile = (file: File): Promise<any> => {
         const data = JSON.parse(text)
         resolve(data)
       } catch (error) {
-        reject(new Error('Invalid JSON file format'))
+        reject(
+          new Error(
+            `Invalid JSON file format: ${error instanceof Error ? error.message : 'Unknown parsing error'}`,
+          ),
+        )
       }
     }
 
