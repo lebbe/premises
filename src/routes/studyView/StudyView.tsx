@@ -23,6 +23,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import ConceptNode from '../../components/ConceptNode'
 import ConceptInfoPanel from '../../components/ConceptInfoPanel'
 import AddConceptDialog from '../../components/AddConceptDialog'
+import ExportDialog from '../../components/ExportDialog'
 import ControlPanel from './ControlPanel'
 import { useEditMode } from '../../contexts/EditModeContext'
 import {
@@ -169,6 +170,7 @@ const StudyView: React.FC = () => {
   const [showGenusEdges, setShowGenusEdges] = useState(true)
   const [showDifferentiaEdges, setShowDifferentiaEdges] = useState(true)
   const [showAddDialog, setShowAddDialog] = useState(false)
+  const [showExportDialog, setShowExportDialog] = useState(false)
   const [editingConcept, setEditingConcept] = useState<ConceptData | null>(null)
   const { isEditMode, setIsEditMode } = useEditMode()
 
@@ -823,6 +825,12 @@ const StudyView: React.FC = () => {
             Enable Edit Mode
           </label>
           <button
+            onClick={() => setShowExportDialog(true)}
+            className={styles.exportButton}
+          >
+            📤 Export
+          </button>
+          <button
             onClick={() => setShowAddDialog(true)}
             className={styles.addConceptButton}
           >
@@ -967,6 +975,11 @@ const StudyView: React.FC = () => {
         existingConcepts={allConcepts}
         existingUniverses={availableUniverses}
         editingConcept={editingConcept}
+      />
+      <ExportDialog
+        isOpen={showExportDialog}
+        onClose={() => setShowExportDialog(false)}
+        allConcepts={allConcepts}
       />
     </div>
   )

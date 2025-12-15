@@ -49,6 +49,25 @@
   background: #059669 !important;
 }
 
+.exportButton {
+  background: #2563eb !important;
+  color: white !important;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.exportButton:hover {
+  background: #1d4ed8 !important;
+}
+
 .editModeToggle {
   display: flex;
   align-items: center;

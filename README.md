@@ -130,6 +130,65 @@ When edit mode is enabled:
 
 The edit functionality provides a complete CRUD (Create, Read, Update) interface for concept management within the philosophical framework of the application.
 
+## Export Functionality
+
+The application includes a comprehensive export system that allows users to save their concepts to JSON files for backup, sharing, or migration purposes.
+
+### Export Features
+
+- **Universe Selection**: Choose which universes to include in the export
+- **Custom Universe Priority**: Custom universes (user-created concepts) are pre-selected by default
+- **Complete State Export**: Exports all concepts currently in memory, including any user-created or edited concepts
+- **Timestamped Files**: Automatic filename generation with date and time stamps
+- **Structured Data**: Exports include metadata such as export date, concept counts, and universe lists
+
+### How to Export
+
+1. **Click Export Button**: Use the "📤 Export" button in the header toolbar
+2. **Select Universes**: Choose which conceptual universes to include in your export
+   - **Select All**: Include all universes (original + custom)
+   - **Custom Only**: Include only user-created universes (default)
+   - **Select None**: Clear all selections
+3. **Review Summary**: See how many concepts will be exported from how many universes
+4. **Download**: Click "💾 Export to JSON" to download your concepts
+
+### Export Format
+
+The exported JSON file includes:
+
+```json
+{
+  "exportDate": "2025-12-15T10:30:00.000Z",
+  "totalConcepts": 150,
+  "universes": ["ayn-rand", "custom-philosophy"],
+  "concepts": [
+    {
+      "id": "concept-id",
+      "universeId": "custom-philosophy",
+      "type": "concept",
+      "label": "Concept Label",
+      "definition": {
+        "text": "Definition text...",
+        "genus": "parent-concept-id",
+        "differentia": ["differentiating-concept"],
+        "source": "Source attribution"
+      },
+      "perceptualRoots": ["vision", "touch"]
+    }
+  ]
+}
+```
+
+### Use Cases
+
+- **Backup**: Save your custom concepts and edits
+- **Sharing**: Share conceptual frameworks with others
+- **Migration**: Move concepts between different instances
+- **Analysis**: Export data for external analysis tools
+- **Version Control**: Track changes to your conceptual definitions over time
+
+The export functionality ensures that all your conceptual work is preserved and portable, supporting the long-term development of your philosophical framework.
+
 ## Important Disclaimers
 
 ### Work in Progress
