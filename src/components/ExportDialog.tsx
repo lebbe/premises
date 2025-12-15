@@ -23,18 +23,18 @@ const ExportDialog: React.FC<ExportDialogProps> = ({
     if (isOpen) {
       const universes = getUniversesFromConcepts(allConcepts)
       setAvailableUniverses(universes)
-      
+
       // Pre-select custom universes by default
-      const customUniverses = universes.filter(u => u.startsWith('custom-'))
+      const customUniverses = universes.filter((u) => u.startsWith('custom-'))
       setSelectedUniverses(customUniverses)
     }
   }, [isOpen, allConcepts])
 
   const handleUniverseToggle = (universeId: string) => {
-    setSelectedUniverses(prev => 
+    setSelectedUniverses((prev) =>
       prev.includes(universeId)
-        ? prev.filter(id => id !== universeId)
-        : [...prev, universeId]
+        ? prev.filter((id) => id !== universeId)
+        : [...prev, universeId],
     )
   }
 
@@ -47,7 +47,9 @@ const ExportDialog: React.FC<ExportDialogProps> = ({
   }
 
   const handleSelectCustomOnly = () => {
-    const customUniverses = availableUniverses.filter(u => u.startsWith('custom-'))
+    const customUniverses = availableUniverses.filter((u) =>
+      u.startsWith('custom-'),
+    )
     setSelectedUniverses(customUniverses)
   }
 
@@ -58,10 +60,10 @@ const ExportDialog: React.FC<ExportDialogProps> = ({
     }
 
     setIsExporting(true)
-    
+
     try {
       exportConceptsData(allConcepts, selectedUniverses)
-      
+
       // Brief delay to show export state, then close
       setTimeout(() => {
         setIsExporting(false)
@@ -74,8 +76,8 @@ const ExportDialog: React.FC<ExportDialogProps> = ({
     }
   }
 
-  const selectedConceptCount = allConcepts.filter(c => 
-    selectedUniverses.includes(c.universeId)
+  const selectedConceptCount = allConcepts.filter((c) =>
+    selectedUniverses.includes(c.universeId),
   ).length
 
   if (!isOpen) return null
@@ -94,30 +96,42 @@ const ExportDialog: React.FC<ExportDialogProps> = ({
           <div className={styles.summary}>
             <p>
               <strong>{selectedConceptCount} concepts</strong> from{' '}
-              <strong>{selectedUniverses.length} universes</strong> will be exported.
+              <strong>{selectedUniverses.length} universes</strong> will be
+              exported.
             </p>
           </div>
 
           <div className={styles.universeSelection}>
             <h3>Select Universes to Export</h3>
-            
+
             <div className={styles.selectionButtons}>
-              <button onClick={handleSelectAll} className={styles.selectionButton}>
+              <button
+                onClick={handleSelectAll}
+                className={styles.selectionButton}
+              >
                 Select All
               </button>
-              <button onClick={handleSelectCustomOnly} className={styles.selectionButton}>
+              <button
+                onClick={handleSelectCustomOnly}
+                className={styles.selectionButton}
+              >
                 Custom Only
               </button>
-              <button onClick={handleSelectNone} className={styles.selectionButton}>
+              <button
+                onClick={handleSelectNone}
+                className={styles.selectionButton}
+              >
                 Select None
               </button>
             </div>
 
             <div className={styles.universeList}>
-              {availableUniverses.map(universe => {
-                const conceptCount = allConcepts.filter(c => c.universeId === universe).length
+              {availableUniverses.map((universe) => {
+                const conceptCount = allConcepts.filter(
+                  (c) => c.universeId === universe,
+                ).length
                 const isCustom = universe.startsWith('custom-')
-                
+
                 return (
                   <label key={universe} className={styles.universeItem}>
                     <input
@@ -127,7 +141,9 @@ const ExportDialog: React.FC<ExportDialogProps> = ({
                     />
                     <span className={styles.universeName}>
                       {universe}
-                      {isCustom && <span className={styles.customBadge}>Custom</span>}
+                      {isCustom && (
+                        <span className={styles.customBadge}>Custom</span>
+                      )}
                     </span>
                     <span className={styles.conceptCount}>
                       ({conceptCount} concepts)
@@ -143,8 +159,8 @@ const ExportDialog: React.FC<ExportDialogProps> = ({
           <button onClick={onClose} className={styles.cancelButton}>
             Cancel
           </button>
-          <button 
-            onClick={handleExport} 
+          <button
+            onClick={handleExport}
             className={styles.exportButton}
             disabled={isExporting || selectedUniverses.length === 0}
           >

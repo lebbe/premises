@@ -24,6 +24,7 @@ import ConceptNode from '../../components/ConceptNode'
 import ConceptInfoPanel from '../../components/ConceptInfoPanel'
 import AddConceptDialog from '../../components/AddConceptDialog'
 import ExportDialog from '../../components/ExportDialog'
+import ImportDialog from '../../components/ImportDialog'
 import ControlPanel from './ControlPanel'
 import { useEditMode } from '../../contexts/EditModeContext'
 import {
@@ -32,6 +33,7 @@ import {
   applyConceptualHierarchyLayout,
 } from '../../utils/graphData'
 import type { ConceptData, LayoutOptions } from '../../utils/graphData'
+import type { ImportResult } from '../../utils/export'
 import styles from './StudyView.module.css'
 
 const nodeTypes = {
@@ -171,6 +173,7 @@ const StudyView: React.FC = () => {
   const [showDifferentiaEdges, setShowDifferentiaEdges] = useState(true)
   const [showAddDialog, setShowAddDialog] = useState(false)
   const [showExportDialog, setShowExportDialog] = useState(false)
+  const [showImportDialog, setShowImportDialog] = useState(false)
   const [editingConcept, setEditingConcept] = useState<ConceptData | null>(null)
   const { isEditMode, setIsEditMode } = useEditMode()
 
@@ -776,6 +779,41 @@ const StudyView: React.FC = () => {
     setSelectedGraphConcept(null)
   }
 
+  const handleImportConcepts = (
+    updatedConcepts: ConceptData[],
+    importResult: ImportResult,
+  ) => {
+    // Update concepts
+    setAllConcepts(updatedConcepts)
+
+    // Update universes if new ones were added
+    if (importResult.newUniverses.length > 0) {
+      setAvailableUniverses((prev) => {
+        const newUniverses = [...prev, ...importResult.newUniverses]
+        return Array.from(new Set(newUniverses)).sort()
+      })
+
+      // Auto-select new universes
+      setSelectedUniverses((prev) => {
+        const updated = [...prev, ...importResult.newUniverses]
+        return Array.from(new Set(updated))
+      })
+    }
+
+    // Show success message
+    const overwriteMsg =
+      importResult.overwrittenConcepts > 0
+        ? ` (${importResult.overwrittenConcepts} concepts were overwritten)`
+        : ''
+
+    alert(
+      `Successfully imported ${importResult.totalConcepts} concepts${overwriteMsg}`,
+    )
+
+    // Close dialog
+    setShowImportDialog(false)
+  }
+
   const handleConceptSelect = (concept: ConceptData) => {
     // Add to selected concepts if not already selected
     setSelectedConcepts((prev) => {
@@ -824,6 +862,12 @@ const StudyView: React.FC = () => {
             />
             Enable Edit Mode
           </label>
+          <button
+            onClick={() => setShowImportDialog(true)}
+            className={styles.importButton}
+          >
+            📁 Import
+          </button>
           <button
             onClick={() => setShowExportDialog(true)}
             className={styles.exportButton}
@@ -980,6 +1024,12 @@ const StudyView: React.FC = () => {
         isOpen={showExportDialog}
         onClose={() => setShowExportDialog(false)}
         allConcepts={allConcepts}
+      />
+      <ImportDialog
+        isOpen={showImportDialog}
+        onClose={() => setShowImportDialog(false)}
+        allConcepts={allConcepts}
+        onImport={handleImportConcepts}
       />
     </div>
   )

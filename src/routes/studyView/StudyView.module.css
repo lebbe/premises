@@ -68,6 +68,25 @@
   background: #1d4ed8 !important;
 }
 
+.importButton {
+  background: #059669 !important;
+  color: white !important;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.importButton:hover {
+  background: #047857 !important;
+}
+
 .editModeToggle {
   display: flex;
   align-items: center;

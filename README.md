@@ -189,6 +189,94 @@ The exported JSON file includes:
 
 The export functionality ensures that all your conceptual work is preserved and portable, supporting the long-term development of your philosophical framework.
 
+## Import Functionality
+
+The application provides a comprehensive import system that allows users to load concepts from JSON files, enabling data restoration, sharing, and collaborative concept development.
+
+### Import Features
+
+- **File Analysis**: Preview import contents before applying changes
+- **Conflict Detection**: Identifies concepts that will be overwritten
+- **Universe Management**: Automatically adds new universes from imported concepts
+- **Validation**: Ensures imported data has the correct structure and required fields
+- **Round-trip Compatibility**: Works seamlessly with files exported by the export feature
+
+### How to Import
+
+1. **Click Import Button**: Use the "📁 Import" button in the header toolbar
+2. **Select File**: Choose a JSON file from your computer
+3. **Analyze Import**: Click "🔍 Analyze File" to preview what will be imported
+4. **Review Changes**: See detailed analysis including:
+   - Total concepts to import
+   - New concepts vs. concepts that will be overwritten
+   - New universes that will be added
+   - List of specific concepts that will be overwritten
+5. **Confirm Import**: Click "✅ Import X Concepts" to apply the changes
+
+### Import Analysis
+
+The import system provides comprehensive analysis before making any changes:
+
+- **📊 Summary Statistics**: Total concepts, new concepts, overwrite count
+- **🌍 New Universes**: Lists any new conceptual universes being added
+- **⚠️ Overwrite Warnings**: Shows exactly which existing concepts will be replaced
+- **✅ Validation**: Confirms data structure integrity before import
+
+### File Format Support
+
+Imports support multiple JSON formats:
+
+**Direct Concept Array**:
+
+```json
+[
+  {
+    "id": "concept-id",
+    "universeId": "custom-philosophy"
+    // ... rest of concept data
+  }
+]
+```
+
+**Export Format with Metadata**:
+
+```json
+{
+  "exportDate": "2025-12-15T10:30:00.000Z",
+  "totalConcepts": 150,
+  "universes": ["ayn-rand", "custom-philosophy"],
+  "concepts": [
+    /* concept array */
+  ]
+}
+```
+
+### Conflict Resolution
+
+When imported concepts have the same ID as existing concepts:
+
+- **Automatic Overwrite**: New concept data replaces existing concept entirely
+- **Relationship Preservation**: All references to the concept ID are maintained
+- **Clear Notification**: User sees exactly which concepts will be overwritten before confirming
+- **Complete Replacement**: All fields (definition, genus, differentia, etc.) are updated
+
+### Use Cases
+
+- **Data Restoration**: Restore concepts from backup files
+- **Collaboration**: Share conceptual frameworks between team members
+- **Migration**: Move concepts between different application instances
+- **Bulk Updates**: Import corrected or refined concept definitions
+- **Knowledge Integration**: Combine concepts from multiple sources
+
+### Integration with Other Features
+
+- **Universe Auto-selection**: New universes are automatically selected for display
+- **Real-time Updates**: Imported concepts immediately appear in the graph visualization
+- **Edit Compatibility**: Imported concepts can be immediately edited using edit mode
+- **Export Round-trip**: Imported concepts can be re-exported with full fidelity
+
+The import functionality completes the full concept management workflow, enabling robust data handling and collaborative development of conceptual knowledge systems.
+
 ## Important Disclaimers
 
 ### Work in Progress
