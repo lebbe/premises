@@ -40,7 +40,9 @@ const ConceptInfoPanel: React.FC<ConceptInfoPanelProps> = ({
 
       {concept.definition?.genus && (
         <div className={styles.infoPanelField}>
-          <strong>Genus:</strong> {concept.definition.genus}
+          <strong>Genus:</strong> {concept.definition.genus.id}
+          {concept.definition.genus.label &&
+            ` (${concept.definition.genus.label})`}
         </div>
       )}
 
@@ -48,7 +50,13 @@ const ConceptInfoPanel: React.FC<ConceptInfoPanelProps> = ({
         concept.definition.differentia.length > 0 && (
           <div className={styles.infoPanelField}>
             <strong>Differentia:</strong>{' '}
-            {concept.definition.differentia.join(', ')}
+            {concept.definition.differentia.map((diff, index) => (
+              <span key={index}>
+                {index > 0 && ', '}
+                {diff.id}
+                {diff.label && ` (${diff.label})`}
+              </span>
+            ))}
           </div>
         )}
 

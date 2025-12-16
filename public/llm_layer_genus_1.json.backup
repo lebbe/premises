@@ -6,17 +6,8 @@
     "label": "Faculty",
     "definition": {
       "text": "An inherent power or ability of an entity to perform a specific action.",
-      "genus": {
-        "id": "attribute"
-      },
-      "differentia": [
-        {
-          "id": "potentiality"
-        },
-        {
-          "id": "power-of-action"
-        }
-      ],
+      "genus": "attribute",
+      "differentia": ["potentiality", "power-of-action"],
       "source": "Gemini 3 pro"
     }
   },
@@ -27,17 +18,8 @@
     "label": "Constituent Element",
     "definition": {
       "text": "An existent that functions as a part of a greater whole.",
-      "genus": {
-        "id": "existent"
-      },
-      "differentia": [
-        {
-          "id": "part-of-whole"
-        },
-        {
-          "id": "compositional"
-        }
-      ],
+      "genus": "existent",
+      "differentia": ["part-of-whole", "compositional"],
       "source": "Gemini 3 pro"
     }
   },
@@ -48,20 +30,8 @@
     "label": "Process",
     "definition": {
       "text": "A continuous series of actions or changes leading to a particular result.",
-      "genus": {
-        "id": "action"
-      },
-      "differentia": [
-        {
-          "id": "continuity"
-        },
-        {
-          "id": "sequence"
-        },
-        {
-          "id": "goal-directedness"
-        }
-      ],
+      "genus": "action",
+      "differentia": ["continuity", "sequence", "goal-directedness"],
       "source": "Gemini 3 pro"
     }
   },
@@ -72,17 +42,8 @@
     "label": "Choice",
     "definition": {
       "text": "The volitional selection of one option among alternatives.",
-      "genus": {
-        "id": "mental-action"
-      },
-      "differentia": [
-        {
-          "id": "volition"
-        },
-        {
-          "id": "selection-among-alternatives"
-        }
-      ],
+      "genus": "mental-action",
+      "differentia": ["volition", "selection-among-alternatives"],
       "source": "Gemini 3 pro"
     }
   },
@@ -93,17 +54,8 @@
     "label": "Art (Method)",
     "definition": {
       "text": "A systematic practice or skill used to accomplish a result.",
-      "genus": {
-        "id": "method"
-      },
-      "differentia": [
-        {
-          "id": "systematic-practice"
-        },
-        {
-          "id": "skill-based"
-        }
-      ],
+      "genus": "method",
+      "differentia": ["systematic-practice", "skill-based"],
       "source": "Gemini 3 pro"
     }
   },
@@ -114,17 +66,8 @@
     "label": "Recognition",
     "definition": {
       "text": "The identification of an existent as having been known previously or as belonging to a specific category.",
-      "genus": {
-        "id": "identification"
-      },
-      "differentia": [
-        {
-          "id": "re-identification"
-        },
-        {
-          "id": "validation"
-        }
-      ],
+      "genus": "identification",
+      "differentia": ["re-identification", "validation"],
       "source": "Gemini 3 pro"
     }
   },
@@ -135,20 +78,8 @@
     "label": "Mental Integration",
     "definition": {
       "text": "The act of uniting separate mental units into a single new unit.",
-      "genus": {
-        "id": "mental-action"
-      },
-      "differentia": [
-        {
-          "id": "unifying"
-        },
-        {
-          "id": "synthesis"
-        },
-        {
-          "id": "unit-formation"
-        }
-      ],
+      "genus": "mental-action",
+      "differentia": ["unifying", "synthesis", "unit-formation"],
       "source": "Gemini 3 pro"
     }
   },
@@ -159,17 +90,8 @@
     "label": "Statement",
     "definition": {
       "text": "A linguistic expression that formulates a specific proposition.",
-      "genus": {
-        "id": "linguistic-expression"
-      },
-      "differentia": [
-        {
-          "id": "propositional"
-        },
-        {
-          "id": "declarative"
-        }
-      ],
+      "genus": "linguistic-expression",
+      "differentia": ["propositional", "declarative"],
       "source": "Gemini 3 pro"
     }
   },
@@ -180,17 +102,8 @@
     "label": "Code",
     "definition": {
       "text": "A system of symbols used to represent information.",
-      "genus": {
-        "id": "system"
-      },
-      "differentia": [
-        {
-          "id": "symbolic-representation"
-        },
-        {
-          "id": "mapping-rule"
-        }
-      ],
+      "genus": "system",
+      "differentia": ["symbolic-representation", "mapping-rule"],
       "source": "Gemini 3 pro"
     }
   },
@@ -201,17 +114,8 @@
     "label": "Automatic Response",
     "definition": {
       "text": "A reaction performed without conscious volition.",
-      "genus": {
-        "id": "reaction"
-      },
-      "differentia": [
-        {
-          "id": "non-volitional"
-        },
-        {
-          "id": "reflexive"
-        }
-      ],
+      "genus": "reaction",
+      "differentia": ["non-volitional", "reflexive"],
       "source": "Gemini 3 pro"
     }
   },
@@ -222,17 +126,8 @@
     "label": "Object of Action",
     "definition": {
       "text": "The existent toward which an action is directed.",
-      "genus": {
-        "id": "existent"
-      },
-      "differentia": [
-        {
-          "id": "target"
-        },
-        {
-          "id": "recipient"
-        }
-      ],
+      "genus": "existent",
+      "differentia": ["target", "recipient"],
       "source": "Gemini 3 pro"
     }
   },
@@ -243,20 +138,8 @@
     "label": "Action",
     "definition": {
       "text": "The process of change or motion manifested by an entity.",
-      "genus": {
-        "id": "attribute"
-      },
-      "differentia": [
-        {
-          "id": "motion"
-        },
-        {
-          "id": "change"
-        },
-        {
-          "id": "active-manifestation"
-        }
-      ],
+      "genus": "attribute",
+      "differentia": ["motion", "change", "active-manifestation"],
       "source": "Gemini 3 pro"
     }
   },
@@ -267,17 +150,8 @@
     "label": "Concern",
     "definition": {
       "text": "A state of interest or involvement regarding a value.",
-      "genus": {
-        "id": "mental-state"
-      },
-      "differentia": [
-        {
-          "id": "interest"
-        },
-        {
-          "id": "value-orientation"
-        }
-      ],
+      "genus": "mental-state",
+      "differentia": ["interest", "value-orientation"],
       "source": "Gemini 3 pro"
     }
   },
@@ -288,17 +162,8 @@
     "label": "Judgment",
     "definition": {
       "text": "The mental act of forming an evaluation or conclusion.",
-      "genus": {
-        "id": "mental-action"
-      },
-      "differentia": [
-        {
-          "id": "evaluation"
-        },
-        {
-          "id": "conclusion-formation"
-        }
-      ],
+      "genus": "mental-action",
+      "differentia": ["evaluation", "conclusion-formation"],
       "source": "Gemini 3 pro"
     }
   },
@@ -309,23 +174,8 @@
     "label": "Moral Principle",
     "definition": {
       "text": "A fundamental truth serving as a standard for ethical conduct.",
-      "genus": {
-        "id": "principle"
-      },
-      "differentia": [
-        {
-          "id": "normative"
-        },
-        {
-          "id": "pertain"
-        },
-        {
-          "id": "right"
-        },
-        {
-          "id": "wrong"
-        }
-      ],
+      "genus": "principle",
+      "differentia": ["normative", "pertain", "right", "wrong"],
       "source": "Gemini 3 pro"
     }
   },
@@ -336,17 +186,8 @@
     "label": "Social Condition",
     "definition": {
       "text": "A state of affairs resulting from the interaction of individuals in a society.",
-      "genus": {
-        "id": "state-of-affairs"
-      },
-      "differentia": [
-        {
-          "id": "interpersonal"
-        },
-        {
-          "id": "societal"
-        }
-      ],
+      "genus": "state-of-affairs",
+      "differentia": ["interpersonal", "societal"],
       "source": "Gemini 3 pro"
     }
   },
@@ -357,17 +198,8 @@
     "label": "Interference",
     "definition": {
       "text": "Action that impedes, obstructs, or intrudes upon another action.",
-      "genus": {
-        "id": "action"
-      },
-      "differentia": [
-        {
-          "id": "impeding"
-        },
-        {
-          "id": "obstruction"
-        }
-      ],
+      "genus": "action",
+      "differentia": ["impeding", "obstruction"],
       "source": "Gemini 3 pro"
     }
   },
@@ -378,17 +210,8 @@
     "label": "Social System",
     "definition": {
       "text": "The organized structure of laws and institutions governing a society.",
-      "genus": {
-        "id": "system"
-      },
-      "differentia": [
-        {
-          "id": "societal-organization"
-        },
-        {
-          "id": "governance"
-        }
-      ],
+      "genus": "system",
+      "differentia": ["societal-organization", "governance"],
       "source": "Gemini 3 pro"
     }
   },
@@ -399,17 +222,8 @@
     "label": "Re-creation of Reality",
     "definition": {
       "text": "A representation of existence styled according to a specific perspective.",
-      "genus": {
-        "id": "creation"
-      },
-      "differentia": [
-        {
-          "id": "mimetic"
-        },
-        {
-          "id": "stylized-projection"
-        }
-      ],
+      "genus": "creation",
+      "differentia": ["mimetic", "stylized-projection"],
       "source": "Gemini 3 pro"
     }
   },
@@ -420,17 +234,8 @@
     "label": "Furniture",
     "definition": {
       "text": "Movable objects intended to support various human activities such as seating and sleeping.",
-      "genus": {
-        "id": "artifact"
-      },
-      "differentia": [
-        {
-          "id": "movable"
-        },
-        {
-          "id": "habitation-utility"
-        }
-      ],
+      "genus": "artifact",
+      "differentia": ["movable", "habitation-utility"],
       "source": "Gemini 3 pro"
     }
   },
@@ -441,17 +246,8 @@
     "label": "Animal",
     "definition": {
       "text": "A living organism characterized by the capacity for sensation and voluntary motion.",
-      "genus": {
-        "id": "living-thing"
-      },
-      "differentia": [
-        {
-          "id": "sensation"
-        },
-        {
-          "id": "locomotion"
-        }
-      ],
+      "genus": "living-thing",
+      "differentia": ["sensation", "locomotion"],
       "source": "Gemini 3 pro"
     },
     "perceptualRoots": ["faculty:sight"]

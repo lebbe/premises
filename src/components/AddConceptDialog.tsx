@@ -30,8 +30,8 @@ const AddConceptDialog: React.FC<AddConceptDialogProps> = ({
     universeId: '',
     type: '',
     definitionText: '',
-    genus: '',
-    differentia: [''],
+    genus: { id: '', label: '' },
+    differentia: [{ id: '', label: '' }],
     source: '',
     perceptualRoots: [''],
   })
@@ -57,8 +57,8 @@ const AddConceptDialog: React.FC<AddConceptDialogProps> = ({
     universeId: '',
     type: '',
     definitionText: '',
-    genus: '',
-    differentia: [''],
+    genus: { id: '', label: '' },
+    differentia: [{ id: '', label: '' }],
     source: '',
     perceptualRoots: [''],
   })
@@ -71,11 +71,19 @@ const AddConceptDialog: React.FC<AddConceptDialogProps> = ({
       universeId: concept.universeId,
       type: concept.type,
       definitionText: concept.definition.text,
-      genus: concept.definition.genus || '',
+      genus: concept.definition.genus
+        ? {
+            id: concept.definition.genus.id,
+            label: concept.definition.genus.label || '',
+          }
+        : { id: '', label: '' },
       differentia:
         concept.definition.differentia.length > 0
-          ? concept.definition.differentia
-          : [''],
+          ? concept.definition.differentia.map((diff) => ({
+              id: diff.id,
+              label: diff.label || '',
+            }))
+          : [{ id: '', label: '' }],
       source: concept.definition.source || '',
       perceptualRoots: concept.perceptualRoots?.length
         ? concept.perceptualRoots
@@ -135,7 +143,7 @@ const AddConceptDialog: React.FC<AddConceptDialogProps> = ({
         setShouldFocusDifferentia(newLength) // Focus the newly created input at this index
         return {
           ...prev,
-          differentia: [...prev.differentia, ''],
+          differentia: [...prev.differentia, { id: '', label: '' }],
         }
       })
     }
@@ -155,16 +163,18 @@ const AddConceptDialog: React.FC<AddConceptDialogProps> = ({
       if (items.length > 1) {
         setFormData((prev) => {
           const newDifferentia = [...prev.differentia]
-          newDifferentia[index] = items[0]
+          newDifferentia[index] = { id: items[0], label: '' }
           // Add remaining items as new inputs
-          newDifferentia.push(...items.slice(1))
+          newDifferentia.push(
+            ...items.slice(1).map((item) => ({ id: item, label: '' })),
+          )
           return {
             ...prev,
             differentia: newDifferentia,
           }
         })
       } else if (items.length === 1) {
-        updateDifferentia(index, items[0])
+        updateDifferentia(index, 'id', items[0])
       }
     }
   }
@@ -275,10 +285,18 @@ const AddConceptDialog: React.FC<AddConceptDialogProps> = ({
       label: formData.label.trim(),
       definition: {
         text: formData.definitionText.trim(),
-        genus: formData.genus.trim() || null,
+        genus: formData.genus.id.trim()
+          ? {
+              id: formData.genus.id.trim(),
+              label: formData.genus.label.trim() || undefined,
+            }
+          : null,
         differentia: formData.differentia
-          .filter((d) => d.trim())
-          .map((d) => d.trim()),
+          .filter((d) => d.id.trim())
+          .map((d) => ({
+            id: d.id.trim(),
+            label: d.label.trim() || undefined,
+          })),
         source: formData.source.trim() || 'User created',
       },
       perceptualRoots: formData.perceptualRoots
@@ -305,7 +323,7 @@ const AddConceptDialog: React.FC<AddConceptDialogProps> = ({
       setShouldFocusDifferentia(newIndex)
       return {
         ...prev,
-        differentia: [...prev.differentia, ''],
+        differentia: [...prev.differentia, { id: '', label: '' }],
       }
     })
   }
@@ -317,10 +335,16 @@ const AddConceptDialog: React.FC<AddConceptDialogProps> = ({
     }))
   }
 
-  const updateDifferentia = (index: number, value: string) => {
+  const updateDifferentia = (
+    index: number,
+    field: 'id' | 'label',
+    value: string,
+  ) => {
     setFormData((prev) => ({
       ...prev,
-      differentia: prev.differentia.map((d, i) => (i === index ? value : d)),
+      differentia: prev.differentia.map((d, i) =>
+        i === index ? { ...d, [field]: value } : d,
+      ),
     }))
   }
 
@@ -459,16 +483,32 @@ const AddConceptDialog: React.FC<AddConceptDialogProps> = ({
 
           <div className={styles.formGroup}>
             <label htmlFor="concept-genus">Genus</label>
-            <input
-              id="concept-genus"
-              type="text"
-              value={formData.genus}
-              onChange={(e) =>
-                setFormData((prev) => ({ ...prev, genus: e.target.value }))
-              }
-              placeholder="Parent concept ID"
-              list="existing-concepts"
-            />
+            <div className={styles.conceptEdgeInputs}>
+              <input
+                id="concept-genus"
+                type="text"
+                value={formData.genus.id}
+                onChange={(e) =>
+                  setFormData((prev) => ({
+                    ...prev,
+                    genus: { ...prev.genus, id: e.target.value },
+                  }))
+                }
+                placeholder="Parent concept ID"
+                list="existing-concepts"
+              />
+              <input
+                type="text"
+                value={formData.genus.label}
+                onChange={(e) =>
+                  setFormData((prev) => ({
+                    ...prev,
+                    genus: { ...prev.genus, label: e.target.value },
+                  }))
+                }
+                placeholder="Edge label (optional)"
+              />
+            </div>
             <datalist id="existing-concepts">
               {[...new Set(existingConcepts.map((concept) => concept.id))].map(
                 (conceptId) => (
@@ -483,18 +523,30 @@ const AddConceptDialog: React.FC<AddConceptDialogProps> = ({
             <div className={styles.dynamicList}>
               {formData.differentia.map((diff, index) => (
                 <div key={index} className={styles.listItem}>
-                  <input
-                    ref={(el) => {
-                      differentiaRefs.current[index] = el
-                    }}
-                    type="text"
-                    value={diff}
-                    onChange={(e) => updateDifferentia(index, e.target.value)}
-                    onKeyDown={(e) => handleDifferentiaKeyDown(e)}
-                    onPaste={(e) => handleDifferentiaPaste(e, index)}
-                    placeholder="Differentia concept ID"
-                    list="existing-concepts"
-                  />
+                  <div className={styles.conceptEdgeInputs}>
+                    <input
+                      ref={(el) => {
+                        differentiaRefs.current[index] = el
+                      }}
+                      type="text"
+                      value={diff.id}
+                      onChange={(e) =>
+                        updateDifferentia(index, 'id', e.target.value)
+                      }
+                      onKeyDown={(e) => handleDifferentiaKeyDown(e)}
+                      onPaste={(e) => handleDifferentiaPaste(e, index)}
+                      placeholder="Differentia concept ID"
+                      list="existing-concepts"
+                    />
+                    <input
+                      type="text"
+                      value={diff.label}
+                      onChange={(e) =>
+                        updateDifferentia(index, 'label', e.target.value)
+                      }
+                      placeholder="Edge label (optional)"
+                    />
+                  </div>
                   {formData.differentia.length > 1 && (
                     <button
                       type="button"

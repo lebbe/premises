@@ -385,6 +385,29 @@ const StudyView: React.FC = () => {
     })
   }, [location.hash, availableUniverses, allConcepts])
 
+  // Update URL when traversal depth or layout options change
+  useEffect(() => {
+    if (availableUniverses.length === 0 || selectedConcepts.length === 0) return
+
+    const newUrl = generateConceptUrl(selectedConcepts.map((c) => c.id))
+    if (newUrl !== location.hash) {
+      navigate(newUrl, { replace: true })
+    }
+  }, [
+    traversalDepth,
+    layoutOptions.direction,
+    layoutOptions.nodeSpacing,
+    layoutOptions.rankSpacing,
+    showGenusEdges,
+    showDifferentiaEdges,
+    selectedUniverses,
+    selectedConcepts,
+    availableUniverses,
+    generateConceptUrl,
+    navigate,
+    location.hash,
+  ])
+
   // Filter concepts based on selected universes
   const filteredConcepts = useMemo(() => {
     return allConcepts.filter((concept) =>
@@ -504,9 +527,8 @@ const StudyView: React.FC = () => {
 
           // Add this concept's genus if it exists
           if (concept.definition?.genus) {
-            const genusNode = filteredConcepts.find(
-              (c) => c.id === concept.definition?.genus,
-            )
+            const genus = concept.definition.genus
+            const genusNode = filteredConcepts.find((c) => c.id === genus.id)
             if (genusNode) {
               relatedConcepts.push({
                 concept: genusNode,
@@ -514,12 +536,12 @@ const StudyView: React.FC = () => {
               })
             } else {
               // Create virtual node for missing genus
-              const virtualId = `genus-${concept.definition.genus.toLowerCase().replace(/\s+/g, '-')}`
+              const virtualId = `genus-${genus.id.toLowerCase().replace(/\s+/g, '-')}`
               if (!virtualNodesMap.has(virtualId)) {
                 const angle = (relatedConcepts.length / 5) * 2 * Math.PI
                 const radius = 200
                 virtualNodesMap.set(virtualId, {
-                  label: concept.definition.genus,
+                  label: genus.id,
                   type: 'virtual genus',
                   position: {
                     x: (position?.x || 0) + Math.cos(angle) * radius,
@@ -533,7 +555,7 @@ const StudyView: React.FC = () => {
           // Add this concept's differentia if they exist
           if (concept.definition?.differentia) {
             concept.definition.differentia.forEach((diff) => {
-              const diffNode = filteredConcepts.find((c) => c.id === diff)
+              const diffNode = filteredConcepts.find((c) => c.id === diff.id)
               if (diffNode) {
                 relatedConcepts.push({
                   concept: diffNode,
@@ -541,7 +563,7 @@ const StudyView: React.FC = () => {
                 })
               } else {
                 // Create virtual node for missing differentia
-                const virtualId = `diff-${diff.toLowerCase().replace(/\s+/g, '-')}`
+                const virtualId = `diff-${diff.id.toLowerCase().replace(/\s+/g, '-')}`
                 if (!virtualNodesMap.has(virtualId)) {
                   const angle =
                     ((relatedConcepts.length + virtualNodesMap.size) / 5) *
@@ -549,7 +571,7 @@ const StudyView: React.FC = () => {
                     Math.PI
                   const radius = 200
                   virtualNodesMap.set(virtualId, {
-                    label: diff,
+                    label: diff.id,
                     type: 'virtual differentia',
                     position: {
                       x: (position?.x || 0) + Math.cos(angle) * radius,
@@ -583,27 +605,33 @@ const StudyView: React.FC = () => {
               // Create edge (without filtering - we'll filter separately)
               const edgeId = `${concept.id}-${relatedConcept.id}-${relation}`
               if (!resultEdges.find((e) => e.id === edgeId)) {
-                let sourceId, targetId
+                let sourceId, targetId, edgeLabel
 
                 switch (relation) {
                   case 'parent-genus':
                     sourceId = concept.id
                     targetId = relatedConcept.id
+                    edgeLabel = concept.definition.genus?.label || undefined
                     break
                   case 'parent-differentia':
                     sourceId = concept.id
                     targetId = relatedConcept.id
+                    const diffEdge = concept.definition.differentia.find(
+                      (d) => d.id === relatedConcept.id,
+                    )
+                    edgeLabel = diffEdge?.label || undefined
                     break
                   default:
                     sourceId = concept.id
                     targetId = relatedConcept.id
+                    edgeLabel = undefined
                 }
 
                 resultEdges.push({
                   id: edgeId,
                   source: sourceId,
                   target: targetId,
-                  label: '', // Remove visual labels
+                  label: edgeLabel,
                   type: 'straight',
                   data: { relation }, // Store relation for filtering
                   style: {
@@ -647,14 +675,14 @@ const StudyView: React.FC = () => {
           const concept = node.data.concept as ConceptData
 
           if (nodeInfo.type === 'virtual genus') {
-            if (concept.definition?.genus === nodeInfo.label) {
+            if (concept.definition?.genus?.id === nodeInfo.label) {
               const edgeId = `${node.id}-${virtualId}-parent-genus`
               if (!resultEdges.find((e) => e.id === edgeId)) {
                 resultEdges.push({
                   id: edgeId,
                   source: node.id,
                   target: virtualId,
-                  label: '',
+                  label: concept.definition.genus.label || undefined,
                   type: 'straight',
                   data: { relation: 'parent-genus' },
                   style: {
@@ -671,14 +699,21 @@ const StudyView: React.FC = () => {
               }
             }
           } else if (nodeInfo.type === 'virtual differentia') {
-            if (concept.definition?.differentia?.includes(nodeInfo.label)) {
+            if (
+              concept.definition?.differentia?.some(
+                (diff) => diff.id === nodeInfo.label,
+              )
+            ) {
+              const differentia = concept.definition.differentia.find(
+                (diff) => diff.id === nodeInfo.label,
+              )
               const edgeId = `${node.id}-${virtualId}-parent-differentia`
               if (!resultEdges.find((e) => e.id === edgeId)) {
                 resultEdges.push({
                   id: edgeId,
                   source: node.id,
                   target: virtualId,
-                  label: '',
+                  label: differentia?.label || undefined,
                   type: 'straight',
                   data: { relation: 'parent-differentia' },
                   style: {
@@ -837,7 +872,7 @@ const StudyView: React.FC = () => {
     // Close dialog
     setShowAddDialog(false)
 
-    // Auto-select the new concept
+    // Auto-select the new concept and update URL
     setSelectedConcepts((prev) => {
       const newConcepts = [...prev, newConcept]
       const newUrl = generateConceptUrl(newConcepts.map((c) => c.id))
@@ -861,8 +896,10 @@ const StudyView: React.FC = () => {
         } else if (originalId && originalId !== newId) {
           // Check if this concept references the old ID and update references
           const needsUpdate =
-            concept.definition.genus === originalId ||
-            concept.definition.differentia.includes(originalId)
+            concept.definition.genus?.id === originalId ||
+            concept.definition.differentia.some(
+              (diff) => diff.id === originalId,
+            )
 
           if (needsUpdate) {
             return {
@@ -870,11 +907,11 @@ const StudyView: React.FC = () => {
               definition: {
                 ...concept.definition,
                 genus:
-                  concept.definition.genus === originalId
-                    ? newId
+                  concept.definition.genus?.id === originalId
+                    ? { ...concept.definition.genus, id: newId }
                     : concept.definition.genus,
                 differentia: concept.definition.differentia.map((diff) =>
-                  diff === originalId ? newId : diff,
+                  diff.id === originalId ? { ...diff, id: newId } : diff,
                 ),
               },
             }

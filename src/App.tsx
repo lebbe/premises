@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import ConceptGraph from './routes/conceptGraph/ConceptGraph'
+
 import StudyView from './routes/studyView/StudyView'
 import { EditModeProvider } from './contexts/EditModeContext'
 import './App.css'
@@ -10,7 +10,6 @@ function App() {
       <Router basename="/premises">
         <div style={{ width: '100vw', height: '100vh' }}>
           <Routes>
-            <Route path="/everything" element={<ConceptGraph />} />
             <Route path="/" element={<StudyView />} />
           </Routes>
         </div>

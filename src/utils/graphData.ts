@@ -9,6 +9,11 @@ export interface LayoutOptions {
   enableDagre: boolean
 }
 
+export interface ConceptEdge {
+  id: string
+  label?: string
+}
+
 export interface ConceptData {
   id: string
   universeId: string
@@ -16,8 +21,8 @@ export interface ConceptData {
   label: string
   definition: {
     text: string
-    genus: string | null
-    differentia: string[]
+    genus: ConceptEdge | null
+    differentia: ConceptEdge[]
     source: string
   }
   perceptualRoots?: string[]
@@ -201,7 +206,9 @@ const importConceptsData = async (
       const source = dataSources.find((s) => s.id === universeId)
       if (source) {
         try {
-          const response = await fetch(source.file)
+          const response = await fetch(
+            `${import.meta.env.BASE_URL}/${source.file}`,
+          )
           const data = await response.json()
           allData.push(...data)
         } catch (error) {
@@ -216,7 +223,7 @@ const importConceptsData = async (
   const allData: ConceptData[] = []
   for (const source of dataSources) {
     try {
-      const response = await fetch(source.file)
+      const response = await fetch(`${import.meta.env.BASE_URL}/${source.file}`)
       const data = await response.json()
       allData.push(...data)
     } catch (error) {
@@ -269,8 +276,9 @@ export const createGenusEdges = (conceptsData: ConceptData[]): Edge[] => {
 
   conceptsData.forEach((concept) => {
     if (concept.definition.genus) {
+      const genus = concept.definition.genus
       // Try to find a concept that matches the genus by ID
-      const targetConcept = conceptMap.get(concept.definition.genus)
+      const targetConcept = conceptMap.get(genus.id)
       if (targetConcept) {
         edges.push({
           id: `${concept.id}-${targetConcept.id}`,
@@ -279,12 +287,12 @@ export const createGenusEdges = (conceptsData: ConceptData[]): Edge[] => {
           type: 'default',
           style: { stroke: '#666', strokeWidth: 2 },
           markerEnd: { type: 'arrowclosed', color: '#666' },
-          label: 'genus',
+          label: genus.label || undefined,
           data: { edgeType: 'genus' },
         })
       } else {
         // Create a virtual node for the genus if it doesn't exist in our concepts
-        const genusNodeId = `genus-${concept.definition.genus
+        const genusNodeId = `genus-${genus.id
           .toLowerCase()
           .replace(/\s+/g, '-')}`
         edges.push({
@@ -294,7 +302,7 @@ export const createGenusEdges = (conceptsData: ConceptData[]): Edge[] => {
           type: 'default',
           style: { stroke: '#999', strokeWidth: 1, strokeDasharray: '5,5' },
           markerEnd: { type: 'arrowclosed', color: '#999' },
-          label: 'genus',
+          label: genus.label || undefined,
           data: { edgeType: 'genus' },
         })
       }
@@ -312,7 +320,7 @@ export const createDifferentiaEdges = (conceptsData: ConceptData[]): Edge[] => {
   conceptsData.forEach((concept) => {
     concept.definition.differentia.forEach((diff) => {
       // Try to find a concept that matches the differentia by ID
-      const targetConcept = conceptMap.get(diff)
+      const targetConcept = conceptMap.get(diff.id)
       if (targetConcept && targetConcept.id !== concept.id) {
         edges.push({
           id: `diff-${concept.id}-${targetConcept.id}`,
@@ -321,12 +329,12 @@ export const createDifferentiaEdges = (conceptsData: ConceptData[]): Edge[] => {
           type: 'default',
           style: { stroke: '#e74c3c', strokeWidth: 2, strokeDasharray: '3,3' },
           markerEnd: { type: 'arrowclosed', color: '#e74c3c' },
-          label: 'differentia',
+          label: diff.label || undefined,
           data: { edgeType: 'differentia' },
         })
       } else {
         // Create a virtual node for the differentia if it doesn't exist in our concepts
-        const differentiaNodeId = `diff-${diff
+        const differentiaNodeId = `diff-${diff.id
           .toLowerCase()
           .replace(/\s+/g, '-')}`
         edges.push({
@@ -336,7 +344,7 @@ export const createDifferentiaEdges = (conceptsData: ConceptData[]): Edge[] => {
           type: 'default',
           style: { stroke: '#c39bd3', strokeWidth: 1, strokeDasharray: '3,3' },
           markerEnd: { type: 'arrowclosed', color: '#c39bd3' },
-          label: 'differentia',
+          label: diff.label || undefined,
           data: { edgeType: 'differentia' },
         })
       }
@@ -355,8 +363,8 @@ export const createVirtualDifferentiaNodes = (
 
   conceptsData.forEach((concept) => {
     concept.definition.differentia.forEach((diff) => {
-      if (!existingConcepts.has(diff)) {
-        differentiaValues.add(diff)
+      if (!existingConcepts.has(diff.id)) {
+        differentiaValues.add(diff.id)
       }
     })
   })
@@ -391,9 +399,10 @@ export const createVirtualGenusNodes = (
     conceptsData
       .map((c) => c.definition.genus)
       .filter(
-        (genus): genus is string =>
-          genus !== null && !existingConcepts.has(genus),
-      ),
+        (genus): genus is ConceptEdge =>
+          genus !== null && !existingConcepts.has(genus.id),
+      )
+      .map((genus) => genus.id),
   )
 
   return Array.from(genusValues).map((genus, index) => {

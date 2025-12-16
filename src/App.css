@@ -41,10 +41,18 @@ body {
 
 .react-flow__edge-label {
   background: white;
-  padding: 2px 4px;
-  border-radius: 3px;
-  font-size: 10px;
-  color: #666;
+  padding: 4px 6px;
+  border-radius: 4px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  border: 1px solid #ddd;
+}
+
+.react-flow__edge-text {
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  fill: #333 !important;
 }
 
 /* Control panel styles */

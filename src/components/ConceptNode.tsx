@@ -1,15 +1,15 @@
 import React from 'react'
 import { Handle, Position } from '@xyflow/react'
 import type { NodeProps } from '@xyflow/react'
-import type { ConceptData } from '../utils/graphData'
+import type { ConceptData, ConceptEdge } from '../utils/graphData'
 import styles from './ConceptNode.module.css'
 
 interface ConceptNodeData {
   label?: string
   definition?: string
   type?: string
-  genus?: string | null
-  differentia?: string[]
+  genus?: ConceptEdge | null
+  differentia?: ConceptEdge[]
   concept?: ConceptData
   isVirtual?: boolean
   isCentralNode?: boolean

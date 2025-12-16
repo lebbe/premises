@@ -128,6 +128,20 @@
   align-items: center;
 }
 
+.conceptEdgeInputs {
+  display: flex;
+  gap: 8px;
+  flex: 1;
+}
+
+.conceptEdgeInputs input:first-child {
+  flex: 2; /* ID field takes more space */
+}
+
+.conceptEdgeInputs input:last-child {
+  flex: 1; /* Label field takes less space */
+}
+
 .listItem input {
   flex: 1;
 }
