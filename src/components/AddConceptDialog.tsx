@@ -9,6 +9,7 @@ interface AddConceptDialogProps {
   existingConcepts: ConceptData[]
   existingUniverses: string[]
   editingConcept?: ConceptData | null // New prop for editing mode
+  prefilledData?: { id: string; label: string } | null // New prop for prefilled data
 }
 
 const commonTypes = ['concept', 'axiomatic concept']
@@ -21,6 +22,7 @@ const AddConceptDialog: React.FC<AddConceptDialogProps> = ({
   existingConcepts,
   existingUniverses,
   editingConcept = null,
+  prefilledData = null,
 }) => {
   const [formData, setFormData] = useState({
     id: '',
@@ -86,12 +88,19 @@ const AddConceptDialog: React.FC<AddConceptDialogProps> = ({
     if (isOpen) {
       if (editingConcept) {
         populateFormFromConcept(editingConcept)
+      } else if (prefilledData) {
+        // Pre-fill from virtual node data
+        setFormData({
+          ...getInitialFormData(),
+          id: prefilledData.id,
+          label: prefilledData.label,
+        })
       } else {
         setFormData(getInitialFormData())
       }
       setErrors({})
     }
-  }, [isOpen, editingConcept])
+  }, [isOpen, editingConcept, prefilledData])
 
   // Effect to focus the newly added differentia input
   useEffect(() => {

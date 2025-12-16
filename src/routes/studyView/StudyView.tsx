@@ -176,6 +176,10 @@ const StudyView: React.FC = () => {
   const [showImportDialog, setShowImportDialog] = useState(false)
   const [showClearConfirmDialog, setShowClearConfirmDialog] = useState(false)
   const [editingConcept, setEditingConcept] = useState<ConceptData | null>(null)
+  const [prefilledConceptData, setPrefilledConceptData] = useState<{
+    id: string
+    label: string
+  } | null>(null)
   const { isEditMode, setIsEditMode } = useEditMode()
 
   // Helper function to generate URL for specific concepts
@@ -449,6 +453,10 @@ const StudyView: React.FC = () => {
       const visitedNodes = new Set<string>()
       const resultNodes: Node[] = []
       const resultEdges: Edge[] = []
+      const virtualNodesMap = new Map<
+        string,
+        { label: string; type: string; position: { x: number; y: number } }
+      >()
 
       // Start with all selected concepts
       const queue: Array<{
@@ -504,6 +512,21 @@ const StudyView: React.FC = () => {
                 concept: genusNode,
                 relation: 'parent-genus',
               })
+            } else {
+              // Create virtual node for missing genus
+              const virtualId = `genus-${concept.definition.genus.toLowerCase().replace(/\s+/g, '-')}`
+              if (!virtualNodesMap.has(virtualId)) {
+                const angle = (relatedConcepts.length / 5) * 2 * Math.PI
+                const radius = 200
+                virtualNodesMap.set(virtualId, {
+                  label: concept.definition.genus,
+                  type: 'virtual genus',
+                  position: {
+                    x: (position?.x || 0) + Math.cos(angle) * radius,
+                    y: (position?.y || 0) + Math.sin(angle) * radius,
+                  },
+                })
+              }
             }
           }
 
@@ -516,6 +539,24 @@ const StudyView: React.FC = () => {
                   concept: diffNode,
                   relation: 'parent-differentia',
                 })
+              } else {
+                // Create virtual node for missing differentia
+                const virtualId = `diff-${diff.toLowerCase().replace(/\s+/g, '-')}`
+                if (!virtualNodesMap.has(virtualId)) {
+                  const angle =
+                    ((relatedConcepts.length + virtualNodesMap.size) / 5) *
+                    2 *
+                    Math.PI
+                  const radius = 200
+                  virtualNodesMap.set(virtualId, {
+                    label: diff,
+                    type: 'virtual differentia',
+                    position: {
+                      x: (position?.x || 0) + Math.cos(angle) * radius,
+                      y: (position?.y || 0) + Math.sin(angle) * radius,
+                    },
+                  })
+                }
               }
             })
           }
@@ -581,6 +622,81 @@ const StudyView: React.FC = () => {
           )
         }
       }
+
+      // Add virtual nodes and their edges
+      virtualNodesMap.forEach((nodeInfo, virtualId) => {
+        resultNodes.push({
+          id: virtualId,
+          type: 'concept',
+          position: nodeInfo.position,
+          data: {
+            label: nodeInfo.label,
+            definition: `Virtual node for ${nodeInfo.type}`,
+            type: nodeInfo.type,
+            genus: null,
+            differentia: [],
+            isVirtual: true,
+            virtualConceptId: nodeInfo.label, // Store the original concept ID
+          },
+        })
+
+        // Create edges from concepts to virtual nodes
+        // Find the concepts that reference this virtual node
+        resultNodes.forEach((node) => {
+          if (node.data.isVirtual) return
+          const concept = node.data.concept as ConceptData
+
+          if (nodeInfo.type === 'virtual genus') {
+            if (concept.definition?.genus === nodeInfo.label) {
+              const edgeId = `${node.id}-${virtualId}-parent-genus`
+              if (!resultEdges.find((e) => e.id === edgeId)) {
+                resultEdges.push({
+                  id: edgeId,
+                  source: node.id,
+                  target: virtualId,
+                  label: '',
+                  type: 'straight',
+                  data: { relation: 'parent-genus' },
+                  style: {
+                    stroke: '#2563eb',
+                    strokeWidth: 2,
+                  },
+                  markerEnd: {
+                    type: 'arrowclosed',
+                    color: '#2563eb',
+                    width: 20,
+                    height: 20,
+                  },
+                })
+              }
+            }
+          } else if (nodeInfo.type === 'virtual differentia') {
+            if (concept.definition?.differentia?.includes(nodeInfo.label)) {
+              const edgeId = `${node.id}-${virtualId}-parent-differentia`
+              if (!resultEdges.find((e) => e.id === edgeId)) {
+                resultEdges.push({
+                  id: edgeId,
+                  source: node.id,
+                  target: virtualId,
+                  label: '',
+                  type: 'straight',
+                  data: { relation: 'parent-differentia' },
+                  style: {
+                    stroke: '#dc2626',
+                    strokeWidth: 2,
+                  },
+                  markerEnd: {
+                    type: 'arrowclosed',
+                    color: '#dc2626',
+                    width: 20,
+                    height: 20,
+                  },
+                })
+              }
+            }
+          }
+        })
+      })
 
       // Apply layout (conceptual hierarchy or standard dagre)
       const { nodes: layoutedNodes, edges: layoutedEdges } =
@@ -847,16 +963,31 @@ const StudyView: React.FC = () => {
   }
 
   const handleNodeClick = (_event: React.MouseEvent, node: Node) => {
-    // Find the full concept data from our loaded concepts
-    const fullConcept = filteredConcepts.find((c) => c.id === node.id)
-    if (fullConcept) {
-      if (isEditMode) {
-        // In edit mode, open the edit dialog
-        setEditingConcept(fullConcept)
-      } else {
-        // In normal mode, show the info panel
-        setSelectedGraphConcept(fullConcept)
-        // Don't set as selected concept - that should be done via the info panel button
+    // Check if this is a virtual node
+    const isVirtual = node.data.isVirtual === true
+
+    if (isVirtual && isEditMode) {
+      // In edit mode, clicking a virtual node opens the add dialog with pre-filled data
+      const virtualConceptId = node.data.virtualConceptId as string
+      const label =
+        virtualConceptId.charAt(0).toUpperCase() + virtualConceptId.slice(1)
+      setPrefilledConceptData({
+        id: virtualConceptId,
+        label: label,
+      })
+      setShowAddDialog(true)
+    } else if (!isVirtual) {
+      // Find the full concept data from our loaded concepts
+      const fullConcept = filteredConcepts.find((c) => c.id === node.id)
+      if (fullConcept) {
+        if (isEditMode) {
+          // In edit mode, open the edit dialog
+          setEditingConcept(fullConcept)
+        } else {
+          // In normal mode, show the info panel
+          setSelectedGraphConcept(fullConcept)
+          // Don't set as selected concept - that should be done via the info panel button
+        }
       }
     }
   }
@@ -1032,11 +1163,13 @@ const StudyView: React.FC = () => {
         onClose={() => {
           setShowAddDialog(false)
           setEditingConcept(null)
+          setPrefilledConceptData(null)
         }}
         onSave={editingConcept ? handleUpdateConcept : handleAddConcept}
         existingConcepts={allConcepts}
         existingUniverses={availableUniverses}
         editingConcept={editingConcept}
+        prefilledData={prefilledConceptData}
       />
       <ExportDialog
         isOpen={showExportDialog}
