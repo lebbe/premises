@@ -6,17 +6,8 @@
     "label": "Attribute",
     "definition": {
       "text": "A characteristic or quality belonging to an entity.",
-      "genus": {
-        "id": "existent"
-      },
-      "differentia": [
-        {
-          "id": "characteristic"
-        },
-        {
-          "id": "belonging-to-entity"
-        }
-      ],
+      "genus": "existent",
+      "differentia": ["characteristic", "belonging-to-entity"],
       "source": "Gemini 3 pro"
     }
   },
@@ -27,17 +18,8 @@
     "label": "Existent",
     "definition": {
       "text": "Something that exists; a unit of reality.",
-      "genus": {
-        "id": "existence"
-      },
-      "differentia": [
-        {
-          "id": "unit"
-        },
-        {
-          "id": "particularity"
-        }
-      ],
+      "genus": "existence",
+      "differentia": ["unit", "particularity"],
       "source": "Gemini 3 pro"
     }
   },
@@ -48,17 +30,8 @@
     "label": "Mental Action",
     "definition": {
       "text": "An action performed by the faculty of consciousness.",
-      "genus": {
-        "id": "action"
-      },
-      "differentia": [
-        {
-          "id": "consciousness"
-        },
-        {
-          "id": "internal"
-        }
-      ],
+      "genus": "action",
+      "differentia": ["consciousness", "internal"],
       "source": "Gemini 3 pro"
     }
   },
@@ -69,17 +42,8 @@
     "label": "Method",
     "definition": {
       "text": "A systematic course of action designed to achieve a specific goal.",
-      "genus": {
-        "id": "process"
-      },
-      "differentia": [
-        {
-          "id": "systematic"
-        },
-        {
-          "id": "goal-directed"
-        }
-      ],
+      "genus": "process",
+      "differentia": ["systematic", "goal-directed"],
       "source": "Gemini 3 pro"
     }
   },
@@ -90,17 +54,8 @@
     "label": "Identification",
     "definition": {
       "text": "The mental action of grasping the identity of an existent.",
-      "genus": {
-        "id": "mental-action"
-      },
-      "differentia": [
-        {
-          "id": "grasping-identity"
-        },
-        {
-          "id": "cognition"
-        }
-      ],
+      "genus": "mental-action",
+      "differentia": ["grasping-identity", "cognition"],
       "source": "Gemini 3 pro"
     }
   },
@@ -111,17 +66,8 @@
     "label": "Linguistic Expression",
     "definition": {
       "text": "A verbal or written symbol structure used to communicate a concept.",
-      "genus": {
-        "id": "code"
-      },
-      "differentia": [
-        {
-          "id": "verbal"
-        },
-        {
-          "id": "communicative"
-        }
-      ],
+      "genus": "code",
+      "differentia": ["verbal", "communicative"],
       "source": "Gemini 3 pro"
     }
   },
@@ -132,17 +78,8 @@
     "label": "System",
     "definition": {
       "text": "An integrated set of distinct units functioning as a whole.",
-      "genus": {
-        "id": "mental-integration"
-      },
-      "differentia": [
-        {
-          "id": "interconnected"
-        },
-        {
-          "id": "functioning-as-whole"
-        }
-      ],
+      "genus": "mental-integration",
+      "differentia": ["interconnected", "functioning-as-whole"],
       "source": "Gemini 3 pro"
     }
   },
@@ -153,17 +90,8 @@
     "label": "Reaction",
     "definition": {
       "text": "An action occurring in response to a stimulus.",
-      "genus": {
-        "id": "action"
-      },
-      "differentia": [
-        {
-          "id": "responsive"
-        },
-        {
-          "id": "stimulus-caused"
-        }
-      ],
+      "genus": "action",
+      "differentia": ["responsive", "stimulus-caused"],
       "source": "Gemini 3 pro"
     }
   },
@@ -174,17 +102,8 @@
     "label": "Mental State",
     "definition": {
       "text": "A specific condition or quality of the consciousness at a given time.",
-      "genus": {
-        "id": "attribute"
-      },
-      "differentia": [
-        {
-          "id": "of-consciousness"
-        },
-        {
-          "id": "temporal"
-        }
-      ],
+      "genus": "attribute",
+      "differentia": ["of-consciousness", "temporal"],
       "source": "Gemini 3 pro"
     }
   },
@@ -195,17 +114,8 @@
     "label": "Principle",
     "definition": {
       "text": "A fundamental truth or proposition that serves as the foundation for a system of belief or behavior.",
-      "genus": {
-        "id": "statement"
-      },
-      "differentia": [
-        {
-          "id": "fundamental"
-        },
-        {
-          "id": "foundational"
-        }
-      ],
+      "genus": "statement",
+      "differentia": ["fundamental", "foundational"],
       "source": "Gemini 3 pro"
     }
   },
@@ -216,17 +126,8 @@
     "label": "State of Affairs",
     "definition": {
       "text": "A particular arrangement or condition of existents in reality.",
-      "genus": {
-        "id": "attribute"
-      },
-      "differentia": [
-        {
-          "id": "situational"
-        },
-        {
-          "id": "arrangement-of-existents"
-        }
-      ],
+      "genus": "attribute",
+      "differentia": ["situational", "arrangement-of-existents"],
       "source": "Gemini 3 pro"
     }
   },
@@ -237,17 +138,8 @@
     "label": "Creation",
     "definition": {
       "text": "The act of bringing an existent into being that did not exist before.",
-      "genus": {
-        "id": "action"
-      },
-      "differentia": [
-        {
-          "id": "originating"
-        },
-        {
-          "id": "productive"
-        }
-      ],
+      "genus": "action",
+      "differentia": ["originating", "productive"],
       "source": "Gemini 3 pro"
     }
   },
@@ -258,14 +150,8 @@
     "label": "Artifact",
     "definition": {
       "text": "A material entity made or shaped by a human being.",
-      "genus": {
-        "id": "material-entity"
-      },
-      "differentia": [
-        {
-          "id": "man-made"
-        }
-      ],
+      "genus": "material-entity",
+      "differentia": ["man-made"],
       "source": "Gemini 3 pro"
     }
   },
@@ -276,17 +162,8 @@
     "label": "Living Thing",
     "definition": {
       "text": "A material entity capable of self-sustaining biological processes.",
-      "genus": {
-        "id": "material-entity"
-      },
-      "differentia": [
-        {
-          "id": "biological-process"
-        },
-        {
-          "id": "self-sustaining"
-        }
-      ],
+      "genus": "material-entity",
+      "differentia": ["biological-process", "self-sustaining"],
       "source": "Gemini 3 pro"
     }
   },
@@ -297,20 +174,8 @@
     "label": "Entity",
     "definition": {
       "text": "Something that exists as a distinct, separate unit.",
-      "genus": {
-        "id": "existent"
-      },
-      "differentia": [
-        {
-          "id": "distinct"
-        },
-        {
-          "id": "unitary"
-        },
-        {
-          "id": "separate"
-        }
-      ],
+      "genus": "existent",
+      "differentia": ["distinct", "unitary", "separate"],
       "source": "Gemini 3 pro"
     }
   },
@@ -321,17 +186,8 @@
     "label": "Material Entity",
     "definition": {
       "text": "An entity composed of matter.",
-      "genus": {
-        "id": "entity"
-      },
-      "differentia": [
-        {
-          "id": "composition-of-matter"
-        },
-        {
-          "id": "physical-presence"
-        }
-      ],
+      "genus": "entity",
+      "differentia": ["composition-of-matter", "physical-presence"],
       "source": "Gemini 3 pro"
     },
     "dependencies": ["matter"]

@@ -6,14 +6,8 @@
     "label": "Sensory",
     "definition": {
       "text": "Pertaining to the senses or sensation.",
-      "genus": {
-        "id": "attribute"
-      },
-      "differentia": [
-        {
-          "id": "sense"
-        }
-      ],
+      "genus": "attribute",
+      "differentia": ["sense"],
       "source": "Gemini 3 pro"
     }
   },
@@ -24,14 +18,8 @@
     "label": "Directness",
     "definition": {
       "text": "The quality of proceeding without intermediaries.",
-      "genus": {
-        "id": "quality"
-      },
-      "differentia": [
-        {
-          "id": "absence-of-intermediary"
-        }
-      ],
+      "genus": "quality",
+      "differentia": ["absence-of-intermediary"],
       "source": "Gemini 3 pro"
     }
   },
@@ -42,14 +30,8 @@
     "label": "Impossibility",
     "definition": {
       "text": "The state of being incapable of occurring.",
-      "genus": {
-        "id": "state"
-      },
-      "differentia": [
-        {
-          "id": "incapability-of-occurrence"
-        }
-      ],
+      "genus": "state",
+      "differentia": ["incapability-of-occurrence"],
       "source": "Gemini 3 pro"
     }
   },
@@ -60,14 +42,8 @@
     "label": "Destruction",
     "definition": {
       "text": "The action of causing something to cease to exist.",
-      "genus": {
-        "id": "action"
-      },
-      "differentia": [
-        {
-          "id": "causing-cessation-of-existence"
-        }
-      ],
+      "genus": "action",
+      "differentia": ["causing-cessation-of-existence"],
       "source": "Gemini 3 pro"
     }
   },
@@ -78,17 +54,8 @@
     "label": "Control",
     "definition": {
       "text": "The power to influence or direct behavior or the course of events.",
-      "genus": {
-        "id": "power"
-      },
-      "differentia": [
-        {
-          "id": "influence"
-        },
-        {
-          "id": "direction"
-        }
-      ],
+      "genus": "power",
+      "differentia": ["influence", "direction"],
       "source": "Gemini 3 pro"
     }
   },
@@ -99,17 +66,8 @@
     "label": "Preservation",
     "definition": {
       "text": "The action of maintaining something in its existing state.",
-      "genus": {
-        "id": "action"
-      },
-      "differentia": [
-        {
-          "id": "maintenance"
-        },
-        {
-          "id": "existing-state"
-        }
-      ],
+      "genus": "action",
+      "differentia": ["maintenance", "existing-state"],
       "source": "Gemini 3 pro"
     }
   },
@@ -120,14 +78,8 @@
     "label": "Agent",
     "definition": {
       "text": "An entity that acts or exerts power.",
-      "genus": {
-        "id": "entity"
-      },
-      "differentia": [
-        {
-          "id": "acting"
-        }
-      ],
+      "genus": "entity",
+      "differentia": ["acting"],
       "source": "Gemini 3 pro"
     }
   },
@@ -138,14 +90,8 @@
     "label": "Causation",
     "definition": {
       "text": "The action of causing something.",
-      "genus": {
-        "id": "action"
-      },
-      "differentia": [
-        {
-          "id": "producing-effect"
-        }
-      ],
+      "genus": "action",
+      "differentia": ["producing-effect"],
       "source": "Gemini 3 pro"
     }
   },
@@ -156,14 +102,8 @@
     "label": "Internal",
     "definition": {
       "text": "Situated on the inside.",
-      "genus": {
-        "id": "position"
-      },
-      "differentia": [
-        {
-          "id": "inside"
-        }
-      ],
+      "genus": "position",
+      "differentia": ["inside"],
       "source": "Gemini 3 pro"
     }
   },
@@ -174,17 +114,8 @@
     "label": "Specificity",
     "definition": {
       "text": "The quality of being clearly defined or identified.",
-      "genus": {
-        "id": "quality"
-      },
-      "differentia": [
-        {
-          "id": "distinctness"
-        },
-        {
-          "id": "definition"
-        }
-      ],
+      "genus": "quality",
+      "differentia": ["distinctness", "definition"],
       "source": "Gemini 3 pro"
     }
   },
@@ -195,14 +126,8 @@
     "label": "Psychological",
     "definition": {
       "text": "Pertaining to the mind or mental states.",
-      "genus": {
-        "id": "attribute"
-      },
-      "differentia": [
-        {
-          "id": "mind"
-        }
-      ],
+      "genus": "attribute",
+      "differentia": ["mind"],
       "source": "Gemini 3 pro"
     }
   },
@@ -213,14 +138,8 @@
     "label": "Trait",
     "definition": {
       "text": "A distinguishing quality or characteristic.",
-      "genus": {
-        "id": "quality"
-      },
-      "differentia": [
-        {
-          "id": "distinguishing"
-        }
-      ],
+      "genus": "quality",
+      "differentia": ["distinguishing"],
       "source": "Gemini 3 pro"
     }
   },
@@ -231,14 +150,8 @@
     "label": "Individual",
     "definition": {
       "text": "A single human being as distinct from a group.",
-      "genus": {
-        "id": "human"
-      },
-      "differentia": [
-        {
-          "id": "singularity"
-        }
-      ],
+      "genus": "human",
+      "differentia": ["singularity"],
       "source": "Gemini 3 pro"
     }
   },
@@ -249,17 +162,8 @@
     "label": "Consideration",
     "definition": {
       "text": "Continuous and careful thought.",
-      "genus": {
-        "id": "thought"
-      },
-      "differentia": [
-        {
-          "id": "careful"
-        },
-        {
-          "id": "continuous"
-        }
-      ],
+      "genus": "thought",
+      "differentia": ["careful", "continuous"],
       "source": "Gemini 3 pro"
     }
   },
@@ -270,17 +174,8 @@
     "label": "Reasoning",
     "definition": {
       "text": "The action of thinking about something in a logical, sensible way.",
-      "genus": {
-        "id": "thought"
-      },
-      "differentia": [
-        {
-          "id": "logical"
-        },
-        {
-          "id": "sensible"
-        }
-      ],
+      "genus": "thought",
+      "differentia": ["logical", "sensible"],
       "source": "Gemini 3 pro"
     }
   },
@@ -291,17 +186,8 @@
     "label": "Awareness",
     "definition": {
       "text": "Knowledge or perception of a situation or fact.",
-      "genus": {
-        "id": "mental-state"
-      },
-      "differentia": [
-        {
-          "id": "perception"
-        },
-        {
-          "id": "knowledge"
-        }
-      ],
+      "genus": "mental-state",
+      "differentia": ["perception", "knowledge"],
       "source": "Gemini 3 pro"
     }
   },
@@ -312,14 +198,8 @@
     "label": "Fullness",
     "definition": {
       "text": "The state of being complete or whole.",
-      "genus": {
-        "id": "state"
-      },
-      "differentia": [
-        {
-          "id": "completeness"
-        }
-      ],
+      "genus": "state",
+      "differentia": ["completeness"],
       "source": "Gemini 3 pro"
     }
   },
@@ -330,14 +210,8 @@
     "label": "Grasping",
     "definition": {
       "text": "The act of comprehending fully.",
-      "genus": {
-        "id": "mental-action"
-      },
-      "differentia": [
-        {
-          "id": "comprehension"
-        }
-      ],
+      "genus": "mental-action",
+      "differentia": ["comprehension"],
       "source": "Gemini 3 pro"
     }
   },
@@ -348,14 +222,8 @@
     "label": "Unifying",
     "definition": {
       "text": "Making or becoming a single unit.",
-      "genus": {
-        "id": "action"
-      },
-      "differentia": [
-        {
-          "id": "unit-formation"
-        }
-      ],
+      "genus": "action",
+      "differentia": ["unit-formation"],
       "source": "Gemini 3 pro"
     }
   },
@@ -366,14 +234,8 @@
     "label": "Provision",
     "definition": {
       "text": "The action of providing or supplying something.",
-      "genus": {
-        "id": "action"
-      },
-      "differentia": [
-        {
-          "id": "supplying"
-        }
-      ],
+      "genus": "action",
+      "differentia": ["supplying"],
       "source": "Gemini 3 pro"
     }
   },
@@ -384,17 +246,8 @@
     "label": "Sense",
     "definition": {
       "text": "A faculty by which the body perceives an external stimulus.",
-      "genus": {
-        "id": "faculty"
-      },
-      "differentia": [
-        {
-          "id": "perception"
-        },
-        {
-          "id": "external-stimulus"
-        }
-      ],
+      "genus": "faculty",
+      "differentia": ["perception", "external-stimulus"],
       "source": "Gemini 3 pro"
     }
   },
@@ -405,14 +258,8 @@
     "label": "Consistency",
     "definition": {
       "text": "Absence of contradiction.",
-      "genus": {
-        "id": "state"
-      },
-      "differentia": [
-        {
-          "id": "non-contradiction"
-        }
-      ],
+      "genus": "state",
+      "differentia": ["non-contradiction"],
       "source": "Gemini 3 pro"
     }
   },
@@ -423,14 +270,8 @@
     "label": "Acquisition",
     "definition": {
       "text": "The act of gaining possession.",
-      "genus": {
-        "id": "action"
-      },
-      "differentia": [
-        {
-          "id": "gaining-possession"
-        }
-      ],
+      "genus": "action",
+      "differentia": ["gaining-possession"],
       "source": "Gemini 3 pro"
     }
   },
@@ -441,14 +282,8 @@
     "label": "Member",
     "definition": {
       "text": "A distinct part of a complex structure or group.",
-      "genus": {
-        "id": "part"
-      },
-      "differentia": [
-        {
-          "id": "group-belonging"
-        }
-      ],
+      "genus": "part",
+      "differentia": ["group-belonging"],
       "source": "Gemini 3 pro"
     }
   },
@@ -459,14 +294,8 @@
     "label": "Group",
     "definition": {
       "text": "A number of individuals or things located or classed together.",
-      "genus": {
-        "id": "collection"
-      },
-      "differentia": [
-        {
-          "id": "classification-together"
-        }
-      ],
+      "genus": "collection",
+      "differentia": ["classification-together"],
       "source": "Gemini 3 pro"
     }
   },
@@ -477,14 +306,8 @@
     "label": "Separation",
     "definition": {
       "text": "The action of moving or being moved apart.",
-      "genus": {
-        "id": "action"
-      },
-      "differentia": [
-        {
-          "id": "moving-apart"
-        }
-      ],
+      "genus": "action",
+      "differentia": ["moving-apart"],
       "source": "Gemini 3 pro"
     }
   },
@@ -495,14 +318,8 @@
     "label": "Retention",
     "definition": {
       "text": "The continued possession, use, or control of something.",
-      "genus": {
-        "id": "action"
-      },
-      "differentia": [
-        {
-          "id": "continued-possession"
-        }
-      ],
+      "genus": "action",
+      "differentia": ["continued-possession"],
       "source": "Gemini 3 pro"
     }
   },
@@ -513,14 +330,8 @@
     "label": "Omission",
     "definition": {
       "text": "The act of excluding or leaving out.",
-      "genus": {
-        "id": "action"
-      },
-      "differentia": [
-        {
-          "id": "exclusion"
-        }
-      ],
+      "genus": "action",
+      "differentia": ["exclusion"],
       "source": "Gemini 3 pro"
     }
   },
@@ -531,14 +342,8 @@
     "label": "Measurement",
     "definition": {
       "text": "The determination of the size, quantity, or degree of something.",
-      "genus": {
-        "id": "determination"
-      },
-      "differentia": [
-        {
-          "id": "quantity"
-        }
-      ],
+      "genus": "determination",
+      "differentia": ["quantity"],
       "source": "Gemini 3 pro"
     }
   },
@@ -549,17 +354,8 @@
     "label": "Essentiality",
     "definition": {
       "text": "The quality of being absolutely necessary or fundamental.",
-      "genus": {
-        "id": "quality"
-      },
-      "differentia": [
-        {
-          "id": "necessity"
-        },
-        {
-          "id": "fundamentality"
-        }
-      ],
+      "genus": "quality",
+      "differentia": ["necessity", "fundamentality"],
       "source": "Gemini 3 pro"
     }
   },
@@ -570,14 +366,8 @@
     "label": "Singularity",
     "definition": {
       "text": "The state of being single or unique.",
-      "genus": {
-        "id": "state"
-      },
-      "differentia": [
-        {
-          "id": "uniqueness"
-        }
-      ],
+      "genus": "state",
+      "differentia": ["uniqueness"],
       "source": "Gemini 3 pro"
     }
   },
@@ -588,14 +378,8 @@
     "label": "Function",
     "definition": {
       "text": "An activity or purpose natural to or intended for a person or thing.",
-      "genus": {
-        "id": "activity"
-      },
-      "differentia": [
-        {
-          "id": "purpose"
-        }
-      ],
+      "genus": "activity",
+      "differentia": ["purpose"],
       "source": "Gemini 3 pro"
     }
   },
@@ -606,14 +390,8 @@
     "label": "Interaction",
     "definition": {
       "text": "Reciprocal action or influence.",
-      "genus": {
-        "id": "action"
-      },
-      "differentia": [
-        {
-          "id": "reciprocal"
-        }
-      ],
+      "genus": "action",
+      "differentia": ["reciprocal"],
       "source": "Gemini 3 pro"
     }
   },
@@ -624,14 +402,8 @@
     "label": "Subconscious",
     "definition": {
       "text": "The part of the mind which is not currently in focal awareness.",
-      "genus": {
-        "id": "mind"
-      },
-      "differentia": [
-        {
-          "id": "non-focal"
-        }
-      ],
+      "genus": "mind",
+      "differentia": ["non-focal"],
       "source": "Gemini 3 pro"
     }
   },
@@ -642,14 +414,8 @@
     "label": "Gauging",
     "definition": {
       "text": "Estimating or determining the magnitude of something.",
-      "genus": {
-        "id": "determination"
-      },
-      "differentia": [
-        {
-          "id": "magnitude"
-        }
-      ],
+      "genus": "determination",
+      "differentia": ["magnitude"],
       "source": "Gemini 3 pro"
     }
   },
@@ -660,14 +426,8 @@
     "label": "Standard",
     "definition": {
       "text": "A level of quality or attainment used as a measure.",
-      "genus": {
-        "id": "measure"
-      },
-      "differentia": [
-        {
-          "id": "quality"
-        }
-      ],
+      "genus": "measure",
+      "differentia": ["quality"],
       "source": "Gemini 3 pro"
     }
   },
@@ -678,14 +438,8 @@
     "label": "Alternative",
     "definition": {
       "text": "One of two or more available possibilities.",
-      "genus": {
-        "id": "possibility"
-      },
-      "differentia": [
-        {
-          "id": "choice-among-others"
-        }
-      ],
+      "genus": "possibility",
+      "differentia": ["choice-among-others"],
       "source": "Gemini 3 pro"
     }
   },
@@ -696,14 +450,8 @@
     "label": "Doing",
     "definition": {
       "text": "The performance of an action.",
-      "genus": {
-        "id": "performance"
-      },
-      "differentia": [
-        {
-          "id": "action"
-        }
-      ],
+      "genus": "performance",
+      "differentia": ["action"],
       "source": "Gemini 3 pro"
     }
   },
@@ -714,14 +462,8 @@
     "label": "Manifestation",
     "definition": {
       "text": "An event, action, or object that clearly shows or embodies something.",
-      "genus": {
-        "id": "event"
-      },
-      "differentia": [
-        {
-          "id": "embodiment"
-        }
-      ],
+      "genus": "event",
+      "differentia": ["embodiment"],
       "source": "Gemini 3 pro"
     }
   },
@@ -732,14 +474,8 @@
     "label": "Fact",
     "definition": {
       "text": "A thing that is known or proved to be true.",
-      "genus": {
-        "id": "existent"
-      },
-      "differentia": [
-        {
-          "id": "truth"
-        }
-      ],
+      "genus": "existent",
+      "differentia": ["truth"],
       "source": "Gemini 3 pro"
     }
   },
@@ -750,14 +486,8 @@
     "label": "Reality",
     "definition": {
       "text": "The world or the state of things as they actually exist.",
-      "genus": {
-        "id": "existence"
-      },
-      "differentia": [
-        {
-          "id": "actuality"
-        }
-      ],
+      "genus": "existence",
+      "differentia": ["actuality"],
       "source": "Gemini 3 pro"
     }
   },
@@ -768,14 +498,8 @@
     "label": "Indication",
     "definition": {
       "text": "A sign or piece of information that points to something.",
-      "genus": {
-        "id": "information"
-      },
-      "differentia": [
-        {
-          "id": "pointing-to"
-        }
-      ],
+      "genus": "information",
+      "differentia": ["pointing-to"],
       "source": "Gemini 3 pro"
     }
   },
@@ -786,14 +510,8 @@
     "label": "Truth",
     "definition": {
       "text": "Conformity to reality.",
-      "genus": {
-        "id": "conformity"
-      },
-      "differentia": [
-        {
-          "id": "reality"
-        }
-      ],
+      "genus": "conformity",
+      "differentia": ["reality"],
       "source": "Gemini 3 pro"
     }
   },
@@ -804,17 +522,8 @@
     "label": "Objective",
     "definition": {
       "text": "Not influenced by personal feelings or opinions in considering and representing facts.",
-      "genus": {
-        "id": "perspective"
-      },
-      "differentia": [
-        {
-          "id": "fact-based"
-        },
-        {
-          "id": "impersonal"
-        }
-      ],
+      "genus": "perspective",
+      "differentia": ["fact-based", "impersonal"],
       "source": "Gemini 3 pro"
     }
   },
@@ -825,14 +534,8 @@
     "label": "Moral",
     "definition": {
       "text": "Concerned with the principles of right and wrong behavior.",
-      "genus": {
-        "id": "principle"
-      },
-      "differentia": [
-        {
-          "id": "right-and-wrong"
-        }
-      ],
+      "genus": "principle",
+      "differentia": ["right-and-wrong"],
       "source": "Gemini 3 pro"
     }
   },
@@ -843,17 +546,8 @@
     "label": "Society",
     "definition": {
       "text": "The aggregate of people living together in a more or less ordered community.",
-      "genus": {
-        "id": "aggregate"
-      },
-      "differentia": [
-        {
-          "id": "community"
-        },
-        {
-          "id": "order"
-        }
-      ],
+      "genus": "aggregate",
+      "differentia": ["community", "order"],
       "source": "Gemini 3 pro"
     }
   },
@@ -864,14 +558,8 @@
     "label": "Materiality",
     "definition": {
       "text": "The quality of being composed of matter.",
-      "genus": {
-        "id": "quality"
-      },
-      "differentia": [
-        {
-          "id": "matter"
-        }
-      ],
+      "genus": "quality",
+      "differentia": ["matter"],
       "source": "Gemini 3 pro"
     }
   },
@@ -882,14 +570,8 @@
     "label": "Fate",
     "definition": {
       "text": "The development of events beyond a person's control.",
-      "genus": {
-        "id": "development"
-      },
-      "differentia": [
-        {
-          "id": "beyond-control"
-        }
-      ],
+      "genus": "development",
+      "differentia": ["beyond-control"],
       "source": "Gemini 3 pro"
     }
   },
@@ -900,14 +582,8 @@
     "label": "Conclusion",
     "definition": {
       "text": "A judgment or decision reached by reasoning.",
-      "genus": {
-        "id": "judgment"
-      },
-      "differentia": [
-        {
-          "id": "reached-by-reasoning"
-        }
-      ],
+      "genus": "judgment",
+      "differentia": ["reached-by-reasoning"],
       "source": "Gemini 3 pro"
     }
   },
@@ -918,14 +594,8 @@
     "label": "Physical",
     "definition": {
       "text": "Relating to things perceived through the senses as opposed to the mind.",
-      "genus": {
-        "id": "attribute"
-      },
-      "differentia": [
-        {
-          "id": "sensory-perception"
-        }
-      ],
+      "genus": "attribute",
+      "differentia": ["sensory-perception"],
       "source": "Gemini 3 pro"
     }
   },
@@ -936,17 +606,8 @@
     "label": "Force",
     "definition": {
       "text": "Strength or energy as an attribute of physical action.",
-      "genus": {
-        "id": "attribute"
-      },
-      "differentia": [
-        {
-          "id": "strength"
-        },
-        {
-          "id": "physical-action"
-        }
-      ],
+      "genus": "attribute",
+      "differentia": ["strength", "physical-action"],
       "source": "Gemini 3 pro"
     }
   },
@@ -957,14 +618,8 @@
     "label": "Privacy",
     "definition": {
       "text": "The state of being free from public attention.",
-      "genus": {
-        "id": "state"
-      },
-      "differentia": [
-        {
-          "id": "freedom-from-public"
-        }
-      ],
+      "genus": "state",
+      "differentia": ["freedom-from-public"],
       "source": "Gemini 3 pro"
     }
   },
@@ -975,14 +630,8 @@
     "label": "Ownership",
     "definition": {
       "text": "The act, state, or right of possessing something.",
-      "genus": {
-        "id": "right"
-      },
-      "differentia": [
-        {
-          "id": "possession"
-        }
-      ],
+      "genus": "right",
+      "differentia": ["possession"],
       "source": "Gemini 3 pro"
     }
   },
@@ -993,14 +642,8 @@
     "label": "State",
     "definition": {
       "text": "The particular condition that someone or something is in at a specific time.",
-      "genus": {
-        "id": "condition"
-      },
-      "differentia": [
-        {
-          "id": "temporal"
-        }
-      ],
+      "genus": "condition",
+      "differentia": ["temporal"],
       "source": "Gemini 3 pro"
     }
   },
@@ -1011,14 +654,8 @@
     "label": "Selection",
     "definition": {
       "text": "The action of carefully choosing someone or something as being the best or most suitable.",
-      "genus": {
-        "id": "action"
-      },
-      "differentia": [
-        {
-          "id": "choosing"
-        }
-      ],
+      "genus": "action",
+      "differentia": ["choosing"],
       "source": "Gemini 3 pro"
     }
   },
@@ -1029,14 +666,8 @@
     "label": "Exclusion",
     "definition": {
       "text": "The process or state of excluding or being excluded.",
-      "genus": {
-        "id": "process"
-      },
-      "differentia": [
-        {
-          "id": "keeping-out"
-        }
-      ],
+      "genus": "process",
+      "differentia": ["keeping-out"],
       "source": "Gemini 3 pro"
     }
   },
@@ -1047,14 +678,8 @@
     "label": "Metaphysical",
     "definition": {
       "text": "Relating to the fundamental nature of reality.",
-      "genus": {
-        "id": "attribute"
-      },
-      "differentia": [
-        {
-          "id": "fundamental-reality"
-        }
-      ],
+      "genus": "attribute",
+      "differentia": ["fundamental-reality"],
       "source": "Gemini 3 pro"
     }
   },
@@ -1065,14 +690,8 @@
     "label": "Flatness",
     "definition": {
       "text": "The condition of having a smooth, level surface.",
-      "genus": {
-        "id": "condition"
-      },
-      "differentia": [
-        {
-          "id": "level-surface"
-        }
-      ],
+      "genus": "condition",
+      "differentia": ["level-surface"],
       "source": "Gemini 3 pro"
     }
   },
@@ -1083,14 +702,8 @@
     "label": "Gravity",
     "definition": {
       "text": "The force that attracts a body toward the center of the earth.",
-      "genus": {
-        "id": "force"
-      },
-      "differentia": [
-        {
-          "id": "attraction"
-        }
-      ],
+      "genus": "force",
+      "differentia": ["attraction"],
       "source": "Gemini 3 pro"
     }
   },
@@ -1101,14 +714,8 @@
     "label": "Sustaining",
     "definition": {
       "text": "Strengthening or supporting physically or mentally.",
-      "genus": {
-        "id": "action"
-      },
-      "differentia": [
-        {
-          "id": "supporting"
-        }
-      ],
+      "genus": "action",
+      "differentia": ["supporting"],
       "source": "Gemini 3 pro"
     }
   },
@@ -1119,14 +726,8 @@
     "label": "Withstanding",
     "definition": {
       "text": "Remaining undamaged or unaffected by.",
-      "genus": {
-        "id": "action"
-      },
-      "differentia": [
-        {
-          "id": "resistance"
-        }
-      ],
+      "genus": "action",
+      "differentia": ["resistance"],
       "source": "Gemini 3 pro"
     }
   },
@@ -1137,14 +738,8 @@
     "label": "Movement",
     "definition": {
       "text": "An act of changing physical location or position.",
-      "genus": {
-        "id": "action"
-      },
-      "differentia": [
-        {
-          "id": "change-of-location"
-        }
-      ],
+      "genus": "action",
+      "differentia": ["change-of-location"],
       "source": "Gemini 3 pro"
     }
   },
@@ -1155,14 +750,8 @@
     "label": "Continuity",
     "definition": {
       "text": "The unbroken and consistent existence or operation of something.",
-      "genus": {
-        "id": "existence"
-      },
-      "differentia": [
-        {
-          "id": "unbroken"
-        }
-      ],
+      "genus": "existence",
+      "differentia": ["unbroken"],
       "source": "Gemini 3 pro"
     }
   },
@@ -1173,14 +762,8 @@
     "label": "Direction",
     "definition": {
       "text": "A course along which someone or something moves.",
-      "genus": {
-        "id": "course"
-      },
-      "differentia": [
-        {
-          "id": "guidance"
-        }
-      ],
+      "genus": "course",
+      "differentia": ["guidance"],
       "source": "Gemini 3 pro"
     }
   },
@@ -1191,17 +774,8 @@
     "label": "Potentiality",
     "definition": {
       "text": "Latent qualities or abilities that may be developed.",
-      "genus": {
-        "id": "quality"
-      },
-      "differentia": [
-        {
-          "id": "latency"
-        },
-        {
-          "id": "possibility"
-        }
-      ],
+      "genus": "quality",
+      "differentia": ["latency", "possibility"],
       "source": "Gemini 3 pro"
     }
   },
@@ -1212,20 +786,8 @@
     "label": "Power of Action",
     "definition": {
       "text": "The capacity to initiate and execute action.",
-      "genus": {
-        "id": "capacity"
-      },
-      "differentia": [
-        {
-          "id": "initiation"
-        },
-        {
-          "id": "execution"
-        },
-        {
-          "id": "action"
-        }
-      ],
+      "genus": "capacity",
+      "differentia": ["initiation", "execution", "action"],
       "source": "Gemini 3 pro"
     }
   },
@@ -1236,17 +798,8 @@
     "label": "Part of Whole",
     "definition": {
       "text": "A constituent element of a larger entity.",
-      "genus": {
-        "id": "element"
-      },
-      "differentia": [
-        {
-          "id": "constituent"
-        },
-        {
-          "id": "whole"
-        }
-      ],
+      "genus": "element",
+      "differentia": ["constituent", "whole"],
       "source": "Gemini 3 pro"
     }
   },
@@ -1257,17 +810,8 @@
     "label": "Compositional",
     "definition": {
       "text": "Relating to the arrangement of elements.",
-      "genus": {
-        "id": "relational"
-      },
-      "differentia": [
-        {
-          "id": "arrangement"
-        },
-        {
-          "id": "element"
-        }
-      ],
+      "genus": "relational",
+      "differentia": ["arrangement", "element"],
       "source": "Gemini 3 pro"
     }
   },
@@ -1278,14 +822,8 @@
     "label": "Sequence",
     "definition": {
       "text": "A particular order in which related events follow each other.",
-      "genus": {
-        "id": "order"
-      },
-      "differentia": [
-        {
-          "id": "succession"
-        }
-      ],
+      "genus": "order",
+      "differentia": ["succession"],
       "source": "Gemini 3 pro"
     }
   },
@@ -1296,17 +834,8 @@
     "label": "Goal-Directedness",
     "definition": {
       "text": "The quality of being guided towards a specific end.",
-      "genus": {
-        "id": "quality"
-      },
-      "differentia": [
-        {
-          "id": "guidance"
-        },
-        {
-          "id": "goal"
-        }
-      ],
+      "genus": "quality",
+      "differentia": ["guidance", "goal"],
       "source": "Gemini 3 pro"
     }
   },
@@ -1317,14 +846,8 @@
     "label": "Selection Among Alternatives",
     "definition": {
       "text": "The act of choosing one option from multiple possibilities.",
-      "genus": {
-        "id": "selection"
-      },
-      "differentia": [
-        {
-          "id": "multiple-possibilities"
-        }
-      ],
+      "genus": "selection",
+      "differentia": ["multiple-possibilities"],
       "source": "Gemini 3 pro"
     }
   },
@@ -1335,17 +858,8 @@
     "label": "Systematic Practice",
     "definition": {
       "text": "Methodical and organized execution of an activity.",
-      "genus": {
-        "id": "practice"
-      },
-      "differentia": [
-        {
-          "id": "methodical"
-        },
-        {
-          "id": "organized"
-        }
-      ],
+      "genus": "practice",
+      "differentia": ["methodical", "organized"],
       "source": "Gemini 3 pro"
     }
   },
@@ -1356,14 +870,8 @@
     "label": "Skill-Based",
     "definition": {
       "text": "Dependent upon learned expertise.",
-      "genus": {
-        "id": "dependency"
-      },
-      "differentia": [
-        {
-          "id": "expertise"
-        }
-      ],
+      "genus": "dependency",
+      "differentia": ["expertise"],
       "source": "Gemini 3 pro"
     }
   },
@@ -1374,14 +882,8 @@
     "label": "Re-identification",
     "definition": {
       "text": "The act of identifying something again.",
-      "genus": {
-        "id": "identification"
-      },
-      "differentia": [
-        {
-          "id": "repetition"
-        }
-      ],
+      "genus": "identification",
+      "differentia": ["repetition"],
       "source": "Gemini 3 pro"
     }
   },
@@ -1392,17 +894,8 @@
     "label": "Validation",
     "definition": {
       "text": "The action of checking or proving the validity or accuracy of something.",
-      "genus": {
-        "id": "action"
-      },
-      "differentia": [
-        {
-          "id": "proof"
-        },
-        {
-          "id": "validity"
-        }
-      ],
+      "genus": "action",
+      "differentia": ["proof", "validity"],
       "source": "Gemini 3 pro"
     }
   },
@@ -1413,17 +906,8 @@
     "label": "Synthesis",
     "definition": {
       "text": "The combination of ideas to form a theory or system.",
-      "genus": {
-        "id": "combination"
-      },
-      "differentia": [
-        {
-          "id": "idea"
-        },
-        {
-          "id": "system-formation"
-        }
-      ],
+      "genus": "combination",
+      "differentia": ["idea", "system-formation"],
       "source": "Gemini 3 pro"
     }
   },
@@ -1434,17 +918,8 @@
     "label": "Unit Formation",
     "definition": {
       "text": "The process of treating a group of existents as a single entity.",
-      "genus": {
-        "id": "process"
-      },
-      "differentia": [
-        {
-          "id": "group"
-        },
-        {
-          "id": "single-entity"
-        }
-      ],
+      "genus": "process",
+      "differentia": ["group", "single-entity"],
       "source": "Gemini 3 pro"
     }
   },
@@ -1455,17 +930,8 @@
     "label": "Propositional",
     "definition": {
       "text": "Relating to or consisting of a statement or assertion.",
-      "genus": {
-        "id": "relational"
-      },
-      "differentia": [
-        {
-          "id": "statement"
-        },
-        {
-          "id": "assertion"
-        }
-      ],
+      "genus": "relational",
+      "differentia": ["statement", "assertion"],
       "source": "Gemini 3 pro"
     }
   },
@@ -1476,14 +942,8 @@
     "label": "Declarative",
     "definition": {
       "text": "Serving to make known or state something.",
-      "genus": {
-        "id": "functional"
-      },
-      "differentia": [
-        {
-          "id": "statement"
-        }
-      ],
+      "genus": "functional",
+      "differentia": ["statement"],
       "source": "Gemini 3 pro"
     }
   },
@@ -1494,17 +954,8 @@
     "label": "Symbolic Representation",
     "definition": {
       "text": "The use of symbols to signify ideas or qualities.",
-      "genus": {
-        "id": "representation"
-      },
-      "differentia": [
-        {
-          "id": "symbol"
-        },
-        {
-          "id": "signification"
-        }
-      ],
+      "genus": "representation",
+      "differentia": ["symbol", "signification"],
       "source": "Gemini 3 pro"
     }
   },
@@ -1515,17 +966,8 @@
     "label": "Mapping Rule",
     "definition": {
       "text": "A rule establishing a correspondence between elements.",
-      "genus": {
-        "id": "rule"
-      },
-      "differentia": [
-        {
-          "id": "correspondence"
-        },
-        {
-          "id": "element"
-        }
-      ],
+      "genus": "rule",
+      "differentia": ["correspondence", "element"],
       "source": "Gemini 3 pro"
     }
   },
@@ -1536,14 +978,8 @@
     "label": "Non-Volitional",
     "definition": {
       "text": "Occurring without conscious will.",
-      "genus": {
-        "id": "mode"
-      },
-      "differentia": [
-        {
-          "id": "absence-of-will"
-        }
-      ],
+      "genus": "mode",
+      "differentia": ["absence-of-will"],
       "source": "Gemini 3 pro"
     }
   },
@@ -1554,14 +990,8 @@
     "label": "Reflexive",
     "definition": {
       "text": "Performed as an automatic response.",
-      "genus": {
-        "id": "mode"
-      },
-      "differentia": [
-        {
-          "id": "automatic-response"
-        }
-      ],
+      "genus": "mode",
+      "differentia": ["automatic-response"],
       "source": "Gemini 3 pro"
     }
   },
@@ -1572,14 +1002,8 @@
     "label": "Target",
     "definition": {
       "text": "An objective or result towards which efforts are directed.",
-      "genus": {
-        "id": "objective"
-      },
-      "differentia": [
-        {
-          "id": "directed-effort"
-        }
-      ],
+      "genus": "objective",
+      "differentia": ["directed-effort"],
       "source": "Gemini 3 pro"
     }
   },
@@ -1590,14 +1014,8 @@
     "label": "Recipient",
     "definition": {
       "text": "A person or thing that receives something.",
-      "genus": {
-        "id": "entity"
-      },
-      "differentia": [
-        {
-          "id": "receiving"
-        }
-      ],
+      "genus": "entity",
+      "differentia": ["receiving"],
       "source": "Gemini 3 pro"
     }
   },
@@ -1608,14 +1026,8 @@
     "label": "Motion",
     "definition": {
       "text": "The action or process of moving or being moved.",
-      "genus": {
-        "id": "process"
-      },
-      "differentia": [
-        {
-          "id": "change-of-position"
-        }
-      ],
+      "genus": "process",
+      "differentia": ["change-of-position"],
       "source": "Gemini 3 pro"
     }
   },
@@ -1626,14 +1038,8 @@
     "label": "Change",
     "definition": {
       "text": "The act or instance of making or becoming different.",
-      "genus": {
-        "id": "process"
-      },
-      "differentia": [
-        {
-          "id": "difference"
-        }
-      ],
+      "genus": "process",
+      "differentia": ["difference"],
       "source": "Gemini 3 pro"
     }
   },
@@ -1644,14 +1050,8 @@
     "label": "Active Manifestation",
     "definition": {
       "text": "A demonstration of existence through action.",
-      "genus": {
-        "id": "manifestation"
-      },
-      "differentia": [
-        {
-          "id": "action"
-        }
-      ],
+      "genus": "manifestation",
+      "differentia": ["action"],
       "source": "Gemini 3 pro"
     }
   },
@@ -1662,17 +1062,8 @@
     "label": "Interest",
     "definition": {
       "text": "The state of wanting to know or learn about something or someone.",
-      "genus": {
-        "id": "mental-state"
-      },
-      "differentia": [
-        {
-          "id": "curiosity"
-        },
-        {
-          "id": "concern"
-        }
-      ],
+      "genus": "mental-state",
+      "differentia": ["curiosity", "concern"],
       "source": "Gemini 3 pro"
     }
   },
@@ -1683,14 +1074,8 @@
     "label": "Value Orientation",
     "definition": {
       "text": "The direction of interest towards a specific value.",
-      "genus": {
-        "id": "orientation"
-      },
-      "differentia": [
-        {
-          "id": "value"
-        }
-      ],
+      "genus": "orientation",
+      "differentia": ["value"],
       "source": "Gemini 3 pro"
     }
   },
@@ -1701,14 +1086,8 @@
     "label": "Conclusion Formation",
     "definition": {
       "text": "The process of arriving at a judgment.",
-      "genus": {
-        "id": "process"
-      },
-      "differentia": [
-        {
-          "id": "judgment"
-        }
-      ],
+      "genus": "process",
+      "differentia": ["judgment"],
       "source": "Gemini 3 pro"
     }
   },
@@ -1719,17 +1098,8 @@
     "label": "Normative",
     "definition": {
       "text": "Establishing, relating to, or deriving from a standard or norm.",
-      "genus": {
-        "id": "relational"
-      },
-      "differentia": [
-        {
-          "id": "standard"
-        },
-        {
-          "id": "norm"
-        }
-      ],
+      "genus": "relational",
+      "differentia": ["standard", "norm"],
       "source": "Gemini 3 pro"
     }
   },
@@ -1740,14 +1110,8 @@
     "label": "Pertaining to Right and Wrong",
     "definition": {
       "text": "Relating to the distinction between moral correctness and incorrectness.",
-      "genus": {
-        "id": "relational"
-      },
-      "differentia": [
-        {
-          "id": "moral-distinction"
-        }
-      ],
+      "genus": "relational",
+      "differentia": ["moral-distinction"],
       "source": "Gemini 3 pro"
     }
   },
@@ -1758,14 +1122,8 @@
     "label": "Interpersonal",
     "definition": {
       "text": "Occurring between people.",
-      "genus": {
-        "id": "relational"
-      },
-      "differentia": [
-        {
-          "id": "between-people"
-        }
-      ],
+      "genus": "relational",
+      "differentia": ["between-people"],
       "source": "Gemini 3 pro"
     }
   },
@@ -1776,14 +1134,8 @@
     "label": "Societal",
     "definition": {
       "text": "Relating to society or social relations.",
-      "genus": {
-        "id": "relational"
-      },
-      "differentia": [
-        {
-          "id": "society"
-        }
-      ],
+      "genus": "relational",
+      "differentia": ["society"],
       "source": "Gemini 3 pro"
     }
   },
@@ -1794,17 +1146,8 @@
     "label": "Impeding",
     "definition": {
       "text": "Delaying or preventing someone or something by obstructing them.",
-      "genus": {
-        "id": "action"
-      },
-      "differentia": [
-        {
-          "id": "delaying"
-        },
-        {
-          "id": "prevention"
-        }
-      ],
+      "genus": "action",
+      "differentia": ["delaying", "prevention"],
       "source": "Gemini 3 pro"
     }
   },
@@ -1815,14 +1158,8 @@
     "label": "Obstruction",
     "definition": {
       "text": "Something that blocks or closes up with an obstacle.",
-      "genus": {
-        "id": "entity"
-      },
-      "differentia": [
-        {
-          "id": "blocking"
-        }
-      ],
+      "genus": "entity",
+      "differentia": ["blocking"],
       "source": "Gemini 3 pro"
     }
   },
@@ -1833,17 +1170,8 @@
     "label": "Societal Organization",
     "definition": {
       "text": "The structure and arrangement of relationships within a society.",
-      "genus": {
-        "id": "structure"
-      },
-      "differentia": [
-        {
-          "id": "society"
-        },
-        {
-          "id": "arrangement"
-        }
-      ],
+      "genus": "structure",
+      "differentia": ["society", "arrangement"],
       "source": "Gemini 3 pro"
     }
   },
@@ -1854,14 +1182,8 @@
     "label": "Governance",
     "definition": {
       "text": "The action or manner of governing.",
-      "genus": {
-        "id": "action"
-      },
-      "differentia": [
-        {
-          "id": "governing"
-        }
-      ],
+      "genus": "action",
+      "differentia": ["governing"],
       "source": "Gemini 3 pro"
     }
   },
@@ -1872,14 +1194,8 @@
     "label": "Mimetic",
     "definition": {
       "text": "Characterized by imitation.",
-      "genus": {
-        "id": "characteristic"
-      },
-      "differentia": [
-        {
-          "id": "imitation"
-        }
-      ],
+      "genus": "characteristic",
+      "differentia": ["imitation"],
       "source": "Gemini 3 pro"
     }
   },
@@ -1890,17 +1206,8 @@
     "label": "Stylized Projection",
     "definition": {
       "text": "A presentation of reality transformed by specific artistic choices.",
-      "genus": {
-        "id": "presentation"
-      },
-      "differentia": [
-        {
-          "id": "stylization"
-        },
-        {
-          "id": "projection"
-        }
-      ],
+      "genus": "presentation",
+      "differentia": ["stylization", "projection"],
       "source": "Gemini 3 pro"
     }
   },
@@ -1911,14 +1218,8 @@
     "label": "Movable",
     "definition": {
       "text": "Capable of being moved.",
-      "genus": {
-        "id": "capability"
-      },
-      "differentia": [
-        {
-          "id": "movement"
-        }
-      ],
+      "genus": "capability",
+      "differentia": ["movement"],
       "source": "Gemini 3 pro"
     }
   },
@@ -1929,14 +1230,8 @@
     "label": "Habitation Utility",
     "definition": {
       "text": "Usefulness for the purpose of living or dwelling.",
-      "genus": {
-        "id": "utility"
-      },
-      "differentia": [
-        {
-          "id": "habitation"
-        }
-      ],
+      "genus": "utility",
+      "differentia": ["habitation"],
       "source": "Gemini 3 pro"
     }
   },
@@ -1947,14 +1242,8 @@
     "label": "Sensation",
     "definition": {
       "text": "A physical feeling or perception resulting from something that happens to or comes into contact with the body.",
-      "genus": {
-        "id": "perception"
-      },
-      "differentia": [
-        {
-          "id": "physical-feeling"
-        }
-      ],
+      "genus": "perception",
+      "differentia": ["physical-feeling"],
       "source": "Gemini 3 pro"
     }
   },
@@ -1965,14 +1254,8 @@
     "label": "Locomotion",
     "definition": {
       "text": "Movement or the ability to move from one place to another.",
-      "genus": {
-        "id": "ability"
-      },
-      "differentia": [
-        {
-          "id": "movement-between-places"
-        }
-      ],
+      "genus": "ability",
+      "differentia": ["movement-between-places"],
       "source": "Gemini 3 pro"
     }
   },
@@ -1983,17 +1266,8 @@
     "label": "Characteristic",
     "definition": {
       "text": "A feature or quality belonging typically to a person, place, or thing.",
-      "genus": {
-        "id": "quality"
-      },
-      "differentia": [
-        {
-          "id": "typical"
-        },
-        {
-          "id": "belonging-to"
-        }
-      ],
+      "genus": "quality",
+      "differentia": ["typical", "belonging-to"],
       "source": "Gemini 3 pro"
     }
   },
@@ -2004,17 +1278,8 @@
     "label": "Belonging to Entity",
     "definition": {
       "text": "The state of being a property or part of an entity.",
-      "genus": {
-        "id": "state"
-      },
-      "differentia": [
-        {
-          "id": "property"
-        },
-        {
-          "id": "entity"
-        }
-      ],
+      "genus": "state",
+      "differentia": ["property", "entity"],
       "source": "Gemini 3 pro"
     }
   },
@@ -2025,14 +1290,8 @@
     "label": "Particularity",
     "definition": {
       "text": "The quality of being individual.",
-      "genus": {
-        "id": "quality"
-      },
-      "differentia": [
-        {
-          "id": "individuality"
-        }
-      ],
+      "genus": "quality",
+      "differentia": ["individuality"],
       "source": "Gemini 3 pro"
     }
   },
@@ -2043,17 +1302,8 @@
     "label": "Systematic",
     "definition": {
       "text": "Done or acting according to a fixed plan or system.",
-      "genus": {
-        "id": "methodical"
-      },
-      "differentia": [
-        {
-          "id": "plan"
-        },
-        {
-          "id": "system"
-        }
-      ],
+      "genus": "methodical",
+      "differentia": ["plan", "system"],
       "source": "Gemini 3 pro"
     }
   },
@@ -2064,14 +1314,8 @@
     "label": "Goal-Directed",
     "definition": {
       "text": "Aimed at achieving a specific goal.",
-      "genus": {
-        "id": "oriented"
-      },
-      "differentia": [
-        {
-          "id": "goal"
-        }
-      ],
+      "genus": "oriented",
+      "differentia": ["goal"],
       "source": "Gemini 3 pro"
     }
   },
@@ -2082,17 +1326,8 @@
     "label": "Grasping Identity",
     "definition": {
       "text": "The mental act of recognizing what an entity is.",
-      "genus": {
-        "id": "mental-act"
-      },
-      "differentia": [
-        {
-          "id": "recognition"
-        },
-        {
-          "id": "identity"
-        }
-      ],
+      "genus": "mental-act",
+      "differentia": ["recognition", "identity"],
       "source": "Gemini 3 pro"
     }
   },
@@ -2103,17 +1338,8 @@
     "label": "Cognition",
     "definition": {
       "text": "The mental action or process of acquiring knowledge and understanding.",
-      "genus": {
-        "id": "mental-action"
-      },
-      "differentia": [
-        {
-          "id": "knowledge-acquisition"
-        },
-        {
-          "id": "understanding"
-        }
-      ],
+      "genus": "mental-action",
+      "differentia": ["knowledge-acquisition", "understanding"],
       "source": "Gemini 3 pro"
     }
   },
@@ -2124,14 +1350,8 @@
     "label": "Verbal",
     "definition": {
       "text": "Relating to or in the form of words.",
-      "genus": {
-        "id": "relational"
-      },
-      "differentia": [
-        {
-          "id": "word"
-        }
-      ],
+      "genus": "relational",
+      "differentia": ["word"],
       "source": "Gemini 3 pro"
     }
   },
@@ -2142,14 +1362,8 @@
     "label": "Communicative",
     "definition": {
       "text": "Relating to the conveyance or exchange of information.",
-      "genus": {
-        "id": "relational"
-      },
-      "differentia": [
-        {
-          "id": "information-exchange"
-        }
-      ],
+      "genus": "relational",
+      "differentia": ["information-exchange"],
       "source": "Gemini 3 pro"
     }
   },
@@ -2160,17 +1374,8 @@
     "label": "Interconnected",
     "definition": {
       "text": "Having all parts linked or connected.",
-      "genus": {
-        "id": "state"
-      },
-      "differentia": [
-        {
-          "id": "connection"
-        },
-        {
-          "id": "parts"
-        }
-      ],
+      "genus": "state",
+      "differentia": ["connection", "parts"],
       "source": "Gemini 3 pro"
     }
   },
@@ -2181,17 +1386,8 @@
     "label": "Functioning as Whole",
     "definition": {
       "text": "Operating as a single, unified entity.",
-      "genus": {
-        "id": "operation"
-      },
-      "differentia": [
-        {
-          "id": "unity"
-        },
-        {
-          "id": "entity"
-        }
-      ],
+      "genus": "operation",
+      "differentia": ["unity", "entity"],
       "source": "Gemini 3 pro"
     }
   },
@@ -2202,17 +1398,8 @@
     "label": "Responsive",
     "definition": {
       "text": "Reacting quickly and positively.",
-      "genus": {
-        "id": "reaction"
-      },
-      "differentia": [
-        {
-          "id": "quickness"
-        },
-        {
-          "id": "positivity"
-        }
-      ],
+      "genus": "reaction",
+      "differentia": ["quickness", "positivity"],
       "source": "Gemini 3 pro"
     }
   },
@@ -2223,14 +1410,8 @@
     "label": "Stimulus-Caused",
     "definition": {
       "text": "Resulting from a specific stimulus.",
-      "genus": {
-        "id": "causation"
-      },
-      "differentia": [
-        {
-          "id": "stimulus"
-        }
-      ],
+      "genus": "causation",
+      "differentia": ["stimulus"],
       "source": "Gemini 3 pro"
     }
   },
@@ -2241,14 +1422,8 @@
     "label": "Of Consciousness",
     "definition": {
       "text": "Pertaining to the faculty of consciousness.",
-      "genus": {
-        "id": "relational"
-      },
-      "differentia": [
-        {
-          "id": "consciousness"
-        }
-      ],
+      "genus": "relational",
+      "differentia": ["consciousness"],
       "source": "Gemini 3 pro"
     }
   },
@@ -2259,14 +1434,8 @@
     "label": "Temporal",
     "definition": {
       "text": "Relating to time.",
-      "genus": {
-        "id": "relational"
-      },
-      "differentia": [
-        {
-          "id": "time"
-        }
-      ],
+      "genus": "relational",
+      "differentia": ["time"],
       "source": "Gemini 3 pro"
     }
   },
@@ -2277,17 +1446,8 @@
     "label": "Fundamental",
     "definition": {
       "text": "Forming a necessary base or core.",
-      "genus": {
-        "id": "essential"
-      },
-      "differentia": [
-        {
-          "id": "base"
-        },
-        {
-          "id": "core"
-        }
-      ],
+      "genus": "essential",
+      "differentia": ["base", "core"],
       "source": "Gemini 3 pro"
     }
   },
@@ -2298,14 +1458,8 @@
     "label": "Foundational",
     "definition": {
       "text": "Underlying and supporting something.",
-      "genus": {
-        "id": "supporting"
-      },
-      "differentia": [
-        {
-          "id": "underlying"
-        }
-      ],
+      "genus": "supporting",
+      "differentia": ["underlying"],
       "source": "Gemini 3 pro"
     }
   },
@@ -2316,14 +1470,8 @@
     "label": "Situational",
     "definition": {
       "text": "Relating to or dependent on a set of circumstances.",
-      "genus": {
-        "id": "relational"
-      },
-      "differentia": [
-        {
-          "id": "circumstance"
-        }
-      ],
+      "genus": "relational",
+      "differentia": ["circumstance"],
       "source": "Gemini 3 pro"
     }
   },
@@ -2334,14 +1482,8 @@
     "label": "Arrangement of Existents",
     "definition": {
       "text": "The specific ordering of things that exist.",
-      "genus": {
-        "id": "ordering"
-      },
-      "differentia": [
-        {
-          "id": "existents"
-        }
-      ],
+      "genus": "ordering",
+      "differentia": ["existents"],
       "source": "Gemini 3 pro"
     }
   },
@@ -2352,17 +1494,8 @@
     "label": "Originating",
     "definition": {
       "text": "Creating or initiating something.",
-      "genus": {
-        "id": "action"
-      },
-      "differentia": [
-        {
-          "id": "creation"
-        },
-        {
-          "id": "initiation"
-        }
-      ],
+      "genus": "action",
+      "differentia": ["creation", "initiation"],
       "source": "Gemini 3 pro"
     }
   },
@@ -2373,14 +1506,8 @@
     "label": "Productive",
     "definition": {
       "text": "Producing or able to produce large amounts of goods or other commodities.",
-      "genus": {
-        "id": "quality"
-      },
-      "differentia": [
-        {
-          "id": "production"
-        }
-      ],
+      "genus": "quality",
+      "differentia": ["production"],
       "source": "Gemini 3 pro"
     }
   },
@@ -2391,14 +1518,8 @@
     "label": "Man-Made",
     "definition": {
       "text": "Made or caused by human beings.",
-      "genus": {
-        "id": "origin"
-      },
-      "differentia": [
-        {
-          "id": "human"
-        }
-      ],
+      "genus": "origin",
+      "differentia": ["human"],
       "source": "Gemini 3 pro"
     }
   },
@@ -2409,17 +1530,8 @@
     "label": "Biological Process",
     "definition": {
       "text": "A process vital for a living organism to live.",
-      "genus": {
-        "id": "process"
-      },
-      "differentia": [
-        {
-          "id": "life"
-        },
-        {
-          "id": "biology"
-        }
-      ],
+      "genus": "process",
+      "differentia": ["life", "biology"],
       "source": "Gemini 3 pro"
     }
   },
@@ -2430,17 +1542,8 @@
     "label": "Self-Sustaining",
     "definition": {
       "text": "Able to continue in a healthy state without outside assistance.",
-      "genus": {
-        "id": "capability"
-      },
-      "differentia": [
-        {
-          "id": "sustenance"
-        },
-        {
-          "id": "independence"
-        }
-      ],
+      "genus": "capability",
+      "differentia": ["sustenance", "independence"],
       "source": "Gemini 3 pro"
     }
   },
@@ -2451,17 +1554,8 @@
     "label": "Distinct",
     "definition": {
       "text": "Recognizably different in nature from something else.",
-      "genus": {
-        "id": "quality"
-      },
-      "differentia": [
-        {
-          "id": "difference"
-        },
-        {
-          "id": "recognizability"
-        }
-      ],
+      "genus": "quality",
+      "differentia": ["difference", "recognizability"],
       "source": "Gemini 3 pro"
     }
   },
@@ -2472,17 +1566,8 @@
     "label": "Unitary",
     "definition": {
       "text": "Forming a single or uniform entity.",
-      "genus": {
-        "id": "quality"
-      },
-      "differentia": [
-        {
-          "id": "unity"
-        },
-        {
-          "id": "uniformity"
-        }
-      ],
+      "genus": "quality",
+      "differentia": ["unity", "uniformity"],
       "source": "Gemini 3 pro"
     }
   },
@@ -2493,14 +1578,8 @@
     "label": "Separate",
     "definition": {
       "text": "Forming or viewed as a unit apart or by itself.",
-      "genus": {
-        "id": "quality"
-      },
-      "differentia": [
-        {
-          "id": "apartness"
-        }
-      ],
+      "genus": "quality",
+      "differentia": ["apartness"],
       "source": "Gemini 3 pro"
     }
   },
@@ -2511,14 +1590,8 @@
     "label": "Composition of Matter",
     "definition": {
       "text": "The makeup of a physical entity.",
-      "genus": {
-        "id": "composition"
-      },
-      "differentia": [
-        {
-          "id": "matter"
-        }
-      ],
+      "genus": "composition",
+      "differentia": ["matter"],
       "source": "Gemini 3 pro"
     }
   },
@@ -2529,17 +1602,8 @@
     "label": "Physical Presence",
     "definition": {
       "text": "The state of existing in a physical form.",
-      "genus": {
-        "id": "state"
-      },
-      "differentia": [
-        {
-          "id": "physicality"
-        },
-        {
-          "id": "existence"
-        }
-      ],
+      "genus": "state",
+      "differentia": ["physicality", "existence"],
       "source": "Gemini 3 pro"
     }
   }

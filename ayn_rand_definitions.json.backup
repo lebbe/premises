@@ -30,17 +30,8 @@
     "label": "Consciousness",
     "definition": {
       "text": "The faculty of perceiving that which exists.",
-      "genus": {
-        "id": "faculty"
-      },
-      "differentia": [
-        {
-          "id": "perception"
-        },
-        {
-          "id": "existence"
-        }
-      ],
+      "genus": "faculty",
+      "differentia": ["perception", "existence"],
       "source": "cite: 50, 51, 52, 53"
     }
   },
@@ -51,20 +42,8 @@
     "label": "Matter",
     "definition": {
       "text": "The metaphysically given constituent element of the universe which is indestructible and changes its forms.",
-      "genus": {
-        "id": "constituent-element"
-      },
-      "differentia": [
-        {
-          "id": "indestructibility"
-        },
-        {
-          "id": "identity"
-        },
-        {
-          "id": "volition"
-        }
-      ],
+      "genus": "constituent-element",
+      "differentia": ["indestructibility", "identity", "volition"],
       "source": "cite: 60, 61, 63, 64"
     }
   },
@@ -75,17 +54,8 @@
     "label": "Life",
     "definition": {
       "text": "A process of self-sustaining and self-generated action.",
-      "genus": {
-        "id": "process"
-      },
-      "differentia": [
-        {
-          "id": "self-sustaining-action"
-        },
-        {
-          "id": "self-generated-action"
-        }
-      ],
+      "genus": "process",
+      "differentia": ["self-sustaining-action", "self-generated-action"],
       "source": "cite: 68, 69, 70, 71"
     }
   },
@@ -96,17 +66,8 @@
     "label": "Soul (Spirit)",
     "definition": {
       "text": "That which you call your soul or spirit is your consciousness.",
-      "genus": {
-        "id": "consciousness"
-      },
-      "differentia": [
-        {
-          "id": "self"
-        },
-        {
-          "id": "personality"
-        }
-      ],
+      "genus": "consciousness",
+      "differentia": ["self", "personality"],
       "source": "cite: 78, 79, 80, 81"
     }
   },
@@ -117,17 +78,8 @@
     "label": "Free Will",
     "definition": {
       "text": "The choice to think or not.",
-      "genus": {
-        "id": "choice"
-      },
-      "differentia": [
-        {
-          "id": "thought"
-        },
-        {
-          "id": "focus"
-        }
-      ],
+      "genus": "choice",
+      "differentia": ["thought", "focus"],
       "source": "cite: 84, 85, 86, 87"
     }
   },
@@ -138,20 +90,8 @@
     "label": "Reason",
     "definition": {
       "text": "The faculty that identifies and integrates the material provided by man’s senses.",
-      "genus": {
-        "id": "faculty"
-      },
-      "differentia": [
-        {
-          "id": "identification"
-        },
-        {
-          "id": "integration"
-        },
-        {
-          "id": "sensory-material"
-        }
-      ],
+      "genus": "faculty",
+      "differentia": ["identification", "integration", "sensory-material"],
       "source": "cite: 95, 96, 97, 98"
     }
   },
@@ -162,17 +102,8 @@
     "label": "Logic",
     "definition": {
       "text": "The art of non-contradictory identification.",
-      "genus": {
-        "id": "art-method"
-      },
-      "differentia": [
-        {
-          "id": "non-contradiction"
-        },
-        {
-          "id": "identification"
-        }
-      ],
+      "genus": "art-method",
+      "differentia": ["non-contradiction", "identification"],
       "source": "cite: 104, 105, 106, 107"
     }
   },
@@ -183,20 +114,8 @@
     "label": "Objectivity",
     "definition": {
       "text": "The recognition of the fact that consciousness must acquire knowledge of reality by certain means (reason) in accordance with certain rules (logic).",
-      "genus": {
-        "id": "recognition"
-      },
-      "differentia": [
-        {
-          "id": "reason"
-        },
-        {
-          "id": "logic"
-        },
-        {
-          "id": "knowledge-acquisition"
-        }
-      ],
+      "genus": "recognition",
+      "differentia": ["reason", "logic", "knowledge-acquisition"],
       "source": "cite: 112, 113, 115, 116"
     }
   },
@@ -207,19 +126,11 @@
     "label": "Concept",
     "definition": {
       "text": "A mental integration of two or more units possessing the same distinguishing characteristic(s), with their particular measurements omitted.",
-      "genus": {
-        "id": "mental-integration"
-      },
+      "genus": "mental-integration",
       "differentia": [
-        {
-          "id": "unit"
-        },
-        {
-          "id": "distinguishing-characteristic"
-        },
-        {
-          "id": "measurement-omission"
-        }
+        "unit",
+        "distinguishing-characteristic",
+        "measurement-omission"
       ],
       "source": "cite: 120, 121, 123, 124"
     }
@@ -231,20 +142,8 @@
     "label": "Definition",
     "definition": {
       "text": "A statement that identifies the nature of the units subsumed under a concept.",
-      "genus": {
-        "id": "statement"
-      },
-      "differentia": [
-        {
-          "id": "nature"
-        },
-        {
-          "id": "unit"
-        },
-        {
-          "id": "concept"
-        }
-      ],
+      "genus": "statement",
+      "differentia": ["nature", "unit", "concept"],
       "source": "cite: 130, 131, 132"
     }
   },
@@ -255,20 +154,8 @@
     "label": "Language",
     "definition": {
       "text": "A code of visual-auditory symbols that serves the psycho-epistemological function of converting concepts into the mental equivalent of concretes.",
-      "genus": {
-        "id": "code"
-      },
-      "differentia": [
-        {
-          "id": "concept"
-        },
-        {
-          "id": "mental-concrete"
-        },
-        {
-          "id": "psycho-epistemology"
-        }
-      ],
+      "genus": "code",
+      "differentia": ["concept", "mental-concrete", "psycho-epistemology"],
       "source": "cite: 136, 137, 139, 140"
     }
   },
@@ -279,17 +166,8 @@
     "label": "Emotion",
     "definition": {
       "text": "An automatic response proceeding from an evaluation of an existent.",
-      "genus": {
-        "id": "automatic-response"
-      },
-      "differentia": [
-        {
-          "id": "evaluation"
-        },
-        {
-          "id": "existent"
-        }
-      ],
+      "genus": "automatic-response",
+      "differentia": ["evaluation", "existent"],
       "source": "cite: 151, 152, 153, 154"
     }
   },
@@ -300,23 +178,8 @@
     "label": "Ethics",
     "definition": {
       "text": "A code of values to guide man’s choices and actions—the choices and actions that determine the purpose and the course of his life.",
-      "genus": {
-        "id": "code"
-      },
-      "differentia": [
-        {
-          "id": "value"
-        },
-        {
-          "id": "choice"
-        },
-        {
-          "id": "purpose"
-        },
-        {
-          "id": "life"
-        }
-      ],
+      "genus": "code",
+      "differentia": ["value", "choice", "purpose", "life"],
       "source": "cite: 165, 166, 168, 169"
     }
   },
@@ -327,20 +190,8 @@
     "label": "Value",
     "definition": {
       "text": "That which one acts to gain and/or keep.",
-      "genus": {
-        "id": "object-of-action"
-      },
-      "differentia": [
-        {
-          "id": "action"
-        },
-        {
-          "id": "gain"
-        },
-        {
-          "id": "keep"
-        }
-      ],
+      "genus": "object-of-action",
+      "differentia": ["action", "gain", "keep"],
       "source": "cite: 172, 173, 174, 175"
     }
   },
@@ -351,20 +202,8 @@
     "label": "Virtue",
     "definition": {
       "text": "The action by which one gains and keeps values.",
-      "genus": {
-        "id": "action"
-      },
-      "differentia": [
-        {
-          "id": "value"
-        },
-        {
-          "id": "gain"
-        },
-        {
-          "id": "keep"
-        }
-      ],
+      "genus": "action",
+      "differentia": ["value", "gain", "keep"],
       "source": "cite: 179, 180, 181, 182"
     }
   },
@@ -375,14 +214,8 @@
     "label": "Selfishness",
     "definition": {
       "text": "Concern with one’s own interests.",
-      "genus": {
-        "id": "concern"
-      },
-      "differentia": [
-        {
-          "id": "self-interest"
-        }
-      ],
+      "genus": "concern",
+      "differentia": ["self-interest"],
       "source": "cite: 184, 185, 186, 187"
     }
   },
@@ -393,23 +226,8 @@
     "label": "Rationality",
     "definition": {
       "text": "Recognition and acceptance of reason as the only source of knowledge, judge of values, and guide to action.",
-      "genus": {
-        "id": "recognition"
-      },
-      "differentia": [
-        {
-          "id": "reason"
-        },
-        {
-          "id": "knowledge"
-        },
-        {
-          "id": "value"
-        },
-        {
-          "id": "action"
-        }
-      ],
+      "genus": "recognition",
+      "differentia": ["reason", "knowledge", "value", "action"],
       "source": "cite: 201"
     }
   },
@@ -420,17 +238,8 @@
     "label": "Justice",
     "definition": {
       "text": "The act of judging character and actions based exclusively on factual evidence and objective moral criteria.",
-      "genus": {
-        "id": "judgment"
-      },
-      "differentia": [
-        {
-          "id": "evidence"
-        },
-        {
-          "id": "objective-moral-criteria"
-        }
-      ],
+      "genus": "judgment",
+      "differentia": ["evidence", "objective-moral-criteria"],
       "source": "cite: 23, 201"
     }
   },
@@ -441,20 +250,8 @@
     "label": "Individual Rights",
     "definition": {
       "text": "A moral principle defining and sanctioning a man’s freedom of action in a social context.",
-      "genus": {
-        "id": "moral-principle"
-      },
-      "differentia": [
-        {
-          "id": "freedom"
-        },
-        {
-          "id": "action"
-        },
-        {
-          "id": "social-context"
-        }
-      ],
+      "genus": "moral-principle",
+      "differentia": ["freedom", "action", "social-context"],
       "source": "cite: 206, 207, 208, 209"
     }
   },
@@ -465,20 +262,8 @@
     "label": "Property Rights",
     "definition": {
       "text": "The right to gain, to keep, to use and to dispose of material values.",
-      "genus": {
-        "id": "individual-rights"
-      },
-      "differentia": [
-        {
-          "id": "material-value"
-        },
-        {
-          "id": "gain"
-        },
-        {
-          "id": "disposal"
-        }
-      ],
+      "genus": "individual-rights",
+      "differentia": ["material-value", "gain", "disposal"],
       "source": "cite: 217, 218, 219, 220"
     }
   },
@@ -489,14 +274,8 @@
     "label": "Freedom (Political)",
     "definition": {
       "text": "The absence of physical coercion.",
-      "genus": {
-        "id": "social-condition"
-      },
-      "differentia": [
-        {
-          "id": "physical-force"
-        }
-      ],
+      "genus": "social-condition",
+      "differentia": ["physical-force"],
       "source": "cite: 223, 224, 225, 226"
     }
   },
@@ -507,20 +286,8 @@
     "label": "Physical Force",
     "definition": {
       "text": "The act of interfering with a man's judgment or action by physical means.",
-      "genus": {
-        "id": "interference"
-      },
-      "differentia": [
-        {
-          "id": "judgment"
-        },
-        {
-          "id": "action"
-        },
-        {
-          "id": "physical-means"
-        }
-      ],
+      "genus": "interference",
+      "differentia": ["judgment", "action", "physical-means"],
       "source": "cite: 229, 230"
     }
   },
@@ -531,17 +298,8 @@
     "label": "Capitalism",
     "definition": {
       "text": "A social system based on the recognition of individual rights, including property rights, in which all property is privately owned.",
-      "genus": {
-        "id": "social-system"
-      },
-      "differentia": [
-        {
-          "id": "individual-rights"
-        },
-        {
-          "id": "private-property"
-        }
-      ],
+      "genus": "social-system",
+      "differentia": ["individual-rights", "private-property"],
       "source": "cite: 235, 236, 238, 239"
     }
   },
@@ -552,14 +310,8 @@
     "label": "Statism",
     "definition": {
       "text": "A social system based on the principle that man’s life belongs to the state.",
-      "genus": {
-        "id": "social-system"
-      },
-      "differentia": [
-        {
-          "id": "state-ownership-of-life"
-        }
-      ],
+      "genus": "social-system",
+      "differentia": ["state-ownership-of-life"],
       "source": "cite: 249, 250, 251, 252"
     }
   },
@@ -570,17 +322,8 @@
     "label": "Art",
     "definition": {
       "text": "A selective re-creation of reality according to an artist’s metaphysical value-judgments.",
-      "genus": {
-        "id": "re-creation-of-reality"
-      },
-      "differentia": [
-        {
-          "id": "selectivity"
-        },
-        {
-          "id": "metaphysical-value-judgment"
-        }
-      ],
+      "genus": "re-creation-of-reality",
+      "differentia": ["selectivity", "metaphysical-value-judgment"],
       "source": "cite: 269, 270, 271, 272"
     }
   },
@@ -591,17 +334,8 @@
     "label": "Table",
     "definition": {
       "text": "An item of furniture, consisting of a flat, level surface and supports, intended to support other, smaller objects.",
-      "genus": {
-        "id": "furniture"
-      },
-      "differentia": [
-        {
-          "id": "flat-surface"
-        },
-        {
-          "id": "support"
-        }
-      ],
+      "genus": "furniture",
+      "differentia": ["flat-surface", "support"],
       "source": "cite: 292, 293, 295, 296"
     },
     "perceptualRoots": ["faculty:sight", "faculty:touch"]
@@ -613,14 +347,8 @@
     "label": "Man",
     "definition": {
       "text": "A rational animal.",
-      "genus": {
-        "id": "animal"
-      },
-      "differentia": [
-        {
-          "id": "reason"
-        }
-      ],
+      "genus": "animal",
+      "differentia": ["reason"],
       "source": "cite: 308, 309, 310, 311"
     },
     "perceptualRoots": ["faculty:sight", "faculty:hearing"]
