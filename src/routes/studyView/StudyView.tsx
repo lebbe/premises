@@ -1352,7 +1352,8 @@ const StudyView: React.FC = () => {
             </p>
             <div className={styles.warningCard}>
               <p>
-                💾 <strong>Tip:</strong> Export your work first if you don't want to lose any data.
+                💾 <strong>Tip:</strong> Export your work first if you don't
+                want to lose any data.
               </p>
             </div>
             <p className={styles.warningText}>

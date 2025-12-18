@@ -326,7 +326,7 @@ const AddConceptDialog: React.FC<AddConceptDialogProps> = ({
 
     // Store the universe for future use
     setLastUsedUniverse(formData.universeId)
-    
+
     onSave(newConcept)
 
     // Reset form

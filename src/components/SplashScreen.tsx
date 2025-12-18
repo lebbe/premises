@@ -123,8 +123,7 @@ const SplashScreen: React.FC<SplashScreenProps> = ({
         <div className={styles.section}>
           <h2 className={styles.sectionTitle}>Rules for Valid Definitions</h2>
           <p className={styles.description}>
-            A correct definition (the description on the concept) must meet
-            three criteria:
+            A correct definition must meet three criteria:
           </p>
 
           <div className={styles.definitionBox}>
@@ -145,10 +144,19 @@ const SplashScreen: React.FC<SplashScreenProps> = ({
           <div className={styles.definitionBox}>
             <div className={styles.definitionTitle}>As General as Possible</div>
             <div className={styles.definitionText}>
-              It must state the Fundamental Characteristic. This is the single
-              trait that causes or explains the greatest number of other
-              characteristics for the items in the concept.
+              The differentia should state the Fundamental Characteristic of
+              this member of the genus. This is the single trait that causes or
+              explains the greatest number of other characteristics for the
+              items in this concept.
             </div>
+          </div>
+
+          <div className={styles.section}>
+            Bear in mind that there is often several ways to define a concept
+            correctly. For instance, a human can be defined as a "rational
+            animal" or as a "rational mammal". Both definitions are valid as
+            they meet all the criteria. But we tend to go with "rational animal"
+            because that's how Aristotle originally defined it.
           </div>
         </div>
 
@@ -215,13 +223,14 @@ const SplashScreen: React.FC<SplashScreenProps> = ({
         <div className={styles.githubContributionSection}>
           <h2 className={styles.sectionTitle}>Help Us Develop Premises</h2>
           <p className={styles.description}>
-            Premises is an open-source project that benefits from community contributions.
-            Whether you're a developer, philosopher, or educator, your input can help improve this tool.
+            Premises is an open-source project that benefits from community
+            contributions. Whether you're a developer, philosopher, or educator,
+            your input can help improve this tool.
           </p>
           <div className={styles.githubSection}>
-            <a 
-              href="https://github.com/lebbe/premises" 
-              target="_blank" 
+            <a
+              href="https://github.com/lebbe/premises"
+              target="_blank"
               rel="noopener noreferrer"
               className={styles.githubLink}
             >
