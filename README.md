@@ -6,13 +6,17 @@ _Check Your Premises_
 
 Premises is a concept visualization and study tool based on Aristotelian/Objectivist principles of concept formation and definition. It provides an interactive environment for exploring conceptual relationships, focusing on the hierarchical structure of knowledge through genus-differentia definitions.
 
+![A filing cabinet of vertebrates, where the "mammals" drawer is opened, and the Dog folder is revealed, with the definition "Dog: A domesticated canine."](public/filing_cabinet.jpg)
+
+_The Filing Cabinet Metaphor: The folder holds everything we know about dogs, while the definition is the shortest description we can create that separates dogs from all other concepts. Definitions are created by humans to serve a purpose, and it might be necessary to change them in the future: If we domesticate foxes, dogs are not the only domesticated canine anymore!_
+
 ## Live Application
 
 **Experience the app in action: [https://lebbe.github.io/premises](https://lebbe.github.io/premises)**
 
 ![Concept Graph Example](art.png)
 
-_Example: Exploring the concept of "Art" and its relationships. Try it yourself at [https://lebbe.github.io/premises#concept=art](https://lebbe.github.io/premises#concept=art)_
+_Example: Exploring the concept of "Art" and its relationships. Try it yourself at [https://lebbe.github.io/premises#concepts=art](https://lebbe.github.io/premises#concepts=art)_
 
 ## StudyView Features
 
