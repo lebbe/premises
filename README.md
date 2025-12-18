@@ -14,7 +14,7 @@ _The Filing Cabinet Metaphor: The folder holds everything we know about dogs, wh
 
 **Experience the app in action: [https://lebbe.github.io/premises](https://lebbe.github.io/premises)**
 
-![Concept Graph Example](art.png)
+![Concept Graph Example](doc/imgs/definition_dog.png)
 
 _Example: Exploring the concept of "Art" and its relationships. Try it yourself at [https://lebbe.github.io/premises#concepts=art](https://lebbe.github.io/premises#concepts=art)_
 
@@ -45,7 +45,6 @@ The StudyView is the primary interface for focused conceptual study and explorat
 
 - **Concept Info Panel**: Detailed view of selected concepts showing definitions, sources, and relationships
 - **Focus Navigation**: Click through conceptual networks via genus/differentia links
-- **Multi-Universe Support**: Explore concepts across different philosophical and scientific domains
 - **Real-time Search**: Dropdown suggestions with focus-triggered display
 
 ### Study Workflow
