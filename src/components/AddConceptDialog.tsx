@@ -15,6 +15,26 @@ interface AddConceptDialogProps {
 const commonTypes = ['concept', 'axiomatic concept']
 const commonSenses = ['vision', 'hearing', 'touch', 'smell', 'taste']
 
+// Helper to get last used universe from localStorage
+const getLastUsedUniverse = (): string => {
+  try {
+    return localStorage.getItem('premises_lastUsedUniverse') || ''
+  } catch {
+    return ''
+  }
+}
+
+// Helper to store last used universe in localStorage
+const setLastUsedUniverse = (universeId: string): void => {
+  try {
+    if (universeId.trim()) {
+      localStorage.setItem('premises_lastUsedUniverse', universeId.trim())
+    }
+  } catch {
+    // Silently fail if localStorage is not available
+  }
+}
+
 const AddConceptDialog: React.FC<AddConceptDialogProps> = ({
   isOpen,
   onClose,
@@ -54,8 +74,8 @@ const AddConceptDialog: React.FC<AddConceptDialogProps> = ({
   const getInitialFormData = () => ({
     id: '',
     label: '',
-    universeId: '',
-    type: '',
+    universeId: getLastUsedUniverse(),
+    type: 'concept',
     definitionText: '',
     genus: { id: '', label: '' },
     differentia: [{ id: '', label: '' }],
@@ -304,6 +324,9 @@ const AddConceptDialog: React.FC<AddConceptDialogProps> = ({
         .map((p) => p.trim()),
     }
 
+    // Store the universe for future use
+    setLastUsedUniverse(formData.universeId)
+    
     onSave(newConcept)
 
     // Reset form
