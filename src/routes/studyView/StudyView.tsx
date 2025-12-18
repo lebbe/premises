@@ -34,6 +34,14 @@ import {
 } from '../../utils/graphData'
 import type { ConceptData, LayoutOptions } from '../../utils/graphData'
 import type { ImportResult } from '../../utils/export'
+import {
+  loadUserConcepts,
+  saveUserConcepts,
+  loadImportedUniverses,
+  saveImportedUniverses,
+  clearAllStorage,
+} from '../../utils/localStorage'
+import { PREDEFINED_UNIVERSES } from '../../utils/constants'
 import styles from './StudyView.module.css'
 
 const nodeTypes = {
@@ -294,21 +302,37 @@ const StudyView: React.FC = () => {
   useEffect(() => {
     const loadData = async () => {
       try {
-        const conceptsData = await importConceptsData([
-          'Ayn Rand',
-          'LLM layer genus 1',
-          'LLM layer genus 2',
-          'LLM layer differentia 1',
-          'LLM layer differentia 2',
-        ])
-        setAllConcepts(conceptsData)
+        // Load predefined datasets
+        const conceptsData = await importConceptsData([...PREDEFINED_UNIVERSES])
+
+        // Load user-defined concepts from localStorage
+        const userConcepts = loadUserConcepts()
+
+        // Merge concepts, with user concepts taking precedence
+        const conceptMap = new Map(conceptsData.map((c) => [c.id, c]))
+        userConcepts.forEach((concept) => {
+          conceptMap.set(concept.id, concept) // User concepts override predefined ones
+        })
+
+        const allConceptsData = Array.from(conceptMap.values())
+        setAllConcepts(allConceptsData)
 
         // Extract unique universes
         const universes = Array.from(
-          new Set(conceptsData.map((c: ConceptData) => c.universeId)),
+          new Set(allConceptsData.map((c: ConceptData) => c.universeId)),
         )
         setAvailableUniverses(universes)
-        setSelectedUniverses(universes) // Select all by default
+
+        // Load previously imported universes or select all by default
+        const importedUniverses = loadImportedUniverses()
+        if (importedUniverses.length > 0) {
+          // Use previously imported/selected universes
+          setSelectedUniverses(importedUniverses)
+        } else {
+          // First time - select all by default
+          setSelectedUniverses(universes)
+          saveImportedUniverses(universes)
+        }
       } catch (error) {
         console.error('Failed to load concepts:', error)
       }
@@ -852,21 +876,35 @@ const StudyView: React.FC = () => {
   }, [selectedConcepts])
 
   const handleUniverseToggle = (universeId: string) => {
-    setSelectedUniverses((prev) =>
-      prev.includes(universeId)
+    setSelectedUniverses((prev) => {
+      const updated = prev.includes(universeId)
         ? prev.filter((id) => id !== universeId)
-        : [...prev, universeId],
-    )
+        : [...prev, universeId]
+
+      // Save updated selection to localStorage
+      saveImportedUniverses(updated)
+
+      return updated
+    })
   }
 
   const handleAddConcept = (newConcept: ConceptData) => {
     // Add to allConcepts array
-    setAllConcepts((prev) => [...prev, newConcept])
+    setAllConcepts((prev) => {
+      const updated = [...prev, newConcept]
+      // Save to localStorage whenever a new concept is added
+      saveUserConcepts(updated)
+      return updated
+    })
 
     // Add universe to available list if it's new
     if (!availableUniverses.includes(newConcept.universeId)) {
       setAvailableUniverses((prev) => [...prev, newConcept.universeId])
-      setSelectedUniverses((prev) => [...prev, newConcept.universeId])
+      setSelectedUniverses((prev) => {
+        const updated = [...prev, newConcept.universeId]
+        saveImportedUniverses(updated)
+        return updated
+      })
     }
 
     // Close dialog
@@ -920,6 +958,10 @@ const StudyView: React.FC = () => {
         // Always return the concept (unchanged if no updates needed)
         return concept
       })
+
+      // Save to localStorage whenever a concept is edited
+      saveUserConcepts(updatedConcepts)
+
       return updatedConcepts
     })
 
@@ -940,6 +982,9 @@ const StudyView: React.FC = () => {
     // Update concepts
     setAllConcepts(updatedConcepts)
 
+    // Save to localStorage after importing
+    saveUserConcepts(updatedConcepts)
+
     // Update universes if new ones were added
     if (importResult.newUniverses.length > 0) {
       setAvailableUniverses((prev) => {
@@ -950,7 +995,9 @@ const StudyView: React.FC = () => {
       // Auto-select new universes
       setSelectedUniverses((prev) => {
         const updated = [...prev, ...importResult.newUniverses]
-        return Array.from(new Set(updated))
+        const uniqueUpdated = Array.from(new Set(updated))
+        saveImportedUniverses(uniqueUpdated)
+        return uniqueUpdated
       })
     }
 
@@ -974,6 +1021,9 @@ const StudyView: React.FC = () => {
     setAvailableUniverses([])
     setSelectedUniverses([])
     setSelectedConcepts([])
+
+    // Clear localStorage
+    clearAllStorage()
 
     // Clear the URL hash to reset to default state
     window.location.hash = ''
