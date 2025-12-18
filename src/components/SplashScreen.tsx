@@ -46,48 +46,110 @@ const SplashScreen: React.FC<SplashScreenProps> = ({
         <p className={styles.subtitle}>Check Your Premises</p>
 
         <div className={styles.section}>
-          <h2 className={styles.sectionTitle}>What is Premises?</h2>
+          <h2 className={styles.sectionTitle}>
+            Premises: Concept Visualization & Study Tool
+          </h2>
           <p className={styles.description}>
-            Premises is a concept visualization and study tool based on
-            Aristotelian/Objectivist principles of concept formation and
-            definition. It provides an interactive environment for exploring
-            conceptual relationships, focusing on the hierarchical structure of
-            knowledge through genus-differentia definitions.
+            Premises is a study tool based on Aristotelian and Objectivist
+            principles of concept formation. It maps the hierarchical structure
+            of knowledge using proper definitions.
           </p>
         </div>
 
         <div className={styles.section}>
-          <h2 className={styles.sectionTitle}>
-            Understanding Genus-Differentia Definitions
-          </h2>
+          <h2 className={styles.sectionTitle}>The Genus-Differentia Method</h2>
+          <p className={styles.description}>
+            This method is the standard for creating objective definitions. It
+            locates a concept within a hierarchy and isolates its essential
+            nature.
+          </p>
 
           <div className={styles.definitionBox}>
             <div className={styles.definitionTitle}>Genus</div>
             <div className={styles.definitionText}>
-              The genus is the broader category or parent concept that a concept
-              belongs to. It represents what the concept has in common with
-              other related concepts. For example, "animal" is the genus of
-              "dog".
+              The broader category or "parent" concept. It represents the
+              essential commonality with other related concepts. To define
+              efficiently, you must use the proximate (nearest) genus. For
+              example, "canine" is the genus of "dog".
             </div>
           </div>
 
           <div className={styles.definitionBox}>
             <div className={styles.definitionTitle}>Differentia</div>
             <div className={styles.definitionText}>
-              The differentia are the distinguishing characteristics that
-              separate a concept from others in its genus. These are the
-              specific features that make the concept unique within its
-              category. For example, "domesticated mammal with four legs that
-              barks" differentiates "dog" from other animals.
+              The distinguishing characteristic that separates the concept from
+              all others within that genus, but which also explains as many
+              characteristics as possible. For example, "domesticated"
+              differentiates "dog" from other canines.
             </div>
           </div>
 
-          <p className={styles.description}>
+          <div className={styles.section}>
             Together, the genus and differentia form a complete definition that
             integrates a concept into the hierarchical structure of knowledge,
             showing both its connections to broader categories and its unique
             identifying features.
+          </div>
+        </div>
+
+        <div className={styles.section} style={{ display: 'none' }}>
+          <h2 className={styles.sectionTitle}>The File Folder Allegory</h2>
+
+          <div className={styles.definitionBox}>
+            <div className={styles.definitionTitle}>The Folder (Concept)</div>
+            <div className={styles.definitionText}>
+              The container holding specific items (referents) from reality.
+            </div>
+          </div>
+
+          <div className={styles.definitionBox}>
+            <div className={styles.definitionTitle}>The Label (Word)</div>
+            <div className={styles.definitionText}>
+              The symbol used to identify and retrieve the folder.
+            </div>
+          </div>
+
+          <div className={styles.definitionBox}>
+            <div className={styles.definitionTitle}>
+              The Description (Definition)
+            </div>
+            <div className={styles.definitionText}>
+              The text written on the folder that identifies exactly what
+              belongs inside.
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.section}>
+          <h2 className={styles.sectionTitle}>Rules for Valid Definitions</h2>
+          <p className={styles.description}>
+            A correct definition (the description on the concept) must meet
+            three criteria:
           </p>
+
+          <div className={styles.definitionBox}>
+            <div className={styles.definitionTitle}>Unique to the concept</div>
+            <div className={styles.definitionText}>
+              It must distinguish the concept from all others.
+            </div>
+          </div>
+
+          <div className={styles.definitionBox}>
+            <div className={styles.definitionTitle}>As Short as Possible</div>
+            <div className={styles.definitionText}>
+              It serves as a tool for mental economy. It is an identification
+              code, not a catalog listing everything we know about the concept.
+            </div>
+          </div>
+
+          <div className={styles.definitionBox}>
+            <div className={styles.definitionTitle}>As General as Possible</div>
+            <div className={styles.definitionText}>
+              It must state the Fundamental Characteristic. This is the single
+              trait that causes or explains the greatest number of other
+              characteristics for the items in the concept.
+            </div>
+          </div>
         </div>
 
         <div className={styles.optionsSection}>
