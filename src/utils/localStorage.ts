@@ -1,4 +1,5 @@
 import type { ConceptData } from './graphData'
+import { PREDEFINED_UNIVERSES } from './constants'
 
 const STORAGE_KEYS = {
   USER_CONCEPTS: 'premises_user_concepts',
@@ -31,16 +32,8 @@ const STORAGE_VERSION = 1
 export const saveUserConcepts = (allConcepts: ConceptData[]): void => {
   try {
     // Filter out pre-defined universes - only save custom/user-created concepts
-    const predefinedUniverses = [
-      'Ayn Rand',
-      'LLM layer genus 1',
-      'LLM layer genus 2',
-      'LLM layer differentia 1',
-      'LLM layer differentia 2',
-    ]
-
     const userConcepts = allConcepts.filter(
-      (concept) => !predefinedUniverses.includes(concept.universeId),
+      (concept) => !PREDEFINED_UNIVERSES.includes(concept.universeId as any),
     )
 
     const storage: UserConceptsStorage = {
@@ -56,6 +49,33 @@ export const saveUserConcepts = (allConcepts: ConceptData[]): void => {
 }
 
 /**
+ * Validate UserConceptsStorage structure
+ */
+const isValidUserConceptsStorage = (data: any): data is UserConceptsStorage => {
+  return (
+    typeof data === 'object' &&
+    data !== null &&
+    typeof data.version === 'number' &&
+    typeof data.lastModified === 'string' &&
+    Array.isArray(data.concepts)
+  )
+}
+
+/**
+ * Validate ImportedUniversesStorage structure
+ */
+const isValidImportedUniversesStorage = (
+  data: any,
+): data is ImportedUniversesStorage => {
+  return (
+    typeof data === 'object' &&
+    data !== null &&
+    typeof data.version === 'number' &&
+    Array.isArray(data.universes)
+  )
+}
+
+/**
  * Load user-defined concepts from localStorage
  */
 export const loadUserConcepts = (): ConceptData[] => {
@@ -65,7 +85,15 @@ export const loadUserConcepts = (): ConceptData[] => {
       return []
     }
 
-    const storage: UserConceptsStorage = JSON.parse(stored)
+    const parsed = JSON.parse(stored)
+
+    // Validate structure before using
+    if (!isValidUserConceptsStorage(parsed)) {
+      console.error('Invalid user concepts storage structure')
+      return []
+    }
+
+    const storage: UserConceptsStorage = parsed
 
     // Version check for future migrations
     if (storage.version !== STORAGE_VERSION) {
@@ -110,7 +138,15 @@ export const loadImportedUniverses = (): string[] => {
       return []
     }
 
-    const storage: ImportedUniversesStorage = JSON.parse(stored)
+    const parsed = JSON.parse(stored)
+
+    // Validate structure before using
+    if (!isValidImportedUniversesStorage(parsed)) {
+      console.error('Invalid imported universes storage structure')
+      return []
+    }
+
+    const storage: ImportedUniversesStorage = parsed
 
     // Version check for future migrations
     if (storage.version !== STORAGE_VERSION) {

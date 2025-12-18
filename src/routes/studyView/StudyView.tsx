@@ -41,6 +41,7 @@ import {
   saveImportedUniverses,
   clearAllStorage,
 } from '../../utils/localStorage'
+import { PREDEFINED_UNIVERSES } from '../../utils/constants'
 import styles from './StudyView.module.css'
 
 const nodeTypes = {
@@ -302,13 +303,9 @@ const StudyView: React.FC = () => {
     const loadData = async () => {
       try {
         // Load predefined datasets
-        const conceptsData = await importConceptsData([
-          'Ayn Rand',
-          'LLM layer genus 1',
-          'LLM layer genus 2',
-          'LLM layer differentia 1',
-          'LLM layer differentia 2',
-        ])
+        const conceptsData = await importConceptsData(
+          PREDEFINED_UNIVERSES as unknown as string[],
+        )
 
         // Load user-defined concepts from localStorage
         const userConcepts = loadUserConcepts()
