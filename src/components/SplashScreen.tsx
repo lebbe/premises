@@ -211,6 +211,24 @@ const SplashScreen: React.FC<SplashScreenProps> = ({
             </div>
           </div>
         </div>
+
+        <div className={styles.githubContributionSection}>
+          <h2 className={styles.sectionTitle}>Help Us Develop Premises</h2>
+          <p className={styles.description}>
+            Premises is an open-source project that benefits from community contributions.
+            Whether you're a developer, philosopher, or educator, your input can help improve this tool.
+          </p>
+          <div className={styles.githubSection}>
+            <a 
+              href="https://github.com/lebbe/premises" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className={styles.githubLink}
+            >
+              🚀 View on GitHub & Contribute
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   )

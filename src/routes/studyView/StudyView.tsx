@@ -1179,6 +1179,15 @@ const StudyView: React.FC = () => {
           >
             🗑️ Clear All
           </button>
+          <a
+            href="https://github.com/lebbe/premises"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.githubLink}
+            title="View source code and contribute"
+          >
+            🔗 GitHub
+          </a>
         </div>
       </div>
       <div className={styles.controls}>

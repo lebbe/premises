@@ -41,6 +41,11 @@
   margin-bottom: 30px;
 }
 
+.githubContributionSection {
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
+
 .sectionTitle {
   font-size: 20px;
   font-weight: 600;
@@ -200,4 +205,29 @@
 
 .selectAllButton:hover {
   color: #1d4ed8;
+}
+
+.githubSection {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.githubLink {
+  display: inline-block;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
+}
+
+.githubLink:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(99, 102, 241, 0.4);
+  text-decoration: none;
+  color: white;
 }
