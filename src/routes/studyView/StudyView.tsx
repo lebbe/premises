@@ -303,9 +303,7 @@ const StudyView: React.FC = () => {
     const loadData = async () => {
       try {
         // Load predefined datasets
-        const conceptsData = await importConceptsData(
-          PREDEFINED_UNIVERSES as unknown as string[],
-        )
+        const conceptsData = await importConceptsData([...PREDEFINED_UNIVERSES])
 
         // Load user-defined concepts from localStorage
         const userConcepts = loadUserConcepts()

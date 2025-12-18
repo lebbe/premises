@@ -33,7 +33,7 @@ export const saveUserConcepts = (allConcepts: ConceptData[]): void => {
   try {
     // Filter out pre-defined universes - only save custom/user-created concepts
     const userConcepts = allConcepts.filter(
-      (concept) => !PREDEFINED_UNIVERSES.includes(concept.universeId as any),
+      (concept) => !PREDEFINED_UNIVERSES.includes(concept.universeId),
     )
 
     const storage: UserConceptsStorage = {
