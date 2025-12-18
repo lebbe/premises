@@ -4,6 +4,7 @@ import { PREDEFINED_UNIVERSES } from './constants'
 const STORAGE_KEYS = {
   USER_CONCEPTS: 'premises_user_concepts',
   IMPORTED_UNIVERSES: 'premises_imported_universes',
+  HAS_VISITED: 'premises_has_visited',
 } as const
 
 /**
@@ -169,6 +170,7 @@ export const clearAllStorage = (): void => {
   try {
     localStorage.removeItem(STORAGE_KEYS.USER_CONCEPTS)
     localStorage.removeItem(STORAGE_KEYS.IMPORTED_UNIVERSES)
+    localStorage.removeItem(STORAGE_KEYS.HAS_VISITED)
   } catch (error) {
     console.error('Failed to clear localStorage:', error)
   }
@@ -185,5 +187,37 @@ export const isLocalStorageAvailable = (): boolean => {
     return true
   } catch {
     return false
+  }
+}
+
+/**
+ * Check if the user has visited the application before
+ * Returns true if there's any data in localStorage (concepts or universes selected)
+ */
+export const hasUserVisitedBefore = (): boolean => {
+  try {
+    const hasVisitedFlag = localStorage.getItem(STORAGE_KEYS.HAS_VISITED)
+    if (hasVisitedFlag) {
+      return true
+    }
+
+    // Also check if there are any user concepts or universe selections
+    const hasConcepts = localStorage.getItem(STORAGE_KEYS.USER_CONCEPTS)
+    const hasUniverses = localStorage.getItem(STORAGE_KEYS.IMPORTED_UNIVERSES)
+
+    return !!(hasConcepts || hasUniverses)
+  } catch {
+    return false
+  }
+}
+
+/**
+ * Mark that the user has visited and interacted with the application
+ */
+export const markUserVisited = (): void => {
+  try {
+    localStorage.setItem(STORAGE_KEYS.HAS_VISITED, 'true')
+  } catch (error) {
+    console.error('Failed to mark user as visited:', error)
   }
 }

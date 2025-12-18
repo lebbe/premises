@@ -1,0 +1,203 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background-color: white;
+  border-radius: 12px;
+  padding: 40px;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.title {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #2563eb;
+  text-align: center;
+}
+
+.subtitle {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 30px;
+  text-align: center;
+  font-style: italic;
+}
+
+.section {
+  margin-bottom: 30px;
+}
+
+.sectionTitle {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 12px;
+}
+
+.description {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 16px;
+}
+
+.definitionBox {
+  background-color: #f8f9fa;
+  border-left: 4px solid #2563eb;
+  padding: 16px;
+  margin-bottom: 12px;
+}
+
+.definitionTitle {
+  font-weight: 600;
+  color: #2563eb;
+  margin-bottom: 8px;
+}
+
+.definitionText {
+  font-size: 15px;
+  line-height: 1.5;
+  color: #444;
+}
+
+.optionsSection {
+  margin-top: 40px;
+  padding-top: 30px;
+  border-top: 2px solid #eee;
+}
+
+.optionsTitle {
+  font-size: 22px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.optionsContainer {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.optionCard {
+  flex: 1;
+  min-width: 280px;
+  max-width: 350px;
+  background-color: #f8f9fa;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 24px;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.optionCard:hover {
+  border-color: #2563eb;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+  transform: translateY(-2px);
+}
+
+.optionIcon {
+  font-size: 48px;
+  margin-bottom: 12px;
+}
+
+.optionTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.optionDescription {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 16px;
+  line-height: 1.4;
+}
+
+.optionButton {
+  width: 100%;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  background-color: #2563eb;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.optionButton:hover {
+  background-color: #1d4ed8;
+}
+
+.optionButton:active {
+  background-color: #1e40af;
+}
+
+.blankButton {
+  background-color: #059669;
+}
+
+.blankButton:hover {
+  background-color: #047857;
+}
+
+.blankButton:active {
+  background-color: #065f46;
+}
+
+.universesCheckboxes {
+  margin-top: 16px;
+  text-align: left;
+}
+
+.universeCheckbox {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  padding: 4px;
+}
+
+.universeCheckbox input {
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.universeCheckbox label {
+  cursor: pointer;
+  font-size: 14px;
+  color: #444;
+}
+
+.selectAllButton {
+  font-size: 12px;
+  color: #2563eb;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+  margin-top: 8px;
+}
+
+.selectAllButton:hover {
+  color: #1d4ed8;
+}

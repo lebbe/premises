@@ -25,6 +25,7 @@ import ConceptInfoPanel from '../../components/ConceptInfoPanel'
 import AddConceptDialog from '../../components/AddConceptDialog'
 import ExportDialog from '../../components/ExportDialog'
 import ImportDialog from '../../components/ImportDialog'
+import SplashScreen from '../../components/SplashScreen'
 import ControlPanel from './ControlPanel'
 import { useEditMode } from '../../contexts/EditModeContext'
 import {
@@ -40,6 +41,8 @@ import {
   loadImportedUniverses,
   saveImportedUniverses,
   clearAllStorage,
+  hasUserVisitedBefore,
+  markUserVisited,
 } from '../../utils/localStorage'
 import { PREDEFINED_UNIVERSES } from '../../utils/constants'
 import styles from './StudyView.module.css'
@@ -189,6 +192,7 @@ const StudyView: React.FC = () => {
     label: string
   } | null>(null)
   const { isEditMode, setIsEditMode } = useEditMode()
+  const [showSplashScreen, setShowSplashScreen] = useState(false)
 
   // Helper function to generate URL for specific concepts
   const generateConceptUrl = useCallback(
@@ -302,6 +306,15 @@ const StudyView: React.FC = () => {
   useEffect(() => {
     const loadData = async () => {
       try {
+        // Check if user has visited before
+        const hasVisited = hasUserVisitedBefore()
+
+        if (!hasVisited) {
+          // First time user - show splash screen
+          setShowSplashScreen(true)
+          return
+        }
+
         // Load predefined datasets
         const conceptsData = await importConceptsData([...PREDEFINED_UNIVERSES])
 
@@ -1029,6 +1042,56 @@ const StudyView: React.FC = () => {
     window.location.hash = ''
   }
 
+  const handleLoadUniverses = async (universesToLoad: string[]) => {
+    try {
+      // Mark that the user has now visited
+      markUserVisited()
+
+      // Load selected predefined datasets
+      const conceptsData = await importConceptsData(universesToLoad)
+
+      // Load any existing user-defined concepts from localStorage
+      const userConcepts = loadUserConcepts()
+
+      // Merge concepts, with user concepts taking precedence
+      const conceptMap = new Map(conceptsData.map((c) => [c.id, c]))
+      userConcepts.forEach((concept) => {
+        conceptMap.set(concept.id, concept)
+      })
+
+      const allConceptsData = Array.from(conceptMap.values())
+      setAllConcepts(allConceptsData)
+
+      // Extract unique universes
+      const universes = Array.from(
+        new Set(allConceptsData.map((c: ConceptData) => c.universeId)),
+      )
+      setAvailableUniverses(universes)
+      setSelectedUniverses(universes)
+      saveImportedUniverses(universes)
+
+      // Close splash screen
+      setShowSplashScreen(false)
+    } catch (error) {
+      console.error('Failed to load universes:', error)
+      alert('Failed to load concept datasets. Please try again.')
+    }
+  }
+
+  const handleStartBlank = () => {
+    // Mark that the user has now visited
+    markUserVisited()
+
+    // Start with empty state
+    setAllConcepts([])
+    setAvailableUniverses([])
+    setSelectedUniverses([])
+    setSelectedConcepts([])
+
+    // Close splash screen
+    setShowSplashScreen(false)
+  }
+
   const handleConceptSelect = (concept: ConceptData) => {
     // Add to selected concepts if not already selected
     setSelectedConcepts((prev) => {
@@ -1300,6 +1363,13 @@ const StudyView: React.FC = () => {
             </div>
           </div>
         </div>
+      )}
+      {/* Splash Screen */}
+      {showSplashScreen && (
+        <SplashScreen
+          onLoadUniverses={handleLoadUniverses}
+          onStartBlank={handleStartBlank}
+        />
       )}
     </div>
   )
