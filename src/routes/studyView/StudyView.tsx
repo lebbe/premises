@@ -1341,6 +1341,11 @@ const StudyView: React.FC = () => {
               This will remove all concepts and reset the application to a blank
               state. Are you sure?
             </p>
+            <div className={styles.warningCard}>
+              <p>
+                💾 <strong>Tip:</strong> Export your work first if you don't want to lose any data.
+              </p>
+            </div>
             <p className={styles.warningText}>
               ⚠️ This action cannot be undone.
             </p>
