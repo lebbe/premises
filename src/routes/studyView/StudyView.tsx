@@ -27,6 +27,7 @@ import ExportDialog from '../../components/ExportDialog'
 import ImportDialog from '../../components/ImportDialog'
 import SplashScreen from '../../components/SplashScreen'
 import FloatingAbstractionsDialog from '../../components/FloatingAbstractionsDialog'
+import CircularDefinitionsDialog from '../../components/CircularDefinitionsDialog'
 import ControlPanel from './ControlPanel'
 import { useEditMode } from '../../contexts/EditModeContext'
 import {
@@ -50,6 +51,10 @@ import {
   findFloatingAbstractions,
   type FloatingAbstraction,
 } from '../../utils/floatingAbstractions'
+import {
+  findCircularDefinitions,
+  type CircularDefinition,
+} from '../../utils/circularDefinitions'
 import styles from './StudyView.module.css'
 
 const nodeTypes = {
@@ -195,6 +200,11 @@ const StudyView: React.FC = () => {
     useState(false)
   const [floatingAbstractions, setFloatingAbstractions] = useState<
     FloatingAbstraction[]
+  >([])
+  const [showCircularDefinitionsDialog, setShowCircularDefinitionsDialog] =
+    useState(false)
+  const [circularDefinitions, setCircularDefinitions] = useState<
+    CircularDefinition[]
   >([])
   const [editingConcept, setEditingConcept] = useState<ConceptData | null>(null)
   const [prefilledConceptData, setPrefilledConceptData] = useState<{
@@ -1161,6 +1171,21 @@ const StudyView: React.FC = () => {
     setShowFloatingAbstractionsDialog(true)
   }
 
+  const handleFindCircularDefinitions = () => {
+    const cycles = findCircularDefinitions(selectedConcepts, filteredConcepts)
+    setCircularDefinitions(cycles)
+    setShowCircularDefinitionsDialog(true)
+  }
+
+  const handleEditConceptFromCircular = (conceptId: string) => {
+    // Find the concept and open the edit dialog
+    const concept = filteredConcepts.find((c) => c.id === conceptId)
+    if (concept) {
+      setShowCircularDefinitionsDialog(false)
+      setEditingConcept(concept)
+    }
+  }
+
   const handleDefineFloatingAbstraction = (
     abstraction: FloatingAbstraction,
   ) => {
@@ -1309,6 +1334,12 @@ const StudyView: React.FC = () => {
               >
                 🔍 Find Floating Abstractions
               </button>
+              <button
+                onClick={handleFindCircularDefinitions}
+                className={styles.floatingAbstractionsButton}
+              >
+                🔄 Find Circular Definitions
+              </button>
             </div>
           )}
         </div>
@@ -1391,6 +1422,13 @@ const StudyView: React.FC = () => {
         onClose={() => setShowFloatingAbstractionsDialog(false)}
         floatingAbstractions={floatingAbstractions}
         onDefineAbstraction={handleDefineFloatingAbstraction}
+      />
+      <CircularDefinitionsDialog
+        isOpen={showCircularDefinitionsDialog}
+        onClose={() => setShowCircularDefinitionsDialog(false)}
+        circularDefinitions={circularDefinitions}
+        onEditConcept={handleEditConceptFromCircular}
+        allConcepts={allConcepts}
       />
       {/* Clear All Confirmation Dialog */}
       {showClearConfirmDialog && (
