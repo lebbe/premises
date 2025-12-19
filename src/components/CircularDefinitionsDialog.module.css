@@ -1,0 +1,252 @@
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 2rem;
+}
+
+.modalContent {
+  background: white;
+  border-radius: 8px;
+  max-width: 800px;
+  width: 100%;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid #e5e7eb;
+  background-color: #fef3c7;
+}
+
+.modalTitle {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #92400e;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #92400e;
+  padding: 0;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.closeButton:hover {
+  background-color: rgba(146, 64, 14, 0.1);
+}
+
+.description {
+  padding: 1rem 1.5rem;
+  background-color: #fef3c7;
+  border-bottom: 1px solid #e5e7eb;
+  color: #78350f;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.description p {
+  margin: 0;
+}
+
+.noResults {
+  padding: 3rem 1.5rem;
+  text-align: center;
+  color: #059669;
+  font-size: 1rem;
+}
+
+.noResults p {
+  margin: 0;
+  font-weight: 500;
+}
+
+.cyclesList {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
+}
+
+.cycleCard {
+  background-color: #fff7ed;
+  border: 2px solid #fed7aa;
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.cycleCard:last-child {
+  margin-bottom: 0;
+}
+
+.cycleHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #fed7aa;
+}
+
+.cycleTitle {
+  margin: 0;
+  font-size: 1.25rem;
+  color: #c2410c;
+}
+
+.cycleLength {
+  font-size: 0.875rem;
+  color: #9a3412;
+  background-color: #ffedd5;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-weight: 500;
+}
+
+.cyclePath {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  background-color: white;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  border: 1px solid #fed7aa;
+}
+
+.conceptInCycle {
+  background-color: #dc2626;
+  color: white;
+  padding: 0.375rem 0.75rem;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 0.875rem;
+}
+
+.arrow {
+  color: #dc2626;
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+.conceptsListTitle {
+  margin: 0 0 0.75rem 0;
+  font-size: 1rem;
+  color: #92400e;
+}
+
+.conceptsList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.conceptItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: white;
+  border: 1px solid #fed7aa;
+  border-radius: 6px;
+  transition: box-shadow 0.2s;
+}
+
+.conceptItem:hover {
+  box-shadow: 0 2px 8px rgba(220, 38, 38, 0.1);
+}
+
+.conceptInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.conceptLabel {
+  font-weight: 600;
+  color: #1f2937;
+  font-size: 1rem;
+}
+
+.conceptId {
+  font-size: 0.875rem;
+  color: #6b7280;
+  font-family: monospace;
+}
+
+.conceptDefinition {
+  font-size: 0.875rem;
+  color: #4b5563;
+  line-height: 1.4;
+  font-style: italic;
+  padding-top: 0.25rem;
+}
+
+.editButton {
+  background-color: #dc2626;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.875rem;
+  transition: background-color 0.2s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.editButton:hover {
+  background-color: #b91c1c;
+}
+
+.modalFooter {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid #e5e7eb;
+  display: flex;
+  justify-content: flex-end;
+  background-color: #f9fafb;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.closeFooterButton {
+  background-color: #6b7280;
+  color: white;
+  border: none;
+  padding: 0.625rem 1.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: background-color 0.2s;
+}
+
+.closeFooterButton:hover {
+  background-color: #4b5563;
+}
