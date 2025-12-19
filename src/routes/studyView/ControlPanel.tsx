@@ -44,9 +44,12 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
       const mobile = window.innerWidth <= 768
       setIsMobile(mobile)
       // Collapse by default on mobile only on initial load
-      if (mobile && !localStorage.getItem('panelStateChecked')) {
+      if (
+        mobile &&
+        !localStorage.getItem('premises.controlPanel.initialized')
+      ) {
         setIsExpanded(false)
-        localStorage.setItem('panelStateChecked', 'true')
+        localStorage.setItem('premises.controlPanel.initialized', 'true')
       }
     }
 
