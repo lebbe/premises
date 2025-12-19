@@ -148,7 +148,7 @@ A proper definition of a concept consists of two parts:
 \`\`\`json
 {
   "id": "${floatingAbstraction.id}",
-  "universeId": "custom-philosophy",
+  "universeId": "custom-[your-universe-name]",
   "type": "concept",
   "label": "${floatingAbstraction.label || floatingAbstraction.id.charAt(0).toUpperCase() + floatingAbstraction.id.slice(1)}",
   "definition": {

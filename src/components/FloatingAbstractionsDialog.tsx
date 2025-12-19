@@ -18,6 +18,7 @@ const FloatingAbstractionsDialog: React.FC<FloatingAbstractionsDialogProps> = ({
 }) => {
   const [expandedPrompts, setExpandedPrompts] = useState<Set<string>>(new Set())
   const [copiedPrompts, setCopiedPrompts] = useState<Set<string>>(new Set())
+  const [copyErrors, setCopyErrors] = useState<Set<string>>(new Set())
 
   if (!isOpen) return null
 
@@ -40,6 +41,11 @@ const FloatingAbstractionsDialog: React.FC<FloatingAbstractionsDialogProps> = ({
     try {
       await navigator.clipboard.writeText(prompt)
       setCopiedPrompts((prev) => new Set(prev).add(abstraction.id))
+      setCopyErrors((prev) => {
+        const next = new Set(prev)
+        next.delete(abstraction.id)
+        return next
+      })
       // Reset copied state after 2 seconds
       setTimeout(() => {
         setCopiedPrompts((prev) => {
@@ -50,6 +56,15 @@ const FloatingAbstractionsDialog: React.FC<FloatingAbstractionsDialogProps> = ({
       }, 2000)
     } catch (err) {
       console.error('Failed to copy prompt to clipboard:', err)
+      setCopyErrors((prev) => new Set(prev).add(abstraction.id))
+      // Reset error state after 3 seconds
+      setTimeout(() => {
+        setCopyErrors((prev) => {
+          const next = new Set(prev)
+          next.delete(abstraction.id)
+          return next
+        })
+      }, 3000)
     }
   }
 
@@ -129,7 +144,11 @@ const FloatingAbstractionsDialog: React.FC<FloatingAbstractionsDialogProps> = ({
                     className={styles.copyButton}
                     title="Copy prompt to clipboard"
                   >
-                    {copiedPrompts.has(abstraction.id) ? '✓ Copied' : '📋 Copy'}
+                    {copiedPrompts.has(abstraction.id)
+                      ? '✓ Copied'
+                      : copyErrors.has(abstraction.id)
+                        ? '✗ Failed'
+                        : '📋 Copy'}
                   </button>
                 </div>
 
