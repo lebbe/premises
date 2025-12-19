@@ -34,6 +34,8 @@ export const findFloatingAbstractions = (
     }
 
     // Check if this concept itself is a floating abstraction (incomplete definition)
+    // Note: We only check concepts with type "concept" because axiomatic concepts
+    // are foundational and don't require genus/differentia by definition
     if (
       concept.type === 'concept' &&
       !concept.definition.genus &&
@@ -44,7 +46,7 @@ export const findFloatingAbstractions = (
         floatingAbstractions.set(conceptId, {
           id: conceptId,
           label: concept.label,
-          referencedBy: [],
+          referencedBy: [], // Empty because this concept exists but is incomplete
           reason: 'incomplete',
         })
       }

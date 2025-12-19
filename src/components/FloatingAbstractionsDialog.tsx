@@ -38,6 +38,21 @@ const FloatingAbstractionsDialog: React.FC<FloatingAbstractionsDialogProps> = ({
     abstraction: FloatingAbstraction,
   ): Promise<void> => {
     const prompt = generateLLMPrompt(abstraction)
+
+    // Check if clipboard API is available
+    if (!navigator.clipboard) {
+      console.error('Clipboard API not available')
+      setCopyErrors((prev) => new Set(prev).add(abstraction.id))
+      setTimeout(() => {
+        setCopyErrors((prev) => {
+          const next = new Set(prev)
+          next.delete(abstraction.id)
+          return next
+        })
+      }, 3000)
+      return
+    }
+
     try {
       await navigator.clipboard.writeText(prompt)
       setCopiedPrompts((prev) => new Set(prev).add(abstraction.id))
