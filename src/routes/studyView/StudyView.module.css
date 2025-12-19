@@ -28,6 +28,73 @@
 .headerToolbar {
   display: flex;
   gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .title {
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .headerToolbar {
+    justify-content: center;
+    gap: 8px;
+  }
+
+  /* Icon-only buttons on mobile */
+  .addConceptButton,
+  .exportButton,
+  .importButton,
+  .clearAllButton,
+  .githubLink {
+    padding: 8px;
+    font-size: 18px;
+    min-width: 40px;
+    justify-content: center;
+  }
+
+  /* Hide button text on mobile */
+  .buttonText {
+    display: none;
+  }
+
+  .editModeToggle {
+    font-size: 12px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .controls {
+    padding: 12px;
+  }
+
+  .searchSection {
+    max-width: 100%;
+  }
+
+  /* Hide MiniMap on mobile */
+  .graphContainer :global(.react-flow__minimap) {
+    display: none !important;
+  }
+
+  /* Hide default Controls on mobile */
+  .graphContainer :global(.react-flow__controls) {
+    display: none !important;
+  }
+
+  /* Ensure graph takes most of the viewport */
+  .graphContainer {
+    height: calc(100vh - 200px);
+  }
 }
 
 .addConceptButton {
@@ -47,6 +114,10 @@
 
 .addConceptButton:hover {
   background: #059669 !important;
+}
+
+.buttonText {
+  display: inline;
 }
 
 .exportButton {

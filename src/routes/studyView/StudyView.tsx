@@ -1217,26 +1217,30 @@ const StudyView: React.FC = () => {
           <button
             onClick={() => setShowImportDialog(true)}
             className={styles.importButton}
+            title="Import"
           >
-            📁 Import
+            📁<span className={styles.buttonText}> Import</span>
           </button>
           <button
             onClick={() => setShowExportDialog(true)}
             className={styles.exportButton}
+            title="Export"
           >
-            📤 Export
+            📤<span className={styles.buttonText}> Export</span>
           </button>
           <button
             onClick={() => setShowAddDialog(true)}
             className={styles.addConceptButton}
+            title="Add Concept"
           >
-            ➕ Add Concept
+            ➕<span className={styles.buttonText}> Add Concept</span>
           </button>
           <button
             onClick={() => setShowClearConfirmDialog(true)}
             className={styles.clearAllButton}
+            title="Clear All"
           >
-            🗑️ Clear All
+            🗑️<span className={styles.buttonText}> Clear All</span>
           </button>
           <a
             href="https://github.com/lebbe/premises"
@@ -1245,7 +1249,7 @@ const StudyView: React.FC = () => {
             className={styles.githubLink}
             title="View source code and contribute"
           >
-            🔗 GitHub
+            🔗<span className={styles.buttonText}> GitHub</span>
           </a>
         </div>
       </div>
