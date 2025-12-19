@@ -26,6 +26,7 @@ import AddConceptDialog from '../../components/AddConceptDialog'
 import ExportDialog from '../../components/ExportDialog'
 import ImportDialog from '../../components/ImportDialog'
 import SplashScreen from '../../components/SplashScreen'
+import FloatingAbstractionsDialog from '../../components/FloatingAbstractionsDialog'
 import ControlPanel from './ControlPanel'
 import { useEditMode } from '../../contexts/EditModeContext'
 import {
@@ -45,6 +46,10 @@ import {
   markUserVisited,
 } from '../../utils/localStorage'
 import { PREDEFINED_UNIVERSES } from '../../utils/constants'
+import {
+  findFloatingAbstractions,
+  type FloatingAbstraction,
+} from '../../utils/floatingAbstractions'
 import styles from './StudyView.module.css'
 
 const nodeTypes = {
@@ -186,6 +191,11 @@ const StudyView: React.FC = () => {
   const [showExportDialog, setShowExportDialog] = useState(false)
   const [showImportDialog, setShowImportDialog] = useState(false)
   const [showClearConfirmDialog, setShowClearConfirmDialog] = useState(false)
+  const [showFloatingAbstractionsDialog, setShowFloatingAbstractionsDialog] =
+    useState(false)
+  const [floatingAbstractions, setFloatingAbstractions] = useState<
+    FloatingAbstraction[]
+  >([])
   const [editingConcept, setEditingConcept] = useState<ConceptData | null>(null)
   const [prefilledConceptData, setPrefilledConceptData] = useState<{
     id: string
@@ -1142,6 +1152,30 @@ const StudyView: React.FC = () => {
     }
   }
 
+  const handleFindFloatingAbstractions = () => {
+    const abstractions = findFloatingAbstractions(
+      selectedConcepts,
+      filteredConcepts,
+    )
+    setFloatingAbstractions(abstractions)
+    setShowFloatingAbstractionsDialog(true)
+  }
+
+  const handleDefineFloatingAbstraction = (
+    abstraction: FloatingAbstraction,
+  ) => {
+    // Close the floating abstractions dialog
+    setShowFloatingAbstractionsDialog(false)
+    // Open the add dialog with prefilled data
+    setPrefilledConceptData({
+      id: abstraction.id,
+      label:
+        abstraction.label ||
+        abstraction.id.charAt(0).toUpperCase() + abstraction.id.slice(1),
+    })
+    setShowAddDialog(true)
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -1266,6 +1300,17 @@ const StudyView: React.FC = () => {
               </div>
             </div>
           )}
+
+          {selectedConcepts.length > 0 && (
+            <div className={styles.floatingAbstractionsButtonContainer}>
+              <button
+                onClick={handleFindFloatingAbstractions}
+                className={styles.floatingAbstractionsButton}
+              >
+                🔍 Find Floating Abstractions
+              </button>
+            </div>
+          )}
         </div>
       </div>{' '}
       <div className={styles.graphContainer}>
@@ -1340,6 +1385,12 @@ const StudyView: React.FC = () => {
         onClose={() => setShowImportDialog(false)}
         allConcepts={allConcepts}
         onImport={handleImportConcepts}
+      />
+      <FloatingAbstractionsDialog
+        isOpen={showFloatingAbstractionsDialog}
+        onClose={() => setShowFloatingAbstractionsDialog(false)}
+        floatingAbstractions={floatingAbstractions}
+        onDefineAbstraction={handleDefineFloatingAbstraction}
       />
       {/* Clear All Confirmation Dialog */}
       {showClearConfirmDialog && (

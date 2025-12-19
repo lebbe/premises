@@ -507,3 +507,29 @@
 .confirmClearButton:hover {
   background: #b91c1c;
 }
+
+/* Floating Abstractions Button Container */
+.floatingAbstractionsButtonContainer {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+}
+
+.floatingAbstractionsButton {
+  background: #8b5cf6 !important;
+  color: white !important;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.floatingAbstractionsButton:hover {
+  background: #7c3aed !important;
+}
