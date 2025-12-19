@@ -99,7 +99,8 @@ export const findCircularDefinitions = (
 
   // Start DFS from each selected concept
   selectedConcepts.forEach((concept) => {
-    visited.clear()
+    // Don't clear visited - maintain it across all DFS traversals to avoid duplicate work
+    // Only clear recursionStack and currentPath for each new starting point
     recursionStack.clear()
     currentPath.length = 0
     detectCycle(concept.id)
