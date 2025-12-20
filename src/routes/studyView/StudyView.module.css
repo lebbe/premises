@@ -86,11 +86,6 @@
     display: none !important;
   }
 
-  /* Hide default Controls on mobile */
-  .graphContainer :global(.react-flow__controls) {
-    display: none !important;
-  }
-
   /* Ensure graph takes most of the viewport */
   .graphContainer {
     height: calc(100vh - 200px);

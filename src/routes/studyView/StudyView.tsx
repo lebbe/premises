@@ -1361,7 +1361,7 @@ const StudyView: React.FC = () => {
           fitViewOptions={{ padding: 0.1 }}
         >
           <Background />
-          <Controls />
+          <Controls position="top-right" />
           <MiniMap />
 
           {/* Control Panel */}

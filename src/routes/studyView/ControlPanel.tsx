@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Panel, useReactFlow } from '@xyflow/react'
+import { Panel } from '@xyflow/react'
 import type { LayoutOptions } from '../../utils/graphData'
 import styles from './ControlPanel.module.css'
 
@@ -34,7 +34,6 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
   selectedUniverses,
   handleUniverseToggle,
 }) => {
-  const { zoomIn, zoomOut, fitView } = useReactFlow()
   const [isExpanded, setIsExpanded] = useState(true)
   const [isMobile, setIsMobile] = useState(false)
 
@@ -87,36 +86,6 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
               >
                 ✕
               </button>
-            )}
-
-            {/* Zoom Controls Section - Mobile Only */}
-            {isMobile && (
-              <div className={styles.zoomControls}>
-                <h4>View Controls</h4>
-                <div className={styles.zoomButtonGroup}>
-                  <button
-                    onClick={() => zoomIn()}
-                    className={styles.zoomButton}
-                    title="Zoom In"
-                  >
-                    🔍+
-                  </button>
-                  <button
-                    onClick={() => zoomOut()}
-                    className={styles.zoomButton}
-                    title="Zoom Out"
-                  >
-                    🔍−
-                  </button>
-                  <button
-                    onClick={() => fitView({ padding: 0.1 })}
-                    className={styles.zoomButton}
-                    title="Fit View"
-                  >
-                    ⛶
-                  </button>
-                </div>
-              </div>
             )}
 
             <div className={styles.depthControl}>
