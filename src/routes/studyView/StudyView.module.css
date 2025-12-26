@@ -77,8 +77,13 @@
     padding: 12px;
   }
 
-  .searchSection {
-    max-width: 100%;
+  .searchContainer {
+    gap: 6px;
+  }
+
+  .searchTools {
+    width: 100%;
+    justify-content: center;
   }
 
   /* Hide MiniMap on mobile */
@@ -173,17 +178,26 @@
 }
 
 .searchSection {
-  max-width: 500px;
   margin: 0 auto;
 }
 
 .searchContainer {
-  position: relative;
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 8px;
   margin-bottom: 15px;
+}
+
+.searchInputWrapper {
+  position: relative;
+  flex: 1 1 300px;
+  min-width: 260px;
 }
 
 .searchInput {
   width: 100%;
+  max-width: 500px;
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -575,10 +589,12 @@
 }
 
 /* Floating Abstractions Button Container */
-.floatingAbstractionsButtonContainer {
-  margin-top: 15px;
+/* Search tools placed inline next to search input */
+.searchTools {
   display: flex;
-  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
 .floatingAbstractionsButton {

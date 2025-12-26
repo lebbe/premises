@@ -8,6 +8,10 @@ interface FloatingAbstractionsDialogProps {
   onClose: () => void
   floatingAbstractions: FloatingAbstraction[]
   onDefineAbstraction: (abstraction: FloatingAbstraction) => void
+  onDefineAbstractionFromJson?: (
+    abstraction: FloatingAbstraction,
+    parsedConcept: unknown,
+  ) => void
 }
 
 const FloatingAbstractionsDialog: React.FC<FloatingAbstractionsDialogProps> = ({
@@ -15,6 +19,7 @@ const FloatingAbstractionsDialog: React.FC<FloatingAbstractionsDialogProps> = ({
   onClose,
   floatingAbstractions,
   onDefineAbstraction,
+  onDefineAbstractionFromJson,
 }) => {
   const [expandedPrompts, setExpandedPrompts] = useState<Set<string>>(new Set())
   const [copiedPrompts, setCopiedPrompts] = useState<Set<string>>(new Set())
@@ -83,6 +88,27 @@ const FloatingAbstractionsDialog: React.FC<FloatingAbstractionsDialogProps> = ({
     }
   }
 
+  const handlePasteJson = (abstraction: FloatingAbstraction) => {
+    const raw = window.prompt(
+      'Paste concept JSON to prefill the Add Concept form:',
+      '',
+    )
+
+    if (raw === null) return
+
+    try {
+      const parsed = JSON.parse(raw)
+      if (!parsed || typeof parsed !== 'object') {
+        alert('Please provide a valid JSON object.')
+        return
+      }
+      onDefineAbstractionFromJson?.(abstraction, parsed)
+    } catch (err) {
+      console.error('Failed to parse pasted JSON:', err)
+      alert('Invalid JSON. Please check the format and try again.')
+    }
+  }
+
   return (
     <div className={styles.modalOverlay} onClick={onClose}>
       <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
@@ -131,13 +157,22 @@ const FloatingAbstractionsDialog: React.FC<FloatingAbstractionsDialogProps> = ({
                         : '⚠️ Missing genus or differentia'}
                     </div>
                   </div>
-                  <button
-                    onClick={() => onDefineAbstraction(abstraction)}
-                    className={styles.defineButton}
-                    title="Define this concept"
-                  >
-                    ➕
-                  </button>
+                  <div className={styles.defineActions}>
+                    <button
+                      onClick={() => onDefineAbstraction(abstraction)}
+                      className={styles.defineButton}
+                      title="Define this concept manually"
+                    >
+                      ➕
+                    </button>
+                    <button
+                      onClick={() => handlePasteJson(abstraction)}
+                      className={styles.pasteJsonButton}
+                      title="Paste concept JSON to prefill"
+                    >
+                      Paste JSON
+                    </button>
+                  </div>
                 </div>
 
                 {abstraction.referencedBy.length > 0 && (

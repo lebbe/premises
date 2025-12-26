@@ -10,6 +10,7 @@ interface AddConceptDialogProps {
   existingUniverses: string[]
   editingConcept?: ConceptData | null // New prop for editing mode
   prefilledData?: { id: string; label: string } | null // New prop for prefilled data
+  prefilledJson?: Partial<ConceptData> | null
 }
 
 const commonTypes = ['concept', 'axiomatic concept']
@@ -43,6 +44,7 @@ const AddConceptDialog: React.FC<AddConceptDialogProps> = ({
   existingUniverses,
   editingConcept = null,
   prefilledData = null,
+  prefilledJson = null,
 }) => {
   const [formData, setFormData] = useState({
     id: '',
@@ -111,11 +113,50 @@ const AddConceptDialog: React.FC<AddConceptDialogProps> = ({
     })
   }
 
+  const populateFormFromJson = (concept: Partial<ConceptData>) => {
+    const safeGenus =
+      concept.definition?.genus && typeof concept.definition.genus === 'object'
+        ? {
+            id: concept.definition.genus.id ?? '',
+            label: concept.definition.genus.label ?? '',
+          }
+        : { id: '', label: '' }
+
+    const safeDifferentia = Array.isArray(concept.definition?.differentia)
+      ? concept.definition!.differentia
+          .map((diff) =>
+            diff && typeof diff === 'object'
+              ? { id: diff.id ?? '', label: diff.label ?? '' }
+              : null,
+          )
+          .filter((d): d is { id: string; label: string } => !!d && !!d.id)
+      : []
+
+    setFormData({
+      id: concept.id ?? '',
+      label: concept.label ?? '',
+      universeId: concept.universeId ?? getLastUsedUniverse(),
+      type: concept.type ?? 'concept',
+      definitionText: concept.definition?.text ?? '',
+      genus: safeGenus,
+      differentia: safeDifferentia.length > 0
+        ? safeDifferentia
+        : [{ id: '', label: '' }],
+      source: concept.definition?.source ?? '',
+      perceptualRoots:
+        Array.isArray(concept.perceptualRoots) && concept.perceptualRoots.length
+          ? concept.perceptualRoots
+          : [''],
+    })
+  }
+
   // Initialize form when dialog opens or editingConcept changes
   useEffect(() => {
     if (isOpen) {
       if (editingConcept) {
         populateFormFromConcept(editingConcept)
+      } else if (prefilledJson) {
+        populateFormFromJson(prefilledJson)
       } else if (prefilledData) {
         // Pre-fill from virtual node data
         setFormData({
@@ -128,7 +169,7 @@ const AddConceptDialog: React.FC<AddConceptDialogProps> = ({
       }
       setErrors({})
     }
-  }, [isOpen, editingConcept, prefilledData])
+  }, [isOpen, editingConcept, prefilledData, prefilledJson])
 
   // Effect to focus the newly added differentia input
   useEffect(() => {

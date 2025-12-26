@@ -138,11 +138,32 @@
   font-size: 1.2rem;
   cursor: pointer;
   transition: background-color 0.2s;
-  margin-left: 12px;
 }
 
 .defineButton:hover {
   background-color: #059669;
+}
+
+.defineActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.pasteJsonButton {
+  background-color: #111827;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.pasteJsonButton:hover {
+  background-color: #0b1220;
 }
 
 .referencedBy {
@@ -176,6 +197,8 @@
   transition: background-color 0.2s;
   flex: 1;
   text-align: left;
+  color: #111827;
+  font-weight: 600;
 }
 
 .promptToggle:hover {

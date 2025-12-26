@@ -211,6 +211,9 @@ const StudyView: React.FC = () => {
     id: string
     label: string
   } | null>(null)
+  const [prefilledConceptFromJson, setPrefilledConceptFromJson] = useState<
+    Partial<ConceptData> | null
+  >(null)
   const { isEditMode, setIsEditMode } = useEditMode()
   const [showSplashScreen, setShowSplashScreen] = useState(false)
 
@@ -1060,6 +1063,9 @@ const StudyView: React.FC = () => {
 
     // Clear the URL hash to reset to default state
     window.location.hash = ''
+
+    // Show splash screen as if newly arrived
+    setShowSplashScreen(true)
   }
 
   const handleLoadUniverses = async (universesToLoad: string[]) => {
@@ -1189,6 +1195,7 @@ const StudyView: React.FC = () => {
   const handleDefineFloatingAbstraction = (
     abstraction: FloatingAbstraction,
   ) => {
+    setPrefilledConceptFromJson(null)
     // Close the floating abstractions dialog
     setShowFloatingAbstractionsDialog(false)
     // Open the add dialog with prefilled data
@@ -1198,6 +1205,32 @@ const StudyView: React.FC = () => {
         abstraction.label ||
         abstraction.id.charAt(0).toUpperCase() + abstraction.id.slice(1),
     })
+    setShowAddDialog(true)
+  }
+
+  const handleDefineFloatingAbstractionFromJson = (
+    abstraction: FloatingAbstraction,
+    parsedConcept: unknown,
+  ) => {
+    setShowFloatingAbstractionsDialog(false)
+
+    const parsed =
+      parsedConcept && typeof parsedConcept === 'object'
+        ? (parsedConcept as Partial<ConceptData>)
+        : null
+
+    const id: string =
+      (parsed?.id as string | undefined) ||
+      abstraction.id ||
+      abstraction.label ||
+      'new-concept'
+    const label: string =
+      (parsed?.label as string | undefined) ||
+      abstraction.label ||
+      abstraction.id.charAt(0).toUpperCase() + abstraction.id.slice(1)
+
+    setPrefilledConceptData({ id, label })
+    setPrefilledConceptFromJson(parsed ? { ...parsed, id, label } : { id, label })
     setShowAddDialog(true)
   }
 
@@ -1256,44 +1289,67 @@ const StudyView: React.FC = () => {
       <div className={styles.controls}>
         <div className={styles.searchSection}>
           <div className={styles.searchContainer}>
-            <input
-              type="text"
-              placeholder="Search concepts by ID or label..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              onFocus={() => setIsSearchFocused(true)}
-              onBlur={() => {
-                // Delay hiding to allow clicks on search results
-                setTimeout(() => setIsSearchFocused(false), 200)
-              }}
-              className={styles.searchInput}
-            />
+            <div className={styles.searchInputWrapper}>
+              <input
+                type="text"
+                placeholder="Search concepts by ID or label..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                onFocus={() => setIsSearchFocused(true)}
+                onBlur={() => {
+                  // Delay hiding to allow clicks on search results
+                  setTimeout(() => setIsSearchFocused(false), 200)
+                }}
+                className={styles.searchInput}
+              />
 
-            {isSearchFocused && searchResults.length > 0 && (
-              <div className={styles.searchResults}>
-                {searchResults.length > 0 ? (
-                  searchResults.map((concept) => (
-                    <div
-                      key={concept.id}
-                      className={styles.searchResult}
-                      onClick={() => handleConceptSelect(concept)}
-                    >
-                      <div className={styles.conceptLabel}>{concept.label}</div>
-                      <div className={styles.conceptId}>ID: {concept.id}</div>
-                      <div className={styles.conceptUniverse}>
-                        Universe: {concept.universeId}
+              {isSearchFocused && searchResults.length > 0 && (
+                <div className={styles.searchResults}>
+                  {searchResults.length > 0 ? (
+                    searchResults.map((concept) => (
+                      <div
+                        key={concept.id}
+                        className={styles.searchResult}
+                        onClick={() => handleConceptSelect(concept)}
+                      >
+                        <div className={styles.conceptLabel}>
+                          {concept.label}
+                        </div>
+                        <div className={styles.conceptId}>ID: {concept.id}</div>
+                        <div className={styles.conceptUniverse}>
+                          Universe: {concept.universeId}
+                        </div>
                       </div>
+                    ))
+                  ) : searchTerm.trim() ? (
+                    <div className={styles.noResults}>
+                      No concepts found for "{searchTerm}"
                     </div>
-                  ))
-                ) : searchTerm.trim() ? (
-                  <div className={styles.noResults}>
-                    No concepts found for "{searchTerm}"
-                  </div>
-                ) : (
-                  <div className={styles.searchHint}>
-                    Start typing to search, or browse all concepts below
-                  </div>
-                )}
+                  ) : (
+                    <div className={styles.searchHint}>
+                      Start typing to search, or browse all concepts below
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+
+            {selectedConcepts.length > 0 && (
+              <div className={styles.searchTools}>
+                <button
+                  onClick={handleFindFloatingAbstractions}
+                  className={styles.floatingAbstractionsButton}
+                  title="Find Floating Abstractions"
+                >
+                  🔍 Find Floating Abstractions
+                </button>
+                <button
+                  onClick={handleFindCircularDefinitions}
+                  className={styles.floatingAbstractionsButton}
+                  title="Find Circular Definitions"
+                >
+                  🔄 Find Circular Definitions
+                </button>
               </div>
             )}
           </div>
@@ -1330,22 +1386,7 @@ const StudyView: React.FC = () => {
             </div>
           )}
 
-          {selectedConcepts.length > 0 && (
-            <div className={styles.floatingAbstractionsButtonContainer}>
-              <button
-                onClick={handleFindFloatingAbstractions}
-                className={styles.floatingAbstractionsButton}
-              >
-                🔍 Find Floating Abstractions
-              </button>
-              <button
-                onClick={handleFindCircularDefinitions}
-                className={styles.floatingAbstractionsButton}
-              >
-                🔄 Find Circular Definitions
-              </button>
-            </div>
-          )}
+          {/* Tool buttons moved next to search input */}
         </div>
       </div>{' '}
       <div className={styles.graphContainer}>
@@ -1403,12 +1444,14 @@ const StudyView: React.FC = () => {
           setShowAddDialog(false)
           setEditingConcept(null)
           setPrefilledConceptData(null)
+          setPrefilledConceptFromJson(null)
         }}
         onSave={editingConcept ? handleUpdateConcept : handleAddConcept}
         existingConcepts={allConcepts}
         existingUniverses={availableUniverses}
         editingConcept={editingConcept}
         prefilledData={prefilledConceptData}
+        prefilledJson={prefilledConceptFromJson}
       />
       <ExportDialog
         isOpen={showExportDialog}
@@ -1426,6 +1469,7 @@ const StudyView: React.FC = () => {
         onClose={() => setShowFloatingAbstractionsDialog(false)}
         floatingAbstractions={floatingAbstractions}
         onDefineAbstraction={handleDefineFloatingAbstraction}
+        onDefineAbstractionFromJson={handleDefineFloatingAbstractionFromJson}
       />
       <CircularDefinitionsDialog
         isOpen={showCircularDefinitionsDialog}
